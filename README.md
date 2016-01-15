@@ -40,7 +40,7 @@ More information on [docs/Project.md](./docs/Project.md).
 | Creation of the project             | January 2016            |
 | Fetch HS data and simulate a game   | February 2016           |
 | Machine Learning simple deck        | March 2016              |
-| GUI live game                       | April 2016              |
+| HUD                                 | April 2016              |
 | Multiple decks                      | May-June 2016           |
 | General machine learning            | July-August 2016        |
 
@@ -75,10 +75,10 @@ More information on [docs/Project.md](./docs/Project.md).
     - [Hearthbreaker](https://github.com/danielyule/hearthbreaker)
 - Calculation of the percentage of winning the game
 
-### Step 4: GUI live game (April 2016)
+### Step 4: HUD (April 2016)
 
 - IA vs real player (always with the same deck) during a real game (fetch live data)
-- GUI printing advices/options to the player
+- HUD printing advices/options to the player
     - With the Tk library: [POC](./POC/)
 - Improvement of the IA
 
