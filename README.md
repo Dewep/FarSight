@@ -10,6 +10,7 @@ Contributors:
 
 - Maigret Aurélien, original author of the project
 - Zajda Florent
+- Colin Julien
 
 Supervisor:
 
