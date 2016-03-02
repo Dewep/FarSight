@@ -14,7 +14,7 @@ Contributors:
 
 Supervisor:
 
-- *To define*
+- Marek Grzes
 
 ## Project presentation
 
