@@ -4,7 +4,7 @@
 
 This project is a major part of our studies [*MSC Advanced Computer Science (Computational Intelligence)*] at the University of Kent (United Kingdom).
 
-It is about an IA (Machine Learning system) for card oriented game, applied to the game HearthStone (Blizzard company).
+It is about an AI (Machine Learning system) for card oriented game, applied to the game HearthStone (Blizzard company).
 
 Contributors:
 
@@ -70,17 +70,18 @@ More information on [docs/Project.md](./docs/Project.md).
 
 - Creation of a basic deck
     - Basic paladin aggro
-- Machine Learning (our IA vs our IA, with the same deck) using the simulation system
+- Machine Learning (our AI vs our AI, with the same deck) using the simulation system
     - *IAMDINOSAUR*: [GitHub](https://github.com/ivanseidel/IAMDinosaur) / [YouTube explanation](https://www.youtube.com/watch?v=P7XHzqZjXQs)
     - [Hearthbreaker](https://github.com/danielyule/hearthbreaker)
-- Calculation of the percentage of winning the game
+- Probability of winning the game
+- Evaluate the level of the AI
 
 ### Step 4: HUD (April 2016)
 
-- IA vs real player (always with the same deck) during a real game (fetch live data)
+- AI vs real player (always with the same deck) during a real game (fetch live data)
 - HUD printing advices/options to the player
     - With the Tk library: [POC](./POC/)
-- Improvement of the IA
+- Improvement of the AI
 
 ### Step 5: Multiple decks (May-June 2016)
 
