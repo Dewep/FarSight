@@ -4,6 +4,8 @@
 
 This project is a major part of our studies [*MSC Advanced Computer Science (Computational Intelligence)*] at the University of Kent (United Kingdom).
 
+Subject title: **An application of Machine Learning to the Card Game Hearthstone**.
+
 It is about an AI (Machine Learning system) for card oriented game, applied to the game HearthStone (Blizzard company).
 
 Contributors:
