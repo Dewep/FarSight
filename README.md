@@ -10,10 +10,11 @@ Contributors:
 
 - Maigret Aurélien, original author of the project
 - Zajda Florent
+- Colin Julien
 
 Supervisor:
 
-- *To define*
+- Marek Grzes
 
 ## Project presentation
 
