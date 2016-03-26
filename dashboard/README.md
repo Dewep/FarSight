@@ -1,6 +1,12 @@
 # HearthStone Dashboard
 
+`pip install Pillow`
+
+`python3 fetch_data.py`
+
 `npm install -g electron-prebuilt`
+
+`electron app`
 
 https://github.com/atom/electron/blob/master/docs/tutorial/quick-start.md
 

@@ -33,5 +33,5 @@ for card in cards:
     card_id = card["id"]
     download_file("http://wow.zamimg.com/images/hearthstone/cards/enus/original/" + card_id + ".png", "data/cards-images/" + card_id + ".png")
     im = Image.open("data/cards-images/" + card_id + ".png")
-    im = im.crop((70, 125, 70 + 130, 125 + 35))
+    im = im.crop((70, 130, 70 + 130, 130 + 24))
     im.save("data/cards-images-bar/" + card_id + ".png", "PNG")
