@@ -6,7 +6,7 @@
 
 `npm install -g electron-prebuilt`
 
-`electron app`
+`electron .`
 
 https://github.com/atom/electron/blob/master/docs/tutorial/quick-start.md
 

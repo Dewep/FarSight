@@ -1,21 +1,34 @@
-/*system,-apple-system,".SFNSDisplay-Regular","Helvetica Neue",Helvetica,"Segoe UI",sans-serif*/
+/*
+* General body
+*/
 body { background-color: #07172a; color: #f8f8f8; font-size: 12px; font-family: "Ubuntu"; margin: 0; padding: 0; }
+/*system,-apple-system,".SFNSDisplay-Regular","Helvetica Neue",Helvetica,"Segoe UI",sans-serif*/
 
-body > header { background-color: #0a223e; box-shadow: 0 2px 2px 0px #04101d; padding: 10px; -webkit-user-select: none; -webkit-app-region: drag; }
 
-section { padding: 6px 10px; }
+/*
+* Drag & Drop Window
+*/
+body > header { -webkit-user-select: none; -webkit-app-region: drag; height: 20px; }
+input, select, button { -webkit-app-region: no-drag; }
 
+
+/*
+* Scrollbar
+*/
+html { height: 100%; }
+body { display: flex; flex-direction: column; height: 100%; }
+#content { overflow: auto; flex: 1; margin: 5px 4px 5px 0; padding: 6px 10px; overflow-x: hidden; overflow-y: scroll; }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(15,48,88,0.5); -webkit-border-radius: 10px; border-radius: 10px; }
+::-webkit-scrollbar-thumb { -webkit-border-radius: 10px; border-radius: 10px; background: #5195e6; }
+::-webkit-scrollbar-thumb:window-inactive { -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); }
+
+
+/*
+* General (titles, table, lists, ...)
+*/
 h1 { display: inline; font-size: 16px; margin: 0; padding: 0; }
-
 h2 { font-size: 12px; text-transform: uppercase; border-bottom: 1px solid #5195e6; color: #5195e6; margin: 1px 0 5px 0; padding: 0 3px; }
-
-article { background-color: #0f3058; height: 24px; margin: 5px 0; line-height: 24px; font-size: 14px; font-weight: bold; padding: 0; }
-article > span { display: inline-block; height: 24px; line-height: 24px; vertical-align: top; float: left; text-align: center; }
-article > span.mana { width: 15%; }
-article > span.name { width: 70%; text-align: left; background-repeat: no-repeat; background-position: right top; }
-article > span.name > span { background: linear-gradient(to right, rgba(15,48,88,1), rgba(15,48,88,0.3)); display: inline-block; width: 100%; }
-article > span.num { width: 15%; }
-article > span.info { width: 15%; font-size: 10px; font-weight: normal; }
 
 table { width: 95%; }
 th { text-align: right; padding-right: 10px; }
@@ -24,3 +37,27 @@ p { margin: 5px 0; text-align: center; }
 
 ol { margin: 0; padding: 0 0 0 20px; }
 li { margin: 3px; padding: 0; }
+
+
+/*
+* Header
+*/
+body > header { background-color: #0a223e; box-shadow: 0 2px 2px 0px #04101d; padding: 10px; }
+
+
+/*
+* Sections
+*/
+section { padding: 6px 0; }
+
+
+/*
+* Articles
+*/
+article { background-color: #0f3058; height: 24px; margin: 5px 0; line-height: 24px; font-size: 14px; font-weight: bold; padding: 0; }
+article > span { display: inline-block; height: 24px; line-height: 24px; vertical-align: top; float: left; text-align: center; }
+article > span.mana { width: 15%; }
+article > span.name { width: 70%; text-align: left; background-repeat: no-repeat; background-position: right top; }
+article > span.name > span { background: linear-gradient(to right, rgba(15,48,88,1), rgba(15,48,88,0.3)); display: inline-block; width: 100%; }
+article > span.num { width: 15%; }
+article > span.info { width: 15%; font-size: 10px; font-weight: normal; }

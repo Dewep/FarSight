@@ -1,0 +1,9 @@
+{
+  "name": "FarSight",
+  "version": "0.1.0",
+  "main": "app.js",
+  "dependencies": {
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1"
+  }
+}
