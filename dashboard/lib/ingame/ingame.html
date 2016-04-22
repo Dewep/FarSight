@@ -1,0 +1,57 @@
+<section>
+    <h2>Current game informations</h2>
+    <table>
+        <tbody>
+            <tr>
+                <th>Your hand:</th>
+                <td>{{ player_cards_hand_size }}</td>
+                <th>Opponent hand:</th>
+                <td>{{ opponent_cards_hand_size }}</td>
+            </tr>
+            <tr>
+                <th>Your deck:</th>
+                <td>{{ player_cards_deck_size }}</td>
+                <th>Opponent deck:</th>
+                <td>{{ opponent_cards_deck_size }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        Opponent prediction:
+        <span ng-repeat="deck in opponent_deck_prediction">
+            <b ng-if="$first">{{ deck.deck }}</b>
+            <span ng-if="!$first">{{ deck.deck }}</span>
+            {{ deck.percent * 100 | number:0 }}%<span ng-if="!$first && !$last">,</span>
+            <span ng-if="$first"><br/></span>
+        </span>
+    </p>
+</section>
+
+<section>
+    <h2>Advices</h2>
+    <ol ng-repeat="advice in player_advices">
+        <li>{{ advice.message }}</li>
+    </ol>
+</section>
+
+<section>
+    <h2>Prediction plays</h2>
+    <div ng-repeat="prediction in opponent_plays_prediction">
+        <article>
+            <span class="mana">{{ prediction.card_id | hs_data: "cost" }}</span>
+            <span class="name" style="background-image: url('data/cards-images-bar/{{ prediction.card_id }}.png')"><span>{{ prediction.card_id | hs_data: "name" }}</span></span>
+            <span class="info">{{ prediction.percent * 100 | number:0 }}%</span>
+        </article>
+    </div>
+</section>
+
+<section>
+    <h2>Your deck</h2>
+    <div ng-repeat="card in player_cards_deck">
+        <article>
+            <span class="mana">{{ card.card_id | hs_data: "cost" }}</span>
+            <span class="name" style="background-image: url('data/cards-images-bar/{{ card.card_id }}.png')"><span>{{ card.card_id | hs_data: "name" }}</span></span>
+            <span class="num">{{ card.number | number:0 }}</span>
+        </article>
+    </div>
+</section>

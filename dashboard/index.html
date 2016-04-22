@@ -5,7 +5,7 @@
         <title>FarSight</title>
         <link rel="stylesheet" href="css/styles.css" />
     </head>
-    <body>
+    <body ng-app="app">
         <header>
             <h1>FarSight</h1>
             <!--<select class="form-control">
@@ -13,7 +13,9 @@
             </select>
             <button class="btn btn-default pull-right">S</button>-->
         </header>
-        <div id="content"></div>
+        <div id="content" ng-view></div>
         <script type="text/javascript" src="lib/main.js"></script>
+        <script type="text/javascript" src="lib/data/hs_data.filter.js"></script>
+        <script type="text/javascript" src="lib/ingame/ingame.controller.js"></script>
     </body>
 </html>
