@@ -31,7 +31,7 @@ def search_in_name(search, name):
     return True
 
 for card in cards:
-    if card["id"] == search[0] or search_in_name(search, card["name"].lower()):
+    if card["id"].lower() == search[0] or search_in_name(search, card["name"].lower()):
         print_info(card, "id")
         print_info(card, "name")
         print_info(card, "text")

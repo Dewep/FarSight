@@ -1,9 +1,10 @@
 (function () {
+
     'use strict';
 
-    angular.module('app').controller('IngameCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+    var watcher = require("log/watcher");
 
-        console.info('Ingame Ctrl');
+    angular.module('app').controller('IngameCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
 
         /*window.refresh_ingame = function refresh_ingame(new_value) {
             $timeout(function () {
@@ -52,6 +53,13 @@
             {"deck": "Zoo (Warlock)", "percent": 0.9},
             {"deck": "Basic (Warlock)", "percent": 0.1}
         ];*/
+
+        watcher.Handler(function(data) {
+            $timeout(function () {
+                console.log("GameWatcherData", data);
+                //$scope.player_cards_hand_size = new_value;
+            });
+        });
 
     }]);
 

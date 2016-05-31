@@ -1,7 +1,7 @@
 {
   "name": "FarSight",
   "version": "0.1.0",
-  "main": "app.js",
+  "main": "electron.js",
   "dependencies": {
     "angular": "^1.5.5",
     "angular-route": "^1.5.5",

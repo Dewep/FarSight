@@ -55,8 +55,5 @@ for card in cards_full:
         "entourage": card["entourage"] if "entourage" in card else []
     }
 
-with open("data/cards_names.json", "w", encoding="utf8") as f:
-    json.dump(cards_names, f)
-
 with open("data/cards.json", "w", encoding="utf8") as f:
     json.dump(cards, f)
