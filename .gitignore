@@ -56,6 +56,6 @@ docs/_build/
 # PyBuilder
 target/
 
-/dashboard/data/
+/dashboard/data/cards-images/
 /dashboard/node_modules/
 /tests/
