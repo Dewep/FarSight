@@ -18,16 +18,16 @@ LogWatcher.prototype.startWatcher = function () {
 
     this.watcher = spawn("python", ["-u", watcher_file]);
     this.watcher.stdout.on("data", function(data) {
-        self.onWatcherData(data);
+        self.onWatcherData(data.toString());
     });
     this.watcher.on('error', (err) => {
-        console.warn('Failed to start child process.', err);
+        console.warn('Failed to start child process.', err.toString());
     });
     this.watcher.stdout.on('end', function() {
         console.warn("End of watcher.");
     });
     this.watcher.stderr.on('data', (data) => {
-        console.warn("stderr:", data);
+        console.warn("stderr:", data.toString());
     });
     this.watcher.on('close', (code) => {
         console.warn("child process exited with code", code);
@@ -37,7 +37,7 @@ LogWatcher.prototype.startWatcher = function () {
 LogWatcher.prototype.onWatcherData = function (data) {
     var self = this;
 
-    data.toString().split(os.EOL).forEach(function (line) {
+    data.split(os.EOL).forEach(function (line) {
         if (line.length > 1) {
             self.handler(JSON.parse(line));
         }
@@ -64,9 +64,9 @@ module.exports.LogWatcher = LogWatcher;
 
 module.exports.Handler = function Handler(refresh_handler) {
     var file_path = locations.powerLogFile;
-    file_path = __dirname + "/../../log-parser/Power.log";
+    file_path = __dirname + "/../../../Power.log";
 
     var log_watcher = new LogWatcher(refresh_handler);
     log_watcher.startWatcher();
-    log_watcher.readFile(file_path);
+    //log_watcher.readFile(file_path);
 };
