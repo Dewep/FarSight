@@ -1,6 +1,6 @@
 from hearthstone.hslog import LogWatcher
-from hearthstone.hslog.entities import Card
-from hearthstone.enums import Zone
+from hearthstone.hslog.entities import Entity, Card
+from hearthstone.enums import Zone, GameTag, PlayState
 import fileinput
 import json
 
@@ -23,7 +23,21 @@ class LogWatcherStream(LogWatcher):
         return {"id": game.id}
 
     def format_player(self, player):
-        return {"id": player.player_id, "name": player.name}
+        heroes = {
+            "HERO_06": "DRUID",
+            "HERO_05": "HUNTER",
+            "HERO_08": "MAGE",
+            "HERO_04": "PALADIN",
+            "HERO_09": "PRIEST",
+            "HERO_03": "ROGUE",
+            "HERO_02": "SHAMAN",
+            "HERO_07": "WARLOCK",
+            "HERO_01": "WARRIOR"
+        }
+        hero = None
+        for hero in player.heroes:
+            hero = heroes[hero.card_id]
+        return {"id": player.player_id, "name": player.name, "hero": hero}
 
     def format_card(self, card):
         zones = {
@@ -42,10 +56,11 @@ class LogWatcherStream(LogWatcher):
         print(json.dumps(kwargs))
 
     def on_entity_update(self, entity):
-        if entity.id in self.player1_cards_id:
-            self.write(type="card", player_id=self.player1.player_id, card=self.format_card(entity))
-        if entity.id in self.player2_cards_id:
-            self.write(type="card", player_id=self.player2.player_id, card=self.format_card(entity))
+        if self.init:
+            if entity.id in self.player1_cards_id:
+                self.write(type="card", player_id=self.player1.player_id, card=self.format_card(entity))
+            if entity.id in self.player2_cards_id:
+                self.write(type="card", player_id=self.player2.player_id, card=self.format_card(entity))
 
     def is_real_card(self, card):
         if not isinstance(card, Card):
@@ -55,6 +70,7 @@ class LogWatcherStream(LogWatcher):
         return card.card_id == None or card.type.craftable
 
     def on_action(self, action):
+        #print("action", action)
         if not self.init:
             self.init = True
             self.write(type="game_ready", game=self.format_game(self.game), player1=self.format_player(self.player1), player2=self.format_player(self.player2))
@@ -72,7 +88,24 @@ class LogWatcherStream(LogWatcher):
         #print("metadata", metadata)
 
     def on_tag_change(self, entity, tag, value):
+        if self.game and isinstance(entity, Entity):
+            if entity.id in self.player1_cards_id:
+                self.write(type="card", player_id=self.player1.player_id, card=self.format_card(entity))
+            if entity.id in self.player2_cards_id:
+                self.write(type="card", player_id=self.player2.player_id, card=self.format_card(entity))
+            if self.game.id == entity.id and tag == "STATE" and value == "COMPLETE":
+                won = self.player2
+                lost = self.player1
+                if GameTag.PLAYSTATE in self.player1.tags and self.player1.tags[GameTag.PLAYSTATE] == PlayState.WON:
+                    won = self.player1
+                    lost = self.player2
+                self.write(type="game_end", game=self.format_game(self.game), won=self.format_player(won), lost=self.format_player(lost))
+                self.game = None
+                self.player1 = None
+                self.player2 = None
+                self.init = False
         pass
+        #print("tag_change", entity, tag, value)
 
     def on_zone_change(self, entity, before, after):
         pass
@@ -82,6 +115,7 @@ class LogWatcherStream(LogWatcher):
         self.game = game
         self.player1 = players[0]
         self.player2 = players[1]
+        self.init = False
 
 
 watcher = LogWatcherStream()
