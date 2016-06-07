@@ -9,7 +9,7 @@ body { background-color: #07172a; color: #f8f8f8; font-size: 13px; font-family: 
 * Drag & Drop Window
 */
 body > header { -webkit-user-select: none; -webkit-app-region: drag; height: 20px; }
-input, select, button { -webkit-app-region: no-drag; }
+input, select, button, a { -webkit-app-region: no-drag; }
 
 
 /*
@@ -43,8 +43,9 @@ li { margin: 3px; padding: 0; }
 * Header
 */
 body > header { background-color: #0a223e; box-shadow: 0 2px 2px 0px #04101d; padding: 10px; }
-body > header > a { position: absolute; right: 10px;  }
-body > header > a:link, body > header > a.one:visited { background-color: #07172a; color: white; padding: 5px 5px; text-align: center; text-decoration: none; display: inline-block; }
+body > header a { text-decoration: none; color: white; }
+body > header > a { position: absolute; right: 10px; }
+body > header > a:link, body > header > a.one:visited { background-color: #07172a;  padding: 5px 5px; text-align: center; display: inline-block; }
 body > header > a:hover, body > header > a:active { background-color: white; color: #07172a; }
 
 /*
