@@ -1,5 +1,3 @@
-'use strict';
-
 var locations = require("log/locations");
 var spawn = require('child_process').spawn;
 var readline = require('readline');
