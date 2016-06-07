@@ -1,0 +1,65 @@
+{
+	"DRUID":
+	[
+		{"name": "Beast", "url": "http://www.hearthpwn.com/decks/542146-top-20-legend-beast-druid", "advices": ["Take board control early on", "Drag it to late game", "Watch out for Savage Roar and keep charge minions in mind", "Kill his beasts if you don't want him to draw"]},
+		{"name": "Marvel", "url": "http://www.hearthpwn.com/decks/554808-fun-strong-marvel-druid-full-guide", "advices": ["Kill his Gadgetzan Auctioneer asap", "Watch out for greedy plays and punish them", "Keep removals for Violet Teacher"]},
+		{"name": "C'Thun", "url": "http://www.hearthpwn.com/decks/544368-kolentos-cthun-druid", "advices": ["Try not to reach late game", "Be wary of Brann and Fandral combos"]},
+		{"name": "Midrange/Ramp", "url": "http://www.hearthpwn.com/decks/559973-winsteak-to-legend-midrange-druid", "advices": ["Try not to reach late game", "Keep removals for his big threats, not his taunts"]}
+	],
+	"HUNTER":
+	[
+		{"name": "Midrange", "url": "http://www.hearthpwn.com/decks/552668-s26-legend-midrange-guide", "advices": ["Keep removals for Savannah Highmane", "Keep AOEs for Call of the Wild"]},
+		{"name": "Midrange++", "url": "http://www.hearthpwn.com/decks/538676-top4legend-midrange-hunter-anti-meta", "advices": ["Keep removals for Savannah Highmane and his 1 or 2 big legendaries", "Keep AOEs for Call of the Wild"]},
+		{"name": "Aggro", "url": "http://www.hearthpwn.com/decks/536030-s16-legend-hailrake-trashhunter", "advices": ["Protect your health points at all cost", "Heal", "Taunt", "Watch out for beasts + Kill Command"]},
+		{"name": "Control", "url": "http://www.hearthpwn.com/decks/554622-top-500-legend-25-7-reno-hunter-destroying-the", "advices": ["Before deciding to hit face, remember that he plays Reno", "He lacks early control, take advantage"]},
+		{"name": "Yogg N Load", "url": "http://www.hearthpwn.com/decks/550258-p4wnyhof-yoggn-load-hunter", "advices": ["He has a lot of removals", "He doesn't have many minions", "Watch out for Yogg-Saron's randomness"]}
+	],
+	"MAGE":
+	[
+		{"name": "Tempo", "url": "http://www.hearthpwn.com/decks/539844-legend-tempo-mage", "advices": ["His goal is to take control of the board", "Destroy Antonidas asap", "Be ready for suprising spells out of Cabalist's tome"]},
+		{"name": "Tempo Yogg-Saron", "url": "http://www.hearthpwn.com/decks/548851-legend-yogg-tempo-mage", "advices": ["Handle his Flamewakers quickly", "Destroy Antonidas asap", "Watch out for Yogg-Saron's randomness"]},
+		{"name": "Freeze", "url": "http://www.hearthpwn.com/decks/153572-legend-freeze-mage-standard-wild", "advices": ["Don't let his Thaurissan alive", "Keep your heals for after Alexstrasza", "Watch out for Frost Nova + Doomsayer"]}
+	],
+	"PALADIN":
+	[
+		{"name": "Murloc aggro", "url": "http://www.hearthpwn.com/decks/537171-video-legendary-murlocapoc", "advices": ["Focus his Murloc Warleaders and Tidecallers", "Stay out of Leeroy's reach"]},
+		{"name": "Aggro", "url": "http://www.hearthpwn.com/decks/561069-budget-aggro-paladin-deck-guide-and-video", "advices": ["Don't leave creatures on his board so he can't buff them"]},
+		{"name": "Secret N'Zoth", "url": "http://www.hearthpwn.com/decks/555396-archie-legend-in-depth-nzoth-secretpala-guide", "advices": ["Watch out for Wild Pyromancer + Equality", "Keep big AOEs for N'Zoth"]},
+		{"name": "Dragon N'Zoth", "url": "http://www.hearthpwn.com/decks/562033-spark-dragon-zoth-standard-kraken", "advices": ["Keep big AOEs for N'Zoth", "Watch out for Wild Pyromancer + Equality", "Don't leave Ysera too long on the board", "Try to kill him during early or mid game"]},
+		{"name": "Murloc", "url": "http://www.hearthpwn.com/decks/563287-anti-meta-murloc-paladin-75-wr", "advices": ["Try to get rid of Murloc Warleaders without killing them", "Remember he has lots of heals", "Keep count of his dead murlocs"]}
+	],
+	"PRIEST":
+	[
+		{"name": "N'Zoth dragon", "url": "http://www.hearthpwn.com/decks/539093-rank-5-nzoth-dragon-priest", "advices": ["Keep big AOEs for N'zoth", "Try to kill him in early or mid game"]},
+		{"name": "Dragon", "url": "http://www.hearthpwn.com/decks/536339-dragon-priest-easy-legend-climb", "advices": ["His real true threats are Nefarian and Ysera", "Has lots of removals"]},
+		{"name": "C'thun", "url": "http://www.hearthpwn.com/decks/502974-cthun-priest-easy-rank-five-anti-meta", "advices": ["He might get his C'Thun back with Doomcaller", "Try to win before late game or prepare yourself to survive C'Thun"]},
+		{"name": "Shadowform Reno", "url": "http://www.hearthpwn.com/decks/447250-kiblers-reno-shadowform-priest", "advices": ["He needs to draw his 2 Shadowforms before using Reno", "Once he played Shadowform, his healing potential decreases", "His biggest threat are Confessor Paletress and Kodorider"]}
+	],
+	"ROGUE":
+	[
+		{"name": "Tempo N'Zoth", "url": "http://www.hearthpwn.com/decks/562006-nzoth-tempo-rogue", "advices": ["He has no heal, pressure him into using his removals", "Keep AOEs for N'Zoth"]},
+		{"name": "Malygos", "url": "http://www.hearthpwn.com/decks/546540-ryzen-malygos-rogue", "advices": ["Destroy Malygos and Gadgetzan Auctioneer asap", "Try not to leave his Thaurissan on board for too long", "Keep your health points high, he can easily deal 20 to 30 damage with Malygos"]},
+		{"name": "Miracle", "url": "http://www.hearthpwn.com/decks/555655-top-5-eu-miracle-rogue-in-depth-guide", "advices": ["Destroy Gadgetzan Auctioneer asap", "Keep your health points above 15", "Kill him early or endure his combo"]}
+	],
+	"SHAMAN":
+	[
+		{"name": "Evolve", "url": "http://www.hearthpwn.com/decks/484784-legend-midrange-darwin-shaman-evolve-stats", "advices": ["Keep his board clear"]},
+		{"name": "Midrange", "url": "http://www.hearthpwn.com/decks/521180-ultra-fast-rank-5-budget-shaman", "advices": ["Survive until late game", "Don't leave too many creatures on his board for Bloodlust"]},
+		{"name": "Aggro", "url": "http://www.hearthpwn.com/decks/385371-dr-1-85-win-rate-face-shaman", "advices": ["Try to heal and play taunts", "Destroy his spellpower totems", "Destroy his doomhammers", "Try dragging it to late game and overpowering him on board"]},
+		{"name": "Totem", "url": "http://www.hearthpwn.com/decks/535685-84-winrate-totem-shaman-easy-climb", "advices": ["Kill his Thunder Bluff Vailants quickly", "Survive until late game"]}
+	],
+	"WARLOCK":
+	[
+		{"name": "Renolock", "url": "http://www.hearthpwn.com/decks/543209-thijsnls-renolock-europe-spring-preliminary-2016", "advices": ["Make him use Reno quickly", "Watch out for early Mountain Giant", "Don't go all-in before he plays Reno, or do it before turn 5"]},
+		{"name": "Handlock", "url": "http://www.hearthpwn.com/decks/560270-handlock-after-wotg", "advices": ["Watch out for early Mountain Giants", "Don't give him Molten giants for too cheap"]},
+		{"name": "Zoo", "url": "http://www.hearthpwn.com/decks/502782-wotog-new-legend-zoo", "advices": ["His goal is to take board advantage", "Watch out for Darkshire Councilman + Forbidden ritual", "Keep the Sea Giants in mind"]}
+	],
+	"WARRIOR":
+	[
+		{"name": "Dragon", "url": "http://www.hearthpwn.com/decks/459691-legend-s24-teras-draggron-warrior", "advices": ["Try to protect your face", "Be wary of Mortal strike"]},
+		{"name": "Grim Patron", "url": "http://www.hearthpwn.com/decks/504074-legend-12-2-patron-wog", "advices": ["Focus on eleminating his 2 Grim Patrons", "Watch out, lots of 1 damage AOEs", "Stay out of Grommash's reach"]},
+		{"name": "OTK", "url": "http://www.hearthpwn.com/decks/529774-legend-lokshadow-aggressive-otk-warrior", "advices": ["Kill him before he plays his combo"]},
+		{"name": "Pirate aggro", "url": "http://www.hearthpwn.com/decks/502190-trumps-theorycraft-aggro-pirate-warrior", "advices": ["Don't leave pirates on board", "Keep weapon removal for Arcanite Reaper"]},
+		{"name": "Control", "url": "http://www.hearthpwn.com/decks/541418-legend-streaming-control", "advices": ["Kill him early", "Your chances of victory decrease with each turn"]}
+	]
+}
