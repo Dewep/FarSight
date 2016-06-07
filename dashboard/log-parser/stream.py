@@ -37,7 +37,7 @@ class LogWatcherStream(LogWatcher):
         }
         hero = None
         for hero in player.heroes:
-            hero = heroes[hero.card_id]
+            hero = heroes[hero.card_id[:7]]
         return {"id": player.player_id, "name": player.name, "hero": hero}
 
     def format_card(self, card):

@@ -123,7 +123,7 @@
                 $scope.opponent_deck_prediction = [];
                 var predictions_opponent = classifier.classify(opponent["hero"], cards);
                 var total_rate = 0;
-                for (var i = 0; i < 3 && i < predictions_opponent.length; i++) {
+                for (var i = 0; i < predictions_opponent.length; i++) {
                     total_rate += predictions_opponent[i]["rate"];
                 }
                 //console.log(predictions_opponent, total_rate);
@@ -131,7 +131,7 @@
                     $scope.opponent_deck_prediction.push({
                         "hero": predictions_opponent[i]["deck"]["hero"],
                         "name": predictions_opponent[i]["deck"]["name"],
-                        "percent": Math.round(predictions_opponent[i]["rate"] / total_rate)
+                        "percent": predictions_opponent[i]["rate"] / total_rate
                     });
                 }
             });
@@ -146,6 +146,7 @@
                 player["cards"] = {};
                 opponent["cards"] = {};
             } else if (data["type"] == "card") {
+                game["state"] = true;
                 var player_target = null;
                 if (data["player_id"] == player["id"]) {
                     player_target = player;

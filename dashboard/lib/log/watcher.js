@@ -47,9 +47,7 @@ LogWatcher.prototype.onStreamData = function (data) {
 LogWatcher.prototype.watchFile = function (file_path) {
     var self = this;
     var fileSize = fs.statSync(file_path).size;
-    fs.watchFile(file_path, function (current, previous) {
-        if (current.mtime <= previous.mtime) { return; }
-
+    setInterval(function(){
         var newFileSize = fs.statSync(file_path).size;
         var sizeDiff = newFileSize - fileSize;
         if (sizeDiff < 0) {
@@ -66,7 +64,28 @@ LogWatcher.prototype.watchFile = function (file_path) {
             line.replace("\r", "");
             self.parseLine(line);
         });
-    });
+    }, 1000);
+    /*fs.watchFile(file_path, function (current, previous) {
+        if (current.mtime <= previous.mtime) { return; }
+
+        var newFileSize = fs.statSync(file_path).size;
+        var sizeDiff = newFileSize - fileSize;
+        if (sizeDiff < 0) {
+            fileSize = 0;
+            sizeDiff = newFileSize;
+        }
+        var buffer = new Buffer(sizeDiff);
+        var fileDescriptor = fs.openSync(file_path, "r");
+        fs.readSync(fileDescriptor, buffer, 0, sizeDiff, fileSize);
+        fs.closeSync(fileDescriptor);
+        fileSize = newFileSize;
+
+        buffer.toString().split("\n").forEach(function (line) {
+            line.replace("\r", "");
+            console.log("line", line);
+            self.parseLine(line);
+        });
+    });*/
     // fs.unwatchFile(file_path);
 };
 
