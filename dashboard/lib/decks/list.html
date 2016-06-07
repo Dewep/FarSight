@@ -5,4 +5,20 @@
     </ol>
 </section>
 
-<a class="bottomCentered squared-blue-btn" ng-click="count = count + 1" ng-init="count=0">New Deck</a>
+<section ng-if="createDeck">
+    <dialog class="styledModal" open>
+        <h2>DECK NAME<input type="text" name="deckName" placeholder="Deck name"></h2>
+        </br>
+        <form ng-submit="submit()">
+            <b>Add card </b><input type="text" name="newcardname" placeholder="New card name" ng-model="newCard.name">{{newCard.name | fitlerCardsByName}}
+        </form>
+        </br>
+        <h2>Deck preview :</h2>
+        <ul style="list-style: none;" ng-repeat="card in newDeckCards">
+            <li>{{ card.name }} <span>x {{card.count}}</span></li>
+        </ul>
+        <button ng-click="addDeck()">Add</button>
+    </dialog>
+</section>
+
+<a class="bottomCentered squared-blue-btn" ng-click="createDeck = true" ng-init="count=0">New Deck {{newCardName}}</a>
