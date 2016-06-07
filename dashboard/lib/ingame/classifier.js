@@ -23,6 +23,7 @@ var naive_bayes = function naive_bayes(hero, cards) {
     var entries = decks.get_games();
     var proba_classes = get_proba_classes();
     var classes = [];
+    var total_rate = 0;
 
     for (var deck in proba_classes) {
         var value = proba_classes[deck];
@@ -47,8 +48,13 @@ var naive_bayes = function naive_bayes(hero, cards) {
                     value *= number / total;
                 }
             }
+            total_rate += value;
             classes.push({"deck": decks_properties[deck], "rate": value});
         }
+    }
+
+    for (var class_ in classes) {
+        classes[class_]["rate"] = classes[class_]["rate"] / total_rate;
     }
 
     classes.sort(function(a, b) {

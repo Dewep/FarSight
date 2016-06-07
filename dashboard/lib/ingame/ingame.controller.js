@@ -22,12 +22,7 @@
         $scope.opponent_cards_hand_size = 0;
         $scope.opponent_cards_deck_size = 0;
 
-        $scope.opponent_deck_prediction = [
-            /*{"deck": "Zoo (Warlock)", "percent": 0.4},
-            {"deck": "Zoo 2 (Warlock)", "percent": 0.3},
-            {"deck": "Basic (Warlock)", "percent": 0.1},
-            {"deck": "Reno (Warlock)", "percent": 0.05}*/
-        ];
+        $scope.opponent_deck_prediction = [];
 
         $scope.player_advices = [
             /*{"message": "Do that."},
@@ -41,17 +36,10 @@
             {"card_id": "EX1_562", "percent": 0.2}*/
         ];
 
-        $scope.player_cards_deck = [
-            /*{"card_id": "EX1_563", "number": 1},
-            {"card_id": "EX1_564", "number": 2},
-            {"card_id": "EX1_565", "number": 2},
-            {"card_id": "EX1_567", "number": 1}*/
-        ];
+        $scope.player_cards_deck = [];
 
         var updateScope = function updateScope() {
             $timeout(function () {
-                console.info("updateScope");
-
                 waiting_update = 0;
 
                 $scope.game_state = game["state"];
@@ -122,16 +110,11 @@
 
                 $scope.opponent_deck_prediction = [];
                 var predictions_opponent = classifier.classify(opponent["hero"], cards);
-                var total_rate = 0;
-                for (var i = 0; i < predictions_opponent.length; i++) {
-                    total_rate += predictions_opponent[i]["rate"];
-                }
-                //console.log(predictions_opponent, total_rate);
                 for (var i = 0; i < 3 && i < predictions_opponent.length; i++) {
                     $scope.opponent_deck_prediction.push({
                         "hero": predictions_opponent[i]["deck"]["hero"],
                         "name": predictions_opponent[i]["deck"]["name"],
-                        "percent": predictions_opponent[i]["rate"] / total_rate
+                        "percent": predictions_opponent[i]["rate"]
                     });
                 }
             });
