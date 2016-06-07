@@ -1,16 +1,16 @@
 'use strict';
 
-var my_decks = require("../my_decks.json");
+var my_decks = require("my_decks.json");
 
 module.exports.getAll = function getAll() {
     return my_decks;
 };
 
-module.exports.getPredictionDecks = function getPredictionDecks(player_class, played_cards) {
+module.exports.getPredictionDecks = function getPredictionDecks(hero, played_cards) {
     var decks = [];
 
     for (var i = 0; i < my_decks.length; i++) {
-        if (my_decks[i].playerClass == player_class) {
+        if (my_decks[i].hero == hero) {
             var error = 0;
 
             for (var j = 0; j < played_cards.length; j++) {
@@ -20,10 +20,10 @@ module.exports.getPredictionDecks = function getPredictionDecks(player_class, pl
                 }
             }
 
-            if (ok) {
+            if (error != played_cards.length) {
                 decks.push({
                     "deck": my_decks[i],
-                    "percent": 100 - (error * 100 / len(played_cards))
+                    "percent": 100 - (error * 100 / played_cards.length)
                 });
             }
         }

@@ -12,13 +12,13 @@ var LogWatcher = function (handler) {
     this.watcher = null;
 };
 
-LogWatcher.prototype.startWatcher = function () {
+LogWatcher.prototype.startStream = function () {
     var watcher_file = path.normalize(__dirname + "/../../log-parser/stream.py");
     var self = this;
 
     this.watcher = spawn("python", ["-u", watcher_file]);
     this.watcher.stdout.on("data", function(data) {
-        self.onWatcherData(data.toString());
+        self.onStreamData(data.toString());
     });
     this.watcher.on('error', (err) => {
         console.warn('Failed to start child process.', err.toString());
@@ -34,7 +34,7 @@ LogWatcher.prototype.startWatcher = function () {
     });
 };
 
-LogWatcher.prototype.onWatcherData = function (data) {
+LogWatcher.prototype.onStreamData = function (data) {
     var self = this;
 
     data.split(os.EOL).forEach(function (line) {
@@ -42,6 +42,32 @@ LogWatcher.prototype.onWatcherData = function (data) {
             self.handler(JSON.parse(line));
         }
     });
+};
+
+LogWatcher.prototype.watchFile = function (file_path) {
+    var self = this;
+    var fileSize = fs.statSync(file_path).size;
+    fs.watchFile(file_path, function (current, previous) {
+        if (current.mtime <= previous.mtime) { return; }
+
+        var newFileSize = fs.statSync(file_path).size;
+        var sizeDiff = newFileSize - fileSize;
+        if (sizeDiff < 0) {
+            fileSize = 0;
+            sizeDiff = newFileSize;
+        }
+        var buffer = new Buffer(sizeDiff);
+        var fileDescriptor = fs.openSync(file_path, "r");
+        fs.readSync(fileDescriptor, buffer, 0, sizeDiff, fileSize);
+        fs.closeSync(fileDescriptor);
+        fileSize = newFileSize;
+
+        buffer.toString().split("\n").forEach(function (line) {
+            line.replace("\r", "");
+            self.parseLine(line);
+        });
+    });
+    // fs.unwatchFile(file_path);
 };
 
 LogWatcher.prototype.readFile = function (file_path) {
@@ -56,7 +82,9 @@ LogWatcher.prototype.readFile = function (file_path) {
 };
 
 LogWatcher.prototype.parseLine = function (line) {
-    this.watcher.stdin.write(line + "\n");
+    if (line.length) {
+        this.watcher.stdin.write(line + "\n");
+    }
 };
 
 
@@ -64,9 +92,11 @@ module.exports.LogWatcher = LogWatcher;
 
 module.exports.Handler = function Handler(refresh_handler) {
     var file_path = locations.powerLogFile;
-    file_path = __dirname + "/../../../Power.log";
+    //file_path = __dirname + "/../../../Power.log";
 
     var log_watcher = new LogWatcher(refresh_handler);
-    log_watcher.startWatcher();
+    log_watcher.startStream();
+    log_watcher.readFile(file_path);
+    log_watcher.watchFile(file_path);
     //log_watcher.readFile(file_path);
 };

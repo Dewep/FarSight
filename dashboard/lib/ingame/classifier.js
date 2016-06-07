@@ -53,7 +53,7 @@ var naive_bayes = function naive_bayes(hero, cards) {
         return b["rate"] - a["rate"];
     });
 
-    console.log(classes);
+    return classes;
 };
 
 module.exports.classify = naive_bayes;

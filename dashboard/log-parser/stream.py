@@ -3,6 +3,7 @@ from hearthstone.hslog.entities import Entity, Card
 from hearthstone.enums import Zone, GameTag, PlayState
 import fileinput
 import json
+import sys
 
 
 class LogWatcherStream(LogWatcher):
@@ -121,4 +122,7 @@ class LogWatcherStream(LogWatcher):
 watcher = LogWatcherStream()
 
 for line in fileinput.input():
-    watcher.read_line(line)
+    try:
+        watcher.read_line(line)
+    except Exception as e:
+        print(str(e), file=sys.stderr)

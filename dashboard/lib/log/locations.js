@@ -10,7 +10,7 @@ if (/^win/.test(os.platform())) {
         programFiles += ' (x86)';
     }
 
-    module.exports.powerLogFile = path.join('C:', programFiles, 'Hearthstone', 'Log', 'Power.log');
+    module.exports.powerLogFile = path.join('C:', programFiles, 'Hearthstone', 'Logs', 'Power.log');
     module.exports.configFile = path.join(process.env.LOCALAPPDATA, 'Blizzard', 'Hearthstone', 'log.config');
 } else {
     module.exports.powerLogFile = path.join('Applications', 'Hearthstone', 'Logs', 'Player.log');

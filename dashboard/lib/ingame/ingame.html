@@ -1,4 +1,8 @@
-<section>
+<section ng-if="!game_state">
+    <h2 style="text-align: center; font-size: 20px; margin-top: 50px; border: 0;">Waiting for a game</h2>
+</section>
+
+<section ng-if="game_state">
     <h2>Current game informations</h2>
     <table>
         <tbody>
@@ -16,25 +20,27 @@
             </tr>
         </tbody>
     </table>
-    <p>
-        Opponent prediction:
-        <span ng-repeat="deck in opponent_deck_prediction">
-            <b ng-if="$first">{{ deck.deck }}</b>
-            <span ng-if="!$first">{{ deck.deck }}</span>
-            {{ deck.percent * 100 | number:0 }}%<span ng-if="!$first && !$last">,</span>
-            <span ng-if="$first"><br/></span>
-        </span>
-    </p>
 </section>
 
-<section>
+<section ng-if="game_state">
+    <h2>Opponent prediction</h2>
+    <div ng-repeat="deck in opponent_deck_prediction">
+        <article>
+            <span class="mana" style="font-size: 0.5em">[{{ deck.hero }}]</span>
+            <span class="name"><span>{{ deck.name }}</span></span>
+            <span class="info">{{ deck.percent * 100 | number:0 }}%</span>
+        </article>
+    </div>
+</section>
+
+<section ng-if="game_state">
     <h2>Advices</h2>
     <ol ng-repeat="advice in player_advices">
         <li>{{ advice.message }}</li>
     </ol>
 </section>
 
-<section>
+<section ng-if="game_state">
     <h2>Prediction plays</h2>
     <div ng-repeat="prediction in opponent_plays_prediction">
         <article>
@@ -45,7 +51,7 @@
     </div>
 </section>
 
-<section>
+<section ng-if="game_state">
     <h2>Your deck</h2>
     <div ng-repeat="card in player_cards_deck">
         <article>
