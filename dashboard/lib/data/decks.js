@@ -1,8 +1,4 @@
-'use strict';
-
 var MongoClient = require('mongodb');
-var meta = require("meta_decks.json");
-
 var mongo_url = 'mongodb://ks.dewep.net:27017/FarSight';
 
 var decks_properties = {};

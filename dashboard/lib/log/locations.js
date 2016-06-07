@@ -1,5 +1,3 @@
-'use strict';
-
 var os = require('os');
 var path = require('path');
 
@@ -13,6 +11,6 @@ if (/^win/.test(os.platform())) {
     module.exports.powerLogFile = path.join('C:', programFiles, 'Hearthstone', 'Logs', 'Power.log');
     module.exports.configFile = path.join(process.env.LOCALAPPDATA, 'Blizzard', 'Hearthstone', 'log.config');
 } else {
-    module.exports.powerLogFile = path.join('Applications', 'Hearthstone', 'Logs', 'Player.log');
+    module.exports.powerLogFile = path.join('/Applications', 'Hearthstone', 'Logs', 'Power.log');
     module.exports.configFile = path.join(process.env.HOME, 'Library', 'Preferences', 'Blizzard', 'Hearthstone', 'log.config');
 }

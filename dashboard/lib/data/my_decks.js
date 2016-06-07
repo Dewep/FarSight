@@ -1,5 +1,3 @@
-'use strict';
-
 var my_decks = require("my_decks.json");
 
 module.exports.getAll = function getAll() {
