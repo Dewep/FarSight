@@ -1,5 +1,3 @@
-'use strict';
-
 var meta = require("meta_decks.json");
 
 /*
