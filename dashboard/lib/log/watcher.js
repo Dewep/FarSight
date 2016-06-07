@@ -16,7 +16,11 @@ LogWatcher.prototype.startStream = function () {
     var watcher_file = path.normalize(__dirname + "/../../log-parser/stream.py");
     var self = this;
 
-    this.watcher = spawn("python", ["-u", watcher_file]);
+    if (/^win/.test(os.platform())) {
+        this.watcher = spawn("python", ["-u", watcher_file]);
+    } else {
+        this.watcher = spawn("python3", ["-u", watcher_file]);
+    }
     this.watcher.stdout.on("data", function(data) {
         self.onStreamData(data.toString());
     });
