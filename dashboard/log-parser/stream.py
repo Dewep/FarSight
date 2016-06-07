@@ -38,7 +38,10 @@ class LogWatcherStream(LogWatcher):
         hero = None
         for hero in player.heroes:
             hero = heroes[hero.card_id[:7]]
-        return {"id": player.player_id, "name": player.name, "hero": hero}
+        mana = 0
+        if GameTag.RESOURCES in player.tags:
+            mana = player.tags[GameTag.RESOURCES]
+        return {"id": player.player_id, "name": player.name, "hero": hero, "mana": mana}
 
     def format_card(self, card):
         zones = {
@@ -94,6 +97,8 @@ class LogWatcherStream(LogWatcher):
                 self.write(type="card", player_id=self.player1.player_id, card=self.format_card(entity))
             if entity.id in self.player2_cards_id:
                 self.write(type="card", player_id=self.player2.player_id, card=self.format_card(entity))
+            if entity.id in [self.player1.id, self.player2.id] and tag == "RESOURCES":
+                self.write(type="player", player=self.format_player(entity))
             if self.game.id == entity.id and tag == "STATE" and value == "COMPLETE":
                 won = self.player2
                 lost = self.player1

@@ -80,9 +80,11 @@ var addDeck = function addDeck(url, instance, property) {
             if (property) {
                 collectionInsertMany(db, "decks_properties", [property], function (result_property) {
                     addFormatedProperty(property);
+                    console.info("addDeck", property, instance);
                     db.close();
                 });
             } else {
+                console.info("addDeck", property, instance);
                 db.close();
             }
         });
@@ -90,6 +92,9 @@ var addDeck = function addDeck(url, instance, property) {
 };
 
 var add_new_deck = function add_new_deck(name, hero, advices, cards) {
+    if (deck_next_id == -1) {
+        deck_next_id = 1;
+    }
     addDeck(mongo_url, {
         "deck_id": deck_next_id,
         "cards": cards
@@ -97,7 +102,7 @@ var add_new_deck = function add_new_deck(name, hero, advices, cards) {
         "deck_id": deck_next_id,
         "hero": hero,
         "name": name,
-        "advices": []
+        "advices": advices
     });
     deck_next_id++;
 };
@@ -152,6 +157,18 @@ var save_enemy_deck = function save_enemy_deck(hero, cards, classifications) {
     }
 };
 
+var drop_database = function drop_database(done) {
+    mongoConnection(mongo_url, function (db) {
+        db.dropDatabase(function(err, result) {
+            if (err) {
+                console.warn(err);
+            }
+            db.close();
+            done(result);
+        });
+    });
+};
+
 
 initDecks(mongo_url);
 
@@ -159,3 +176,4 @@ module.exports.get_decks = get_decks;
 module.exports.get_games = get_games;
 module.exports.add_new_deck = add_new_deck;
 module.exports.save_enemy_deck = save_enemy_deck;
+module.exports.drop_database = drop_database;

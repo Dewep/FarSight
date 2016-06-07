@@ -4,7 +4,9 @@
 
     var watcher = require("log/watcher");
     var classifier = require("ingame/classifier");
+    var predictions = require("ingame/predictions");
     var my_decks = require("data/my_decks");
+    var decks = require("data/decks");
 
     angular.module('app').controller('IngameCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
 
@@ -24,17 +26,9 @@
 
         $scope.opponent_deck_prediction = [];
 
-        $scope.player_advices = [
-            /*{"message": "Do that."},
-            {"message": "Next that."},
-            {"message": "And that."}*/
-        ];
+        $scope.player_advices = [];
 
-        $scope.opponent_plays_prediction = [
-            /*{"card_id": "EX1_560", "percent": 0.4},
-            {"card_id": "EX1_561", "percent": 0.2},
-            {"card_id": "EX1_562", "percent": 0.2}*/
-        ];
+        $scope.opponent_plays_prediction = [];
 
         $scope.player_cards_deck = [];
 
@@ -56,7 +50,7 @@
                     } else if (card["zone"] == "HAND") {
                         hand++;
                     }
-                    if (card["card_id"]) {
+                    if (card["card_id"] && card["card_id"] != "GAME_005") {
                         cards.push(card["card_id"]);
                         if (card["zone"] != "DECK") {
                             cards_exclude.push(card["card_id"]);
@@ -101,7 +95,7 @@
                     } else if (card["zone"] == "HAND") {
                         hand++;
                     }
-                    if (card["card_id"]) {
+                    if (card["card_id"] && card["card_id"] != "GAME_005") {
                         cards.push(card["card_id"]);
                     }
                 }
@@ -117,6 +111,29 @@
                         "percent": predictions_opponent[i]["rate"]
                     });
                 }
+
+                $scope.player_advices = [];
+                $scope.opponent_plays_prediction = [];
+                if (predictions_opponent.length) {
+                    for (var advice in predictions_opponent[0]["deck"]["advices"]) {
+                        $scope.player_advices.push({
+                            "message": predictions_opponent[0]["deck"]["advices"][advice]
+                        });
+                    }
+
+                    var predictions_plays = predictions.get_predictions_plays(predictions_opponent[0]["deck"]["deck_id"], cards, opponent["mana"] + 1);
+                    for (var i = 0; i < 5 && i < predictions_plays.length; i++) {
+                        $scope.opponent_plays_prediction.push({
+                            "card_id": predictions_plays[i]["card_id"],
+                            "percent": predictions_plays[i]["rate"]
+                        });
+                    }
+                }
+
+                if (game["state"] == false && game["saved"] == false && cards.length > 10) {
+                    game["saved"] = true;
+                    decks.save_enemy_deck(opponent["hero"], cards, predictions_opponent);
+                }
             });
         };
 
@@ -126,6 +143,7 @@
                 player = data["player1"];
                 opponent = data["player2"];
                 game["state"] = true;
+                game["player_checked"] = false;
                 player["cards"] = {};
                 opponent["cards"] = {};
             } else if (data["type"] == "card") {
@@ -142,18 +160,17 @@
                         "zone": data["card"]["zone"]
                     };
                 }
+                if (game["player_checked"] == false && data["card"]["card_id"]) {
+                    game["player_checked"] = true;
+                    if (data["player_id"] == opponent["id"]) {
+                        opponent = player;
+                        player = player_target;
+                    }
+                }
             } else if (data["type"] == "game_end") {
                 game["state"] = false;
+                game["saved"] = false;
             }
-
-            /*clearTimeout(timeout_update);
-            waiting_update++;
-            if (waiting_update > 1000) {
-                waiting_update = 0;
-                updateScope();
-            } else {
-                //timeout_update = setTimeout(updateScope, 300);
-            }*/
         });
 
         setInterval(updateScope, 1000);
