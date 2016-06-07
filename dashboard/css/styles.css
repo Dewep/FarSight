@@ -43,7 +43,9 @@ li { margin: 3px; padding: 0; }
 * Header
 */
 body > header { background-color: #0a223e; box-shadow: 0 2px 2px 0px #04101d; padding: 10px; }
-
+body > header > a { position: absolute; right: 10px;  }
+body > header > a:link, body > header > a.one:visited { background-color: #07172a; color: white; padding: 5px 5px; text-align: center; text-decoration: none; display: inline-block; }
+body > header > a:hover, body > header > a:active { background-color: white; color: #07172a; }
 
 /*
 * Sections

@@ -32,7 +32,10 @@
         }).when('/my_decks/:id/', {
             templateUrl: 'lib/my_decks/detail.ht ml',
             controller: 'MydecksCtrl'
-        })*/.when('/in_game/', {
+        })*/.when('/my_decks/', {
+            templateUrl: 'lib/decks/list.html',
+            controller: 'DecksCtrl'
+        }).when('/in_game/', {
             templateUrl: 'lib/ingame/ingame.html',
             controller: 'IngameCtrl'
         }).otherwise({
