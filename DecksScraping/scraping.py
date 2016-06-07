@@ -59,7 +59,7 @@ for className, classId in CLASSES.iteritems():
         XMLCardsMultipliers = [int(x[-1]) for x in filter(bool, [x.strip() for x in XMLCardsMultipliers])]
 
         decks.append({
-            'id' : len(decks),
+            'id' : len(decks) + 1,
             'name' : d["name"],
             'class' : className,
             'advices' : d["advices"],

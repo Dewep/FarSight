@@ -33,7 +33,7 @@
                 "BRMA06_3H", 
                 "EX1_105"
             ], 
-            "deck": 0
+            "deck": 1
         }, 
         {
             "cards": [
@@ -68,7 +68,7 @@
                 "EX1_105", 
                 "EX1_105"
             ], 
-            "deck": 1
+            "deck": 2
         }, 
         {
             "cards": [
@@ -103,7 +103,7 @@
                 "EX1_586", 
                 "EX1_586"
             ], 
-            "deck": 2
+            "deck": 3
         }, 
         {
             "cards": [
@@ -138,7 +138,7 @@
                 "EX1_284", 
                 "EX1_002"
             ], 
-            "deck": 3
+            "deck": 4
         }, 
         {
             "cards": [
@@ -173,7 +173,7 @@
                 "BRM_019", 
                 "BRMA06_3H"
             ], 
-            "deck": 4
+            "deck": 5
         }, 
         {
             "cards": [
@@ -208,7 +208,7 @@
                 "BRM_019", 
                 "BRMA03_1H"
             ], 
-            "deck": 5
+            "deck": 6
         }, 
         {
             "cards": [
@@ -243,7 +243,7 @@
                 "EX1_007", 
                 "EX1_007"
             ], 
-            "deck": 6
+            "deck": 7
         }, 
         {
             "cards": [
@@ -278,7 +278,7 @@
                 "BRMA06_3H", 
                 "EX1_572"
             ], 
-            "deck": 7
+            "deck": 8
         }, 
         {
             "cards": [
@@ -313,7 +313,7 @@
                 "EX1_507", 
                 "EX1_116"
             ], 
-            "deck": 8
+            "deck": 9
         }, 
         {
             "cards": [
@@ -348,7 +348,7 @@
                 "AT_087", 
                 "AT_087"
             ], 
-            "deck": 9
+            "deck": 10
         }, 
         {
             "cards": [
@@ -383,7 +383,7 @@
                 "OG_317", 
                 "OG_133"
             ], 
-            "deck": 10
+            "deck": 11
         }, 
         {
             "cards": [
@@ -418,7 +418,7 @@
                 "TBA01_4", 
                 "EX1_572"
             ], 
-            "deck": 11
+            "deck": 12
         }, 
         {
             "cards": [
@@ -453,7 +453,7 @@
                 "OG_255", 
                 "OG_279"
             ], 
-            "deck": 12
+            "deck": 13
         }, 
         {
             "cards": [
@@ -488,7 +488,7 @@
                 "LOE_011", 
                 "EX1_016"
             ], 
-            "deck": 13
+            "deck": 14
         }, 
         {
             "cards": [
@@ -523,7 +523,7 @@
                 "EX1_284", 
                 "EX1_284"
             ], 
-            "deck": 14
+            "deck": 15
         }, 
         {
             "cards": [
@@ -558,7 +558,7 @@
                 "AT_094", 
                 "AT_094"
             ], 
-            "deck": 15
+            "deck": 16
         }, 
         {
             "cards": [
@@ -593,7 +593,7 @@
                 "AT_087", 
                 "AT_087"
             ], 
-            "deck": 16
+            "deck": 17
         }, 
         {
             "cards": [
@@ -628,7 +628,7 @@
                 "AT_094", 
                 "AT_094"
             ], 
-            "deck": 17
+            "deck": 18
         }, 
         {
             "cards": [
@@ -663,7 +663,7 @@
                 "EX1_016", 
                 "OG_133"
             ], 
-            "deck": 18
+            "deck": 19
         }, 
         {
             "cards": [
@@ -698,7 +698,7 @@
                 "EX1_095", 
                 "EX1_563"
             ], 
-            "deck": 19
+            "deck": 20
         }, 
         {
             "cards": [
@@ -733,7 +733,7 @@
                 "LOE_046", 
                 "NEW1_041"
             ], 
-            "deck": 20
+            "deck": 21
         }, 
         {
             "cards": [
@@ -768,7 +768,7 @@
                 "EX1_016", 
                 "BRMA06_3H"
             ], 
-            "deck": 21
+            "deck": 22
         }, 
         {
             "cards": [
@@ -803,7 +803,7 @@
                 "CS2_124", 
                 "EX1_116"
             ], 
-            "deck": 22
+            "deck": 23
         }, 
         {
             "cards": [
@@ -838,7 +838,7 @@
                 "EX1_016", 
                 "OG_134"
             ], 
-            "deck": 23
+            "deck": 24
         }, 
         {
             "cards": [
@@ -873,7 +873,7 @@
                 "BRMA03_1H", 
                 "OG_134"
             ], 
-            "deck": 24
+            "deck": 25
         }, 
         {
             "cards": [
@@ -908,7 +908,7 @@
                 "EX1_284", 
                 "EX1_116"
             ], 
-            "deck": 25
+            "deck": 26
         }, 
         {
             "cards": [
@@ -943,7 +943,7 @@
                 "EX1_095", 
                 "EX1_095"
             ], 
-            "deck": 26
+            "deck": 27
         }, 
         {
             "cards": [
@@ -978,7 +978,7 @@
                 "BRMA06_3H", 
                 "OG_279"
             ], 
-            "deck": 27
+            "deck": 28
         }, 
         {
             "cards": [
@@ -1013,7 +1013,7 @@
                 "EX1_016", 
                 "BRMA06_3H"
             ], 
-            "deck": 28
+            "deck": 29
         }, 
         {
             "cards": [
@@ -1048,158 +1048,289 @@
                 "EX1_284", 
                 "BRMA06_3H"
             ], 
-            "deck": 29
+            "deck": 30
         }
     ], 
     "decks_properties": [
         {
+            "advices": [
+                "Make him use Reno quickly", 
+                "Watch out for early Mountain Giant", 
+                "Don't go all-in before he plays Reno, or do it before turn 5"
+            ], 
             "hero": "Warlock", 
-            "id": 0, 
+            "id": 1, 
             "name": "Renolock"
         }, 
         {
+            "advices": [
+                "Watch out for early Mountain Giants", 
+                "Don't give him Molten giants for too cheap"
+            ], 
             "hero": "Warlock", 
-            "id": 1, 
+            "id": 2, 
             "name": "Handlock"
         }, 
         {
+            "advices": [
+                "His goal is to take board advantage", 
+                "Watch out for Darkshire Councilman + Forbidden ritual", 
+                "Keep the Sea Giants in mind"
+            ], 
             "hero": "Warlock", 
-            "id": 2, 
+            "id": 3, 
             "name": "Zoo"
         }, 
         {
+            "advices": [
+                "Try to protect your face", 
+                "Be wary of Mortal strike"
+            ], 
             "hero": "Warrior", 
-            "id": 3, 
+            "id": 4, 
             "name": "Dragon"
         }, 
         {
+            "advices": [
+                "Focus on eleminating his 2 Grim Patrons", 
+                "Watch out, lots of 1 damage AOEs", 
+                "Stay out of Grommash's reach"
+            ], 
             "hero": "Warrior", 
-            "id": 4, 
+            "id": 5, 
             "name": "Grim Patron"
         }, 
         {
+            "advices": [
+                "Kill him before he plays his combo"
+            ], 
             "hero": "Warrior", 
-            "id": 5, 
+            "id": 6, 
             "name": "OTK"
         }, 
         {
+            "advices": [
+                "Don't leave pirates on board", 
+                "Keep weapon removal for Arcanite Reaper"
+            ], 
             "hero": "Warrior", 
-            "id": 6, 
+            "id": 7, 
             "name": "Pirate aggro"
         }, 
         {
+            "advices": [
+                "Kill him early", 
+                "Your chances of victory decrease with each turn"
+            ], 
             "hero": "Warrior", 
-            "id": 7, 
+            "id": 8, 
             "name": "Control"
         }, 
         {
+            "advices": [
+                "Focus his Murloc Warleaders and Tidecallers", 
+                "Stay out of Leeroy's reach"
+            ], 
             "hero": "Paladin", 
-            "id": 8, 
+            "id": 9, 
             "name": "Murloc aggro"
         }, 
         {
+            "advices": [
+                "Don't leave creatures on his board so he can't buff them"
+            ], 
             "hero": "Paladin", 
-            "id": 9, 
+            "id": 10, 
             "name": "Aggro"
         }, 
         {
+            "advices": [
+                "Keep big AOEs for N'zoth", 
+                "Try to kill him in early or mid game"
+            ], 
             "hero": "Priest", 
-            "id": 10, 
+            "id": 11, 
             "name": "N'Zoth dragon"
         }, 
         {
+            "advices": [
+                "His real true threats are Nefarian and Ysera", 
+                "Has lots of removals"
+            ], 
             "hero": "Priest", 
-            "id": 11, 
+            "id": 12, 
             "name": "Dragon"
         }, 
         {
+            "advices": [
+                "He might get his C'Thun back with Doomcaller", 
+                "Try to win before late game or prepare yourself to survive C'Thun"
+            ], 
             "hero": "Priest", 
-            "id": 12, 
+            "id": 13, 
             "name": "C'thun"
         }, 
         {
+            "advices": [
+                "He needs to draw his 2 Shadowforms before using Reno", 
+                "Once he played Shadowform, his healing potential decreases", 
+                "His biggest threat are Confessor Paletress and Kodorider"
+            ], 
             "hero": "Priest", 
-            "id": 13, 
+            "id": 14, 
             "name": "Shadowform Reno"
         }, 
         {
+            "advices": [
+                "Keep his board clear"
+            ], 
             "hero": "Shaman", 
-            "id": 14, 
+            "id": 15, 
             "name": "Evolve"
         }, 
         {
+            "advices": [
+                "Survive until late game", 
+                "Don't leave too many creatures on his board for Bloodlust"
+            ], 
             "hero": "Shaman", 
-            "id": 15, 
+            "id": 16, 
             "name": "Midrange"
         }, 
         {
+            "advices": [
+                "Try to heal and play taunts", 
+                "Destroy his spellpower totems", 
+                "Destroy his doomhammers", 
+                "Try dragging it to late game and overpowering him on board"
+            ], 
             "hero": "Shaman", 
-            "id": 16, 
+            "id": 17, 
             "name": "Aggro"
         }, 
         {
+            "advices": [
+                "Kill his Thunder Bluff Vailants quickly", 
+                "Survive until late game"
+            ], 
             "hero": "Shaman", 
-            "id": 17, 
+            "id": 18, 
             "name": "Totem"
         }, 
         {
+            "advices": [
+                "He has no heal, pressure him into using his removals", 
+                "Keep AOEs for N'Zoth"
+            ], 
             "hero": "Rogue", 
-            "id": 18, 
+            "id": 19, 
             "name": "Tempo N'Zoth"
         }, 
         {
+            "advices": [
+                "Destroy Malygos and Gadgetzan Auctioneer asap", 
+                "Try not to leave his Thaurissan on board for too long", 
+                "Keep your health points high, he can easily deal 20 to 30 damage with Malygos"
+            ], 
             "hero": "Rogue", 
-            "id": 19, 
+            "id": 20, 
             "name": "Malygos"
         }, 
         {
+            "advices": [
+                "Keep removals for Savannah Highmane", 
+                "Keep AOEs for Call of the Wild"
+            ], 
             "hero": "Hunter", 
-            "id": 20, 
+            "id": 21, 
             "name": "Midrange"
         }, 
         {
+            "advices": [
+                "Keep removals for Savannah Highmane and his 1 or 2 big legendaries", 
+                "Keep AOEs for Call of the Wild"
+            ], 
             "hero": "Hunter", 
-            "id": 21, 
+            "id": 22, 
             "name": "Midrange++"
         }, 
         {
+            "advices": [
+                "Protect your health points at all cost", 
+                "Heal", 
+                "Taunt", 
+                "Watch out for beasts + Kill Command"
+            ], 
             "hero": "Hunter", 
-            "id": 22, 
+            "id": 23, 
             "name": "Aggro"
         }, 
         {
+            "advices": [
+                "Before deciding to hit face, remember that he plays Reno", 
+                "He lacks early control, take advantage"
+            ], 
             "hero": "Hunter", 
-            "id": 23, 
+            "id": 24, 
             "name": "Control"
         }, 
         {
+            "advices": [
+                "He has a lot of removals", 
+                "He doesn't have many minions", 
+                "Watch out for Yogg-Saron's randomness"
+            ], 
             "hero": "Hunter", 
-            "id": 24, 
+            "id": 25, 
             "name": "Yogg N Load"
         }, 
         {
+            "advices": [
+                "Take board control early on", 
+                "Drag it to late game", 
+                "Watch out for Savage Roar and keep charge minions in mind", 
+                "Kill his beasts if you don't want him to draw"
+            ], 
             "hero": "Druid", 
-            "id": 25, 
+            "id": 26, 
             "name": "Beast"
         }, 
         {
+            "advices": [
+                "Kill his Gadgetzan Auctioneer asap", 
+                "Watch out for greedy plays and punish them", 
+                "Keep removals for Violet Teacher"
+            ], 
             "hero": "Druid", 
-            "id": 26, 
+            "id": 27, 
             "name": "Marvel"
         }, 
         {
+            "advices": [
+                "Try not to reach late game", 
+                "Be wary of Brann and Fandral combos"
+            ], 
             "hero": "Druid", 
-            "id": 27, 
+            "id": 28, 
             "name": "C'Thun"
         }, 
         {
+            "advices": [
+                "Try not to reach late game", 
+                "Keep removals for his big threats, not his taunts"
+            ], 
             "hero": "Druid", 
-            "id": 28, 
+            "id": 29, 
             "name": "Midrange/Ramp"
         }, 
         {
+            "advices": [
+                "His goal is to take control of the board", 
+                "Destroy Antonidas asap", 
+                "Be ready for suprising spells out of Cabalist's tome"
+            ], 
             "hero": "Mage", 
-            "id": 29, 
+            "id": 30, 
             "name": "Tempo"
         }
     ]
