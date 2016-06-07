@@ -62,6 +62,7 @@ for className, classId in CLASSES.iteritems():
             'id' : len(decks),
             'name' : d["name"],
             'class' : className,
+            'advices' : d["advices"],
             'cards' : flat([x * [getIdOfCard(y)] for x, y in zip(XMLCardsMultipliers, XMLCards)])
             })
         if (len(decks) % NB_DECK_BY_CLASS == 0):
@@ -98,6 +99,7 @@ for className, classId in CLASSES.iteritems():
 result = {
     'decks_properties' : [{ 'id'   : x['id'],
                             'hero' : x['class'],
+                            'advices' : x['advices'],
                             'name' : x['name']} for x in decks],
     'decks_instances'  : [{ 'deck': x['id'],
                             'cards': x['cards']} for x in decks]
