@@ -1,6 +1,6 @@
 'use strict';
 
-var decks = require("data/decks");
+var decks = require("lib/data/decks");
 var cards = require("data/cards.json");
 
 

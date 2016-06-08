@@ -12,14 +12,15 @@
         </header>
         <div id="content" ng-view></div>
         <script type="text/javascript">
-            process.env.NODE_PATH = __dirname + "/lib;" + __dirname;
+            process.env.NODE_PATH = __dirname;
             require('module').Module._initPaths();
         </script>
         <script type="text/javascript" src="lib/app.js"></script>
         <script type="text/javascript" src="lib/data/hs_data.filter.js"></script>
+        <script type="text/javascript" src="lib/data/CardsService.js"></script>
+        <script type="text/javascript" src="lib/data/MyDecksService.js"></script>
         <script type="text/javascript" src="lib/ingame/ingame.controller.js"></script>
         <script type="text/javascript" src="lib/decks/DecksCtrl.js"></script>
-        <script type="text/javascript" src="lib/decks/DeckService.js"></script>
         <script type="text/javascript" src="lib/main.js"></script>
     </body>
 </html>

@@ -1,5 +1,5 @@
 var decks = require("data/decks");
-var meta = require("meta_decks.json");
+var meta = require("lib/meta_decks.json");
 
 var reset_meta = function reset_meta() {
     decks.drop_database(function () {

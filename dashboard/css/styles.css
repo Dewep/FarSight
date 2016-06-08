@@ -41,7 +41,9 @@ li { margin: 3px; padding: 0; }
 .squared-blue-btn { padding: 5px 5px; }
 .squared-blue-btn:link, .squared-blue-btn:visited { background-color: #07172a; }
 .squared-blue-btn:hover, .squared-blue-btn:active { background-color: white; color: #07172a; }
-
+.invalid-btn {
+  background-color: #2b73b0;
+color: red}
 /*
 * Header
 */
@@ -70,16 +72,8 @@ article > span.info { width: 15%; font-size: 10px; font-weight: normal; }
 /*
 * My Decks
 */
-
 .bottomCentered { position: absolute; bottom: 0; left: 50%; transform: translate(-50%, -50%); }
-
-.styledModal {
-  background: #FFF;
-  width: 300px;
-  /*text-align: center;*/
-  padding: 1.5em;
-  margin: 1em auto;
-  border: 0;
-  border-top: 5px solid #69c773;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.8);
-}
+.styledModal { background: #FFF; width: 80%; padding: 1.5em; margin: 1em auto; border: 0; border-top: 5px solid #69c773; box-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+.styledModal table { border-collapse: collapse; margin-bottom: 30px}
+.styledModal td { border: 1px solid #c6c7cc; padding: 0px 5px; }
+.styledModal .squared-blue-btn:hover, .styledModal .squared-blue-btn:active { background-color: #07172a; color: #FFF }

@@ -1,4 +1,4 @@
-var locations = require("log/locations");
+var locations = require("lib/log/locations");
 var spawn = require('child_process').spawn;
 var readline = require('readline');
 var fs = require('fs');

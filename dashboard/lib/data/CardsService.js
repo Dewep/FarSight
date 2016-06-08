@@ -2,9 +2,10 @@
 
     'use strict';
 
+    var fs = require('fs');
     var cards = require("./data/cards.json");
 
-    angular.module('app').service('DeckService', function () {
+    angular.module('app').service('CardsService', function () {
 
         var cardsList = cards;
 

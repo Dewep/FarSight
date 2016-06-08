@@ -1,6 +1,6 @@
 'use strict';
 
-var decks = require("data/decks");
+var decks = require("lib/data/decks");
 
 var get_proba_classes = function get_proba_classes() {
     var entries = decks.get_games();

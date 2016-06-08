@@ -2,11 +2,11 @@
 
     'use strict';
 
-    var watcher = require("log/watcher");
-    var classifier = require("ingame/classifier");
-    var predictions = require("ingame/predictions");
-    var my_decks = require("data/my_decks");
-    var decks = require("data/decks");
+    var watcher = require("lib/log/watcher");
+    var classifier = require("lib/ingame/classifier");
+    var predictions = require("lib/ingame/predictions");
+    var my_decks = require("lib/data/my_decks");
+    var decks = require("lib/data/decks");
 
     angular.module('app').controller('IngameCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
 
