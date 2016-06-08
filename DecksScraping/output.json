@@ -352,6 +352,111 @@
         }, 
         {
             "cards": [
+                "AT_073", 
+                "EX1_130", 
+                "EX1_130", 
+                "EX1_136", 
+                "EX1_136", 
+                "EX1_379", 
+                "EX1_362", 
+                "EX1_619e", 
+                "EX1_619e", 
+                "EX1_349", 
+                "OG_222", 
+                "CS2_093", 
+                "CS2_093", 
+                "LOE_017", 
+                "LOE_017", 
+                "CS2_097", 
+                "AT_079", 
+                "AT_079", 
+                "EX1_383", 
+                "EX1_080", 
+                "EX1_080", 
+                "EX1_096", 
+                "EX1_096", 
+                "NEW1_020", 
+                "AT_087", 
+                "EX1_556", 
+                "OG_249", 
+                "OG_272", 
+                "EX1_016", 
+                "OG_133"
+            ], 
+            "deck": 11
+        }, 
+        {
+            "cards": [
+                "OG_198", 
+                "EX1_619e", 
+                "EX1_619e", 
+                "EX1_382", 
+                "EX1_382", 
+                "CS2_093", 
+                "CS2_093", 
+                "CS2_097", 
+                "CS2_097", 
+                "BRM_018", 
+                "BRM_018", 
+                "EX1_383", 
+                "NEW1_021", 
+                "NEW1_021", 
+                "NEW1_020", 
+                "NEW1_020", 
+                "EX1_007", 
+                "EX1_007", 
+                "BRM_033", 
+                "BRM_033", 
+                "AT_017", 
+                "AT_017", 
+                "EX1_284", 
+                "EX1_284", 
+                "BRM_034", 
+                "BRM_034", 
+                "EX1_016", 
+                "AT_123", 
+                "EX1_572", 
+                "OG_133"
+            ], 
+            "deck": 12
+        }, 
+        {
+            "cards": [
+                "OG_198", 
+                "EX1_360", 
+                "EX1_619e", 
+                "EX1_619e", 
+                "EX1_382", 
+                "EX1_382", 
+                "CS2_093", 
+                "CS2_093", 
+                "CS2_097", 
+                "CS2_097", 
+                "BRM_001", 
+                "BRM_001", 
+                "EX1_354", 
+                "EX1_354", 
+                "LOE_026", 
+                "LOE_026", 
+                "EX1_066", 
+                "EX1_012", 
+                "CS2_173", 
+                "CS2_173", 
+                "NEW1_021", 
+                "NEW1_021", 
+                "NEW1_020", 
+                "NEW1_020", 
+                "EX1_007", 
+                "EX1_007", 
+                "EX1_507", 
+                "EX1_507", 
+                "EX1_558", 
+                "BRMA03_1H"
+            ], 
+            "deck": 13
+        }, 
+        {
+            "cards": [
                 "CS2_004e", 
                 "CS2_004e", 
                 "BRM_004", 
@@ -383,7 +488,7 @@
                 "OG_317", 
                 "OG_133"
             ], 
-            "deck": 11
+            "deck": 14
         }, 
         {
             "cards": [
@@ -418,7 +523,7 @@
                 "TBA01_4", 
                 "EX1_572"
             ], 
-            "deck": 12
+            "deck": 15
         }, 
         {
             "cards": [
@@ -453,7 +558,7 @@
                 "OG_255", 
                 "OG_279"
             ], 
-            "deck": 13
+            "deck": 16
         }, 
         {
             "cards": [
@@ -488,7 +593,7 @@
                 "LOE_011", 
                 "EX1_016"
             ], 
-            "deck": 14
+            "deck": 17
         }, 
         {
             "cards": [
@@ -523,7 +628,7 @@
                 "EX1_284", 
                 "EX1_284"
             ], 
-            "deck": 15
+            "deck": 18
         }, 
         {
             "cards": [
@@ -558,7 +663,7 @@
                 "AT_094", 
                 "AT_094"
             ], 
-            "deck": 16
+            "deck": 19
         }, 
         {
             "cards": [
@@ -593,7 +698,7 @@
                 "AT_087", 
                 "AT_087"
             ], 
-            "deck": 17
+            "deck": 20
         }, 
         {
             "cards": [
@@ -628,7 +733,7 @@
                 "AT_094", 
                 "AT_094"
             ], 
-            "deck": 18
+            "deck": 21
         }, 
         {
             "cards": [
@@ -663,7 +768,7 @@
                 "EX1_016", 
                 "OG_133"
             ], 
-            "deck": 19
+            "deck": 22
         }, 
         {
             "cards": [
@@ -698,7 +803,42 @@
                 "EX1_095", 
                 "EX1_563"
             ], 
-            "deck": 20
+            "deck": 23
+        }, 
+        {
+            "cards": [
+                "CS2_072", 
+                "CS2_072", 
+                "EX1_145o", 
+                "EX1_145o", 
+                "CS2_073e2", 
+                "CS2_073e2", 
+                "EX1_128", 
+                "EX1_128", 
+                "CS2_074", 
+                "EX1_124", 
+                "EX1_124", 
+                "EX1_581", 
+                "EX1_581", 
+                "EX1_278", 
+                "EX1_613", 
+                "EX1_129", 
+                "EX1_129", 
+                "OG_176", 
+                "EX1_134", 
+                "EX1_134", 
+                "LOE_012", 
+                "LOE_012", 
+                "EX1_012", 
+                "CS2_117", 
+                "NEW1_026", 
+                "EX1_284", 
+                "EX1_284", 
+                "EX1_116", 
+                "EX1_095", 
+                "EX1_095"
+            ], 
+            "deck": 24
         }, 
         {
             "cards": [
@@ -733,7 +873,7 @@
                 "LOE_046", 
                 "NEW1_041"
             ], 
-            "deck": 21
+            "deck": 25
         }, 
         {
             "cards": [
@@ -768,7 +908,7 @@
                 "EX1_016", 
                 "BRMA06_3H"
             ], 
-            "deck": 22
+            "deck": 26
         }, 
         {
             "cards": [
@@ -803,7 +943,7 @@
                 "CS2_124", 
                 "EX1_116"
             ], 
-            "deck": 23
+            "deck": 27
         }, 
         {
             "cards": [
@@ -838,7 +978,7 @@
                 "EX1_016", 
                 "OG_134"
             ], 
-            "deck": 24
+            "deck": 28
         }, 
         {
             "cards": [
@@ -873,7 +1013,7 @@
                 "BRMA03_1H", 
                 "OG_134"
             ], 
-            "deck": 25
+            "deck": 29
         }, 
         {
             "cards": [
@@ -908,7 +1048,7 @@
                 "EX1_284", 
                 "EX1_116"
             ], 
-            "deck": 26
+            "deck": 30
         }, 
         {
             "cards": [
@@ -943,7 +1083,7 @@
                 "EX1_095", 
                 "EX1_095"
             ], 
-            "deck": 27
+            "deck": 31
         }, 
         {
             "cards": [
@@ -978,7 +1118,7 @@
                 "BRMA06_3H", 
                 "OG_279"
             ], 
-            "deck": 28
+            "deck": 32
         }, 
         {
             "cards": [
@@ -1013,7 +1153,7 @@
                 "EX1_016", 
                 "BRMA06_3H"
             ], 
-            "deck": 29
+            "deck": 33
         }, 
         {
             "cards": [
@@ -1048,7 +1188,77 @@
                 "EX1_284", 
                 "BRMA06_3H"
             ], 
-            "deck": 30
+            "deck": 34
+        }, 
+        {
+            "cards": [
+                "OG_086", 
+                "AT_004", 
+                "AT_004", 
+                "EX1_277", 
+                "EX1_277", 
+                "NEW1_012", 
+                "NEW1_012", 
+                "CS2_mirror", 
+                "CS2_mirror", 
+                "CS2_024", 
+                "CS2_024", 
+                "EX1_608", 
+                "EX1_608", 
+                "CS2_023", 
+                "CS2_023", 
+                "BRM_002", 
+                "BRM_002", 
+                "CS2_029", 
+                "CS2_029", 
+                "CS2_022", 
+                "OG_090", 
+                "OG_090", 
+                "LOE_003", 
+                "LOE_003", 
+                "EX1_559", 
+                "CS2_032", 
+                "CS2_032", 
+                "EX1_012", 
+                "LOE_079", 
+                "OG_134"
+            ], 
+            "deck": 35
+        }, 
+        {
+            "cards": [
+                "CS2_031", 
+                "CS2_031", 
+                "CS2_024", 
+                "CS2_024", 
+                "CS2_023", 
+                "CS2_023", 
+                "LOE_002", 
+                "CS2_026", 
+                "CS2_026", 
+                "EX1_289", 
+                "EX1_289", 
+                "EX1_295o", 
+                "EX1_295o", 
+                "CS2_029", 
+                "CS2_029", 
+                "CS2_028", 
+                "CS2_028", 
+                "CS2_032", 
+                "EX1_279", 
+                "EX1_012", 
+                "NEW1_021", 
+                "NEW1_021", 
+                "EX1_096", 
+                "EX1_096", 
+                "EX1_015", 
+                "EX1_015", 
+                "EX1_007", 
+                "EX1_007", 
+                "BRMA03_1H", 
+                "EX1_561"
+            ], 
+            "deck": 36
         }
     ], 
     "decks_properties": [
@@ -1145,11 +1355,41 @@
         }, 
         {
             "advices": [
+                "Watch out for Wild Pyromancer + Equality", 
+                "Keep big AOEs for N'Zoth"
+            ], 
+            "hero": "Paladin", 
+            "id": 11, 
+            "name": "Secret N'Zoth"
+        }, 
+        {
+            "advices": [
+                "Keep big AOEs for N'Zoth", 
+                "Watch out for Wild Pyromancer + Equality", 
+                "Don't leave Ysera too long on the board", 
+                "Try to kill him during early or mid game"
+            ], 
+            "hero": "Paladin", 
+            "id": 12, 
+            "name": "Dragon N'Zoth"
+        }, 
+        {
+            "advices": [
+                "Try to get rid of Murloc Warleaders without killing them", 
+                "Remember he has lots of heals", 
+                "Keep count of his dead murlocs"
+            ], 
+            "hero": "Paladin", 
+            "id": 13, 
+            "name": "Murloc"
+        }, 
+        {
+            "advices": [
                 "Keep big AOEs for N'zoth", 
                 "Try to kill him in early or mid game"
             ], 
             "hero": "Priest", 
-            "id": 11, 
+            "id": 14, 
             "name": "N'Zoth dragon"
         }, 
         {
@@ -1158,7 +1398,7 @@
                 "Has lots of removals"
             ], 
             "hero": "Priest", 
-            "id": 12, 
+            "id": 15, 
             "name": "Dragon"
         }, 
         {
@@ -1167,7 +1407,7 @@
                 "Try to win before late game or prepare yourself to survive C'Thun"
             ], 
             "hero": "Priest", 
-            "id": 13, 
+            "id": 16, 
             "name": "C'thun"
         }, 
         {
@@ -1177,7 +1417,7 @@
                 "His biggest threat are Confessor Paletress and Kodorider"
             ], 
             "hero": "Priest", 
-            "id": 14, 
+            "id": 17, 
             "name": "Shadowform Reno"
         }, 
         {
@@ -1185,7 +1425,7 @@
                 "Keep his board clear"
             ], 
             "hero": "Shaman", 
-            "id": 15, 
+            "id": 18, 
             "name": "Evolve"
         }, 
         {
@@ -1194,7 +1434,7 @@
                 "Don't leave too many creatures on his board for Bloodlust"
             ], 
             "hero": "Shaman", 
-            "id": 16, 
+            "id": 19, 
             "name": "Midrange"
         }, 
         {
@@ -1205,7 +1445,7 @@
                 "Try dragging it to late game and overpowering him on board"
             ], 
             "hero": "Shaman", 
-            "id": 17, 
+            "id": 20, 
             "name": "Aggro"
         }, 
         {
@@ -1214,7 +1454,7 @@
                 "Survive until late game"
             ], 
             "hero": "Shaman", 
-            "id": 18, 
+            "id": 21, 
             "name": "Totem"
         }, 
         {
@@ -1223,7 +1463,7 @@
                 "Keep AOEs for N'Zoth"
             ], 
             "hero": "Rogue", 
-            "id": 19, 
+            "id": 22, 
             "name": "Tempo N'Zoth"
         }, 
         {
@@ -1233,8 +1473,18 @@
                 "Keep your health points high, he can easily deal 20 to 30 damage with Malygos"
             ], 
             "hero": "Rogue", 
-            "id": 20, 
+            "id": 23, 
             "name": "Malygos"
+        }, 
+        {
+            "advices": [
+                "Destroy Gadgetzan Auctioneer asap", 
+                "Keep your health points above 15", 
+                "Kill him early or endure his combo"
+            ], 
+            "hero": "Rogue", 
+            "id": 24, 
+            "name": "Miracle"
         }, 
         {
             "advices": [
@@ -1242,7 +1492,7 @@
                 "Keep AOEs for Call of the Wild"
             ], 
             "hero": "Hunter", 
-            "id": 21, 
+            "id": 25, 
             "name": "Midrange"
         }, 
         {
@@ -1251,7 +1501,7 @@
                 "Keep AOEs for Call of the Wild"
             ], 
             "hero": "Hunter", 
-            "id": 22, 
+            "id": 26, 
             "name": "Midrange++"
         }, 
         {
@@ -1262,7 +1512,7 @@
                 "Watch out for beasts + Kill Command"
             ], 
             "hero": "Hunter", 
-            "id": 23, 
+            "id": 27, 
             "name": "Aggro"
         }, 
         {
@@ -1271,7 +1521,7 @@
                 "He lacks early control, take advantage"
             ], 
             "hero": "Hunter", 
-            "id": 24, 
+            "id": 28, 
             "name": "Control"
         }, 
         {
@@ -1281,7 +1531,7 @@
                 "Watch out for Yogg-Saron's randomness"
             ], 
             "hero": "Hunter", 
-            "id": 25, 
+            "id": 29, 
             "name": "Yogg N Load"
         }, 
         {
@@ -1292,7 +1542,7 @@
                 "Kill his beasts if you don't want him to draw"
             ], 
             "hero": "Druid", 
-            "id": 26, 
+            "id": 30, 
             "name": "Beast"
         }, 
         {
@@ -1302,7 +1552,7 @@
                 "Keep removals for Violet Teacher"
             ], 
             "hero": "Druid", 
-            "id": 27, 
+            "id": 31, 
             "name": "Marvel"
         }, 
         {
@@ -1311,7 +1561,7 @@
                 "Be wary of Brann and Fandral combos"
             ], 
             "hero": "Druid", 
-            "id": 28, 
+            "id": 32, 
             "name": "C'Thun"
         }, 
         {
@@ -1320,7 +1570,7 @@
                 "Keep removals for his big threats, not his taunts"
             ], 
             "hero": "Druid", 
-            "id": 29, 
+            "id": 33, 
             "name": "Midrange/Ramp"
         }, 
         {
@@ -1330,8 +1580,28 @@
                 "Be ready for suprising spells out of Cabalist's tome"
             ], 
             "hero": "Mage", 
-            "id": 30, 
+            "id": 34, 
             "name": "Tempo"
+        }, 
+        {
+            "advices": [
+                "Handle his Flamewakers quickly", 
+                "Destroy Antonidas asap", 
+                "Watch out for Yogg-Saron's randomness"
+            ], 
+            "hero": "Mage", 
+            "id": 35, 
+            "name": "Tempo Yogg-Saron"
+        }, 
+        {
+            "advices": [
+                "Don't let his Thaurissan alive", 
+                "Keep your heals for after Alexstrasza", 
+                "Watch out for Frost Nova + Doomsayer"
+            ], 
+            "hero": "Mage", 
+            "id": 36, 
+            "name": "Freeze"
         }
     ]
 }

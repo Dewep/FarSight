@@ -65,8 +65,6 @@ for className, classId in CLASSES.iteritems():
             'advices' : d["advices"],
             'cards' : flat([x * [getIdOfCard(y)] for x, y in zip(XMLCardsMultipliers, XMLCards)])
             })
-        if (len(decks) % NB_DECK_BY_CLASS == 0):
-            break
 
 # for className, classId in CLASSES.iteritems():
 #     print 'Processing', className
