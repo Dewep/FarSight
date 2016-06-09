@@ -36,6 +36,9 @@ var get_predictions_plays = function get_predictions_plays(deck_id, cards_played
     }
 
     proba_cards.sort(function(a, b) {
+        if (b["rate"] == a["rate"]) {
+            return cards[b["card_id"]]["cost"] - cards[a["card_id"]]["cost"];
+        }
         return b["rate"] - a["rate"];
     });
 

@@ -14,6 +14,7 @@
         $scope.dialogCreateDeck = dialogCreateDeck;
         $scope.dialogInit = dialogInit;
         $scope.editDeck = editDeck;
+        $scope.removeDeck = removeDeck;
 
         $scope.dialogInit();
 
@@ -83,7 +84,10 @@
                 idx = $scope.newDeck.cards.indexOf(card);
                 $scope.newDeck.cards[idx].count = (idx == -1 ? 1 : 2);
             }
-            console.log($scope.newDeck.cards);
+        }
+
+        function removeDeck(deck) {
+            MyDecksService.remove(deck);
         }
     }]);
 
