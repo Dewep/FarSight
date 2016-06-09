@@ -9,7 +9,7 @@
 
         var myDecks = decks;
 
-        this.addDeck = function(newDeck) {
+        this.add = function(newDeck) {
             newDeck.id = 1 + Math.max.apply(Math, myDecks.map(function(v) { return v.id; })); // Max id + 1
             myDecks.push(newDeck);
 

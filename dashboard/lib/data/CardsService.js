@@ -21,6 +21,14 @@
 
             return null;
         };
+
+        this.searchCardOfId = function (cardId) {
+            for (var key in cardsList)
+                if (cardsList[key].collectible === true &&
+                    cardsList[key].id == cardId)
+                    return cardsList[key];
+            return null;
+        };
     });
 
 })();

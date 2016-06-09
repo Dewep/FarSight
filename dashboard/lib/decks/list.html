@@ -1,7 +1,7 @@
 <section>
     <h2>My Decks</h2>
     <ul ng-repeat="deck in decks">
-        <li>{{ deck.name }} {{ deck.hero }} {{ deck.cards }}</li>
+        <li>{{ deck.name }} {{ deck.hero }} {{ deck.cards }}</li><a ng-click="editDeck(deck)">edit</a>
     </ul>
 </section>
 
@@ -15,7 +15,7 @@
             <b>Character</b></br><input type="text" ng-model="newDeck.hero" name="hero" placeholder="Mage" required></br>
         </form>
 
-        <form ng-submit="submit()">
+        <form ng-submit="dialogAutocompleteSubmit()">
             <b>Add card </b></br><input type="text" ng-model="newCard.name" name="newcardname" placeholder="Far Sight"><i style="padding-left: 5px">{{newCard.name | fitlerCardsByName}}</i></br>
         </form></br>
 
@@ -26,18 +26,18 @@
                   <tr ng-repeat="card in newDeck.cards">
                     <td>{{ card.name }}</td>
                     <td>x {{card.count}}</td>
-                    <td><a ng-click="delete(card)">❌</a></td>
+                    <td><a ng-click="dialogDeleteCard(card)">❌</a></td>
                   </tr>
           </tbody>
           <tfoot ng-if="newDeck.cards.length != 0">
             <tr>
               <td colspan="2"><b>Total cards cards</b></td>
-              <td>{{newDeck.cards.length}}</td>
+              <td>{{ totalCards }}</td>
             </tr>
           </tfoot>
         </table>
 
-        <a class="bottomCentered squared-blue-btn" ng-click="addDeck()">Create deck <span ng-show="">Required</span></a>
+        <a class="bottomCentered squared-blue-btn" ng-click="dialogCreateDeck()">Create deck <span ng-show="">Required</span></a>
     </dialog>
 </section>
 
