@@ -12,7 +12,7 @@
                 "EX1_303",
                 "EX1_309",
                 "EX1_312",
-                "EX1_323h",
+                "EX1_323",
                 "EX1_066",
                 "NEW1_021",
                 "EX1_058",
@@ -27,10 +27,10 @@
                 "EX1_564",
                 "EX1_116",
                 "NEW1_041",
-                "BRMA03_1H",
+                "BRM_028",
                 "LOE_011",
                 "EX1_016",
-                "BRMA06_3H",
+                "EX1_298",
                 "EX1_105"
             ],
             "deck": 1
@@ -46,7 +46,7 @@
                 "CS2_062",
                 "EX1_303",
                 "EX1_309",
-                "EX1_323h",
+                "EX1_323",
                 "EX1_066",
                 "EX1_058",
                 "LOE_077",
@@ -61,7 +61,7 @@
                 "EX1_043",
                 "EX1_043",
                 "OG_295",
-                "BRMA03_1H",
+                "BRM_028",
                 "OG_138",
                 "OG_138",
                 "EX1_016",
@@ -171,7 +171,7 @@
                 "EX1_007",
                 "BRM_019",
                 "BRM_019",
-                "BRMA06_3H"
+                "EX1_298"
             ],
             "deck": 5
         },
@@ -189,7 +189,7 @@
                 "EX1_603",
                 "CS2_106",
                 "CS2_106",
-                "CS2_104e",
+                "CS2_104",
                 "EX1_391",
                 "EX1_391",
                 "CS2_103",
@@ -206,7 +206,7 @@
                 "CS2_147",
                 "BRM_019",
                 "BRM_019",
-                "BRMA03_1H"
+                "BRM_028"
             ],
             "deck": 6
         },
@@ -274,8 +274,8 @@
                 "EX1_558",
                 "AT_132",
                 "EX1_016",
-                "BRMA05_1H",
-                "BRMA06_3H",
+                "EX1_249",
+                "EX1_298",
                 "EX1_572"
             ],
             "deck": 8
@@ -286,13 +286,13 @@
                 "OG_221",
                 "OG_006",
                 "OG_006",
-                "EX1_619e",
+                "EX1_619",
                 "EX1_349",
                 "EX1_349",
                 "OG_222",
                 "OG_310",
                 "OG_310",
-                "CS2_092e",
+                "CS2_092",
                 "CS2_093",
                 "LOE_017",
                 "LOE_017",
@@ -328,7 +328,7 @@
                 "EX1_349",
                 "OG_222",
                 "OG_222",
-                "CS2_092e",
+                "CS2_092",
                 "CS2_093",
                 "LOE_017",
                 "LOE_017",
@@ -352,8 +352,113 @@
         },
         {
             "cards": [
-                "CS2_004e",
-                "CS2_004e",
+                "AT_073",
+                "EX1_130",
+                "EX1_130",
+                "EX1_136",
+                "EX1_136",
+                "EX1_379",
+                "EX1_362",
+                "EX1_619",
+                "EX1_619",
+                "EX1_349",
+                "OG_222",
+                "CS2_093",
+                "CS2_093",
+                "LOE_017",
+                "LOE_017",
+                "CS2_097",
+                "AT_079",
+                "AT_079",
+                "EX1_383",
+                "EX1_080",
+                "EX1_080",
+                "EX1_096",
+                "EX1_096",
+                "NEW1_020",
+                "AT_087",
+                "EX1_556",
+                "OG_249",
+                "OG_272",
+                "EX1_016",
+                "OG_133"
+            ],
+            "deck": 11
+        },
+        {
+            "cards": [
+                "OG_198",
+                "EX1_619",
+                "EX1_619",
+                "EX1_382",
+                "EX1_382",
+                "CS2_093",
+                "CS2_093",
+                "CS2_097",
+                "CS2_097",
+                "BRM_018",
+                "BRM_018",
+                "EX1_383",
+                "NEW1_021",
+                "NEW1_021",
+                "NEW1_020",
+                "NEW1_020",
+                "EX1_007",
+                "EX1_007",
+                "BRM_033",
+                "BRM_033",
+                "AT_017",
+                "AT_017",
+                "EX1_284",
+                "EX1_284",
+                "BRM_034",
+                "BRM_034",
+                "EX1_016",
+                "AT_123",
+                "EX1_572",
+                "OG_133"
+            ],
+            "deck": 12
+        },
+        {
+            "cards": [
+                "OG_198",
+                "EX1_360",
+                "EX1_619",
+                "EX1_619",
+                "EX1_382",
+                "EX1_382",
+                "CS2_093",
+                "CS2_093",
+                "CS2_097",
+                "CS2_097",
+                "BRM_001",
+                "BRM_001",
+                "EX1_354",
+                "EX1_354",
+                "LOE_026",
+                "LOE_026",
+                "EX1_066",
+                "EX1_012",
+                "CS2_173",
+                "CS2_173",
+                "NEW1_021",
+                "NEW1_021",
+                "NEW1_020",
+                "NEW1_020",
+                "EX1_007",
+                "EX1_007",
+                "EX1_507",
+                "EX1_507",
+                "EX1_558",
+                "BRM_028"
+            ],
+            "deck": 13
+        },
+        {
+            "cards": [
+                "CS2_004",
+                "CS2_004",
                 "BRM_004",
                 "BRM_004",
                 "LOE_006",
@@ -383,14 +488,14 @@
                 "OG_317",
                 "OG_133"
             ],
-            "deck": 11
+            "deck": 14
         },
         {
             "cards": [
                 "CS2_235",
                 "CS2_235",
-                "CS2_004e",
-                "CS2_004e",
+                "CS2_004",
+                "CS2_004",
                 "BRM_004",
                 "BRM_004",
                 "CS2_234",
@@ -415,17 +520,17 @@
                 "BRM_034",
                 "BRM_034",
                 "EX1_016",
-                "TBA01_4",
+                "BRM_030",
                 "EX1_572"
             ],
-            "deck": 12
+            "deck": 15
         },
         {
             "cards": [
                 "CS2_235",
                 "CS2_235",
-                "CS2_004e",
-                "CS2_004e",
+                "CS2_004",
+                "CS2_004",
                 "CS2_234",
                 "EX1_622",
                 "EX1_622",
@@ -451,14 +556,14 @@
                 "OG_283",
                 "OG_131",
                 "OG_255",
-                "OG_279"
+                "OG_280"
             ],
-            "deck": 13
+            "deck": 16
         },
         {
             "cards": [
                 "CS1_130",
-                "CS2_004e",
+                "CS2_004",
                 "LOE_006",
                 "CS2_234",
                 "GVG_011",
@@ -466,7 +571,7 @@
                 "EX1_625",
                 "EX1_625",
                 "EX1_339",
-                "GVG_010b",
+                "GVG_010",
                 "LOE_111",
                 "CS1_112",
                 "GVG_014",
@@ -488,14 +593,14 @@
                 "LOE_011",
                 "EX1_016"
             ],
-            "deck": 14
+            "deck": 17
         },
         {
             "cards": [
                 "OG_027",
                 "OG_023",
-                "CS2_045e",
-                "CS2_045e",
+                "CS2_045",
+                "CS2_045",
                 "LOE_018",
                 "LOE_018",
                 "EX1_565",
@@ -523,13 +628,13 @@
                 "EX1_284",
                 "EX1_284"
             ],
-            "deck": 15
+            "deck": 18
         },
         {
             "cards": [
                 "EX1_238",
-                "CS2_045e",
-                "CS2_045e",
+                "CS2_045",
+                "CS2_045",
                 "OG_026",
                 "EX1_565",
                 "EX1_565",
@@ -558,15 +663,15 @@
                 "AT_094",
                 "AT_094"
             ],
-            "deck": 16
+            "deck": 19
         },
         {
             "cards": [
                 "EX1_245",
                 "EX1_238",
                 "EX1_238",
-                "CS2_045e",
-                "CS2_045e",
+                "CS2_045",
+                "CS2_045",
                 "LOE_018",
                 "LOE_018",
                 "AT_053",
@@ -593,14 +698,14 @@
                 "AT_087",
                 "AT_087"
             ],
-            "deck": 17
+            "deck": 20
         },
         {
             "cards": [
                 "EX1_238",
                 "OG_023",
-                "CS2_045e",
-                "CS2_045e",
+                "CS2_045",
+                "CS2_045",
                 "LOE_018",
                 "LOE_018",
                 "EX1_565",
@@ -628,7 +733,7 @@
                 "AT_094",
                 "AT_094"
             ],
-            "deck": 18
+            "deck": 21
         },
         {
             "cards": [
@@ -663,14 +768,14 @@
                 "EX1_016",
                 "OG_133"
             ],
-            "deck": 19
+            "deck": 22
         },
         {
             "cards": [
                 "CS2_072",
                 "CS2_072",
-                "EX1_145o",
-                "EX1_145o",
+                "EX1_145",
+                "EX1_145",
                 "CS2_074",
                 "CS2_075",
                 "EX1_124",
@@ -694,11 +799,46 @@
                 "EX1_284",
                 "EX1_284",
                 "EX1_558",
-                "BRMA03_1H",
+                "BRM_028",
                 "EX1_095",
                 "EX1_563"
             ],
-            "deck": 20
+            "deck": 23
+        },
+        {
+            "cards": [
+                "CS2_072",
+                "CS2_072",
+                "EX1_145",
+                "EX1_145",
+                "CS2_073",
+                "CS2_073",
+                "EX1_128",
+                "EX1_128",
+                "CS2_074",
+                "EX1_124",
+                "EX1_124",
+                "EX1_581",
+                "EX1_581",
+                "EX1_278",
+                "EX1_613",
+                "EX1_129",
+                "EX1_129",
+                "OG_176",
+                "EX1_134",
+                "EX1_134",
+                "LOE_012",
+                "LOE_012",
+                "EX1_012",
+                "CS2_117",
+                "NEW1_026",
+                "EX1_284",
+                "EX1_284",
+                "EX1_116",
+                "EX1_095",
+                "EX1_095"
+            ],
+            "deck": 24
         },
         {
             "cards": [
@@ -733,7 +873,7 @@
                 "LOE_046",
                 "NEW1_041"
             ],
-            "deck": 21
+            "deck": 25
         },
         {
             "cards": [
@@ -766,9 +906,9 @@
                 "EX1_558",
                 "NEW1_041",
                 "EX1_016",
-                "BRMA06_3H"
+                "EX1_298"
             ],
-            "deck": 22
+            "deck": 26
         },
         {
             "cards": [
@@ -803,7 +943,7 @@
                 "CS2_124",
                 "EX1_116"
             ],
-            "deck": 23
+            "deck": 27
         },
         {
             "cards": [
@@ -838,7 +978,7 @@
                 "EX1_016",
                 "OG_134"
             ],
-            "deck": 24
+            "deck": 28
         },
         {
             "cards": [
@@ -851,8 +991,8 @@
                 "EX1_611",
                 "EX1_611",
                 "AT_058",
-                "AT_061e",
-                "AT_061e",
+                "AT_061",
+                "AT_061",
                 "BRM_013",
                 "BRM_013",
                 "NEW1_031",
@@ -870,17 +1010,17 @@
                 "EX1_537",
                 "OG_211",
                 "OG_211",
-                "BRMA03_1H",
+                "BRM_028",
                 "OG_134"
             ],
-            "deck": 25
+            "deck": 29
         },
         {
             "cards": [
                 "EX1_169",
                 "EX1_169",
-                "AT_037a",
-                "AT_037a",
+                "AT_037",
+                "AT_037",
                 "AT_038",
                 "AT_038",
                 "AT_042",
@@ -889,8 +1029,8 @@
                 "OG_048",
                 "EX1_160",
                 "EX1_160",
-                "OG_044b",
-                "OG_044b",
+                "BRM_010",
+                "BRM_010",
                 "LOE_050",
                 "LOE_050",
                 "CS2_011",
@@ -899,8 +1039,8 @@
                 "AT_039",
                 "CS2_012",
                 "CS2_012",
-                "OG_044a",
-                "OG_044a",
+                "EX1_165",
+                "EX1_165",
                 "LOE_076",
                 "NEW1_026",
                 "NEW1_026",
@@ -908,7 +1048,7 @@
                 "EX1_284",
                 "EX1_116"
             ],
-            "deck": 26
+            "deck": 30
         },
         {
             "cards": [
@@ -916,17 +1056,17 @@
                 "EX1_169",
                 "CS2_008",
                 "CS2_008",
-                "CS2_005o",
-                "CS2_005o",
-                "AT_037a",
-                "AT_037a",
+                "CS2_005",
+                "CS2_005",
+                "AT_037",
+                "AT_037",
                 "OG_048",
                 "EX1_160",
                 "EX1_160",
                 "CS2_013",
                 "CS2_013",
-                "EX1_154b",
-                "EX1_154b",
+                "EX1_154",
+                "EX1_154",
                 "OG_313",
                 "OG_047",
                 "LOE_050",
@@ -939,31 +1079,31 @@
                 "EX1_050",
                 "NEW1_026",
                 "NEW1_026",
-                "BRMA03_1H",
+                "BRM_028",
                 "EX1_095",
                 "EX1_095"
             ],
-            "deck": 27
+            "deck": 31
         },
         {
             "cards": [
                 "EX1_169",
                 "EX1_169",
-                "AT_037a",
+                "AT_037",
                 "CS2_013",
                 "CS2_013",
-                "EX1_154b",
-                "EX1_154b",
+                "EX1_154",
+                "EX1_154",
                 "AT_044",
                 "OG_044",
                 "OG_188",
                 "OG_188",
                 "CS2_012",
                 "CS2_012",
-                "OG_044a",
-                "OG_044a",
-                "EX1_164a",
-                "EX1_164a",
+                "EX1_165",
+                "EX1_165",
+                "EX1_164",
+                "EX1_164",
                 "OG_293",
                 "OG_293",
                 "EX1_178",
@@ -975,33 +1115,33 @@
                 "OG_286",
                 "EX1_016",
                 "OG_131",
-                "BRMA06_3H",
-                "OG_279"
+                "EX1_298",
+                "OG_280"
             ],
-            "deck": 28
+            "deck": 32
         },
         {
             "cards": [
                 "EX1_169",
                 "EX1_169",
-                "AT_037a",
-                "AT_037a",
-                "LOE_115a",
-                "LOE_115a",
+                "AT_037",
+                "AT_037",
+                "LOE_115",
+                "LOE_115",
                 "AT_038",
                 "CS2_013",
                 "CS2_013",
-                "EX1_154b",
-                "EX1_154b",
+                "EX1_154",
+                "EX1_154",
                 "AT_044",
                 "OG_044",
                 "OG_202",
                 "OG_202",
                 "CS2_012",
                 "CS2_012",
-                "OG_044a",
-                "OG_044a",
-                "EX1_164a",
+                "EX1_165",
+                "EX1_165",
+                "EX1_164",
                 "OG_293",
                 "OG_293",
                 "EX1_178",
@@ -1011,9 +1151,9 @@
                 "EX1_284",
                 "EX1_558",
                 "EX1_016",
-                "BRMA06_3H"
+                "EX1_298"
             ],
-            "deck": 29
+            "deck": 33
         },
         {
             "cards": [
@@ -1046,9 +1186,79 @@
                 "CS2_032",
                 "EX1_284",
                 "EX1_284",
-                "BRMA06_3H"
+                "EX1_298"
             ],
-            "deck": 30
+            "deck": 34
+        },
+        {
+            "cards": [
+                "OG_086",
+                "AT_004",
+                "AT_004",
+                "EX1_277",
+                "EX1_277",
+                "NEW1_012",
+                "NEW1_012",
+                "CS2_027",
+                "CS2_027",
+                "CS2_024",
+                "CS2_024",
+                "EX1_608",
+                "EX1_608",
+                "CS2_023",
+                "CS2_023",
+                "BRM_002",
+                "BRM_002",
+                "CS2_029",
+                "CS2_029",
+                "CS2_022",
+                "OG_090",
+                "OG_090",
+                "LOE_003",
+                "LOE_003",
+                "EX1_559",
+                "CS2_032",
+                "CS2_032",
+                "EX1_012",
+                "LOE_079",
+                "OG_134"
+            ],
+            "deck": 35
+        },
+        {
+            "cards": [
+                "CS2_031",
+                "CS2_031",
+                "CS2_024",
+                "CS2_024",
+                "CS2_023",
+                "CS2_023",
+                "LOE_002",
+                "CS2_026",
+                "CS2_026",
+                "EX1_289",
+                "EX1_289",
+                "EX1_295",
+                "EX1_295",
+                "CS2_029",
+                "CS2_029",
+                "CS2_028",
+                "CS2_028",
+                "CS2_032",
+                "EX1_279",
+                "EX1_012",
+                "NEW1_021",
+                "NEW1_021",
+                "EX1_096",
+                "EX1_096",
+                "EX1_015",
+                "EX1_015",
+                "EX1_007",
+                "EX1_007",
+                "BRM_028",
+                "EX1_561"
+            ],
+            "deck": 36
         }
     ],
     "decks_properties": [
@@ -1145,11 +1355,41 @@
         },
         {
             "advices": [
+                "Watch out for Wild Pyromancer + Equality",
+                "Keep big AOEs for N'Zoth"
+            ],
+            "hero": "Paladin",
+            "id": 11,
+            "name": "Secret N'Zoth"
+        },
+        {
+            "advices": [
+                "Keep big AOEs for N'Zoth",
+                "Watch out for Wild Pyromancer + Equality",
+                "Don't leave Ysera too long on the board",
+                "Try to kill him during early or mid game"
+            ],
+            "hero": "Paladin",
+            "id": 12,
+            "name": "Dragon N'Zoth"
+        },
+        {
+            "advices": [
+                "Try to get rid of Murloc Warleaders without killing them",
+                "Remember he has lots of heals",
+                "Keep count of his dead murlocs"
+            ],
+            "hero": "Paladin",
+            "id": 13,
+            "name": "Murloc"
+        },
+        {
+            "advices": [
                 "Keep big AOEs for N'zoth",
                 "Try to kill him in early or mid game"
             ],
             "hero": "Priest",
-            "id": 11,
+            "id": 14,
             "name": "N'Zoth dragon"
         },
         {
@@ -1158,7 +1398,7 @@
                 "Has lots of removals"
             ],
             "hero": "Priest",
-            "id": 12,
+            "id": 15,
             "name": "Dragon"
         },
         {
@@ -1167,7 +1407,7 @@
                 "Try to win before late game or prepare yourself to survive C'Thun"
             ],
             "hero": "Priest",
-            "id": 13,
+            "id": 16,
             "name": "C'thun"
         },
         {
@@ -1177,7 +1417,7 @@
                 "His biggest threat are Confessor Paletress and Kodorider"
             ],
             "hero": "Priest",
-            "id": 14,
+            "id": 17,
             "name": "Shadowform Reno"
         },
         {
@@ -1185,7 +1425,7 @@
                 "Keep his board clear"
             ],
             "hero": "Shaman",
-            "id": 15,
+            "id": 18,
             "name": "Evolve"
         },
         {
@@ -1194,7 +1434,7 @@
                 "Don't leave too many creatures on his board for Bloodlust"
             ],
             "hero": "Shaman",
-            "id": 16,
+            "id": 19,
             "name": "Midrange"
         },
         {
@@ -1205,7 +1445,7 @@
                 "Try dragging it to late game and overpowering him on board"
             ],
             "hero": "Shaman",
-            "id": 17,
+            "id": 20,
             "name": "Aggro"
         },
         {
@@ -1214,7 +1454,7 @@
                 "Survive until late game"
             ],
             "hero": "Shaman",
-            "id": 18,
+            "id": 21,
             "name": "Totem"
         },
         {
@@ -1223,7 +1463,7 @@
                 "Keep AOEs for N'Zoth"
             ],
             "hero": "Rogue",
-            "id": 19,
+            "id": 22,
             "name": "Tempo N'Zoth"
         },
         {
@@ -1233,8 +1473,18 @@
                 "Keep your health points high, he can easily deal 20 to 30 damage with Malygos"
             ],
             "hero": "Rogue",
-            "id": 20,
+            "id": 23,
             "name": "Malygos"
+        },
+        {
+            "advices": [
+                "Destroy Gadgetzan Auctioneer asap",
+                "Keep your health points above 15",
+                "Kill him early or endure his combo"
+            ],
+            "hero": "Rogue",
+            "id": 24,
+            "name": "Miracle"
         },
         {
             "advices": [
@@ -1242,7 +1492,7 @@
                 "Keep AOEs for Call of the Wild"
             ],
             "hero": "Hunter",
-            "id": 21,
+            "id": 25,
             "name": "Midrange"
         },
         {
@@ -1251,7 +1501,7 @@
                 "Keep AOEs for Call of the Wild"
             ],
             "hero": "Hunter",
-            "id": 22,
+            "id": 26,
             "name": "Midrange++"
         },
         {
@@ -1262,7 +1512,7 @@
                 "Watch out for beasts + Kill Command"
             ],
             "hero": "Hunter",
-            "id": 23,
+            "id": 27,
             "name": "Aggro"
         },
         {
@@ -1271,7 +1521,7 @@
                 "He lacks early control, take advantage"
             ],
             "hero": "Hunter",
-            "id": 24,
+            "id": 28,
             "name": "Control"
         },
         {
@@ -1281,7 +1531,7 @@
                 "Watch out for Yogg-Saron's randomness"
             ],
             "hero": "Hunter",
-            "id": 25,
+            "id": 29,
             "name": "Yogg N Load"
         },
         {
@@ -1292,7 +1542,7 @@
                 "Kill his beasts if you don't want him to draw"
             ],
             "hero": "Druid",
-            "id": 26,
+            "id": 30,
             "name": "Beast"
         },
         {
@@ -1302,7 +1552,7 @@
                 "Keep removals for Violet Teacher"
             ],
             "hero": "Druid",
-            "id": 27,
+            "id": 31,
             "name": "Marvel"
         },
         {
@@ -1311,7 +1561,7 @@
                 "Be wary of Brann and Fandral combos"
             ],
             "hero": "Druid",
-            "id": 28,
+            "id": 32,
             "name": "C'Thun"
         },
         {
@@ -1320,7 +1570,7 @@
                 "Keep removals for his big threats, not his taunts"
             ],
             "hero": "Druid",
-            "id": 29,
+            "id": 33,
             "name": "Midrange/Ramp"
         },
         {
@@ -1330,8 +1580,28 @@
                 "Be ready for suprising spells out of Cabalist's tome"
             ],
             "hero": "Mage",
-            "id": 30,
+            "id": 34,
             "name": "Tempo"
+        },
+        {
+            "advices": [
+                "Handle his Flamewakers quickly",
+                "Destroy Antonidas asap",
+                "Watch out for Yogg-Saron's randomness"
+            ],
+            "hero": "Mage",
+            "id": 35,
+            "name": "Tempo Yogg-Saron"
+        },
+        {
+            "advices": [
+                "Don't let his Thaurissan alive",
+                "Keep your heals for after Alexstrasza",
+                "Watch out for Frost Nova + Doomsayer"
+            ],
+            "hero": "Mage",
+            "id": 36,
+            "name": "Freeze"
         }
     ]
 }

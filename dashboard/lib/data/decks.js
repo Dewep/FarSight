@@ -143,5 +143,4 @@ module.exports.get_decks = get_decks;
 module.exports.get_games = get_games;
 module.exports.add_new_deck = add_new_deck;
 module.exports.add_new_instance = add_new_instance;
-module.exports.save_enemy_deck = save_enemy_deck;
 module.exports.drop_database = drop_database;
