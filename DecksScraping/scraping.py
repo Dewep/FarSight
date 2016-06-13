@@ -40,7 +40,7 @@ with open('decks.json') as data_file:
 
 
 def getIdOfCard(cardName):
-    element = [x for x in cardsJson if x['name'] == cardName][0]
+    element = [x for x in cardsJson if x['name'] == cardName and 'collectible' in x and x['collectible']][0]
     return element['id'].encode('ascii')
 
 # Scraping.
