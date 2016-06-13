@@ -13,13 +13,21 @@
             if (cardName.length === 0)
                 return null;
 
-            for (var key in cardsList)
+            var result = null;
+
+            for (var key in cardsList) {
                 if (cardsList[key].collectible === true &&
-                    cardsList[key].name.toLocaleLowerCase().substring(0, cardName.length) ==
-                    cardName.toLocaleLowerCase().substring(0, cardName.length))
+                    cardsList[key].name.toLocaleLowerCase() == cardName.toLocaleLowerCase())
                     return cardsList[key];
 
-            return null;
+                if (!result &&
+                    cardsList[key].collectible === true &&
+                    cardsList[key].name.toLocaleLowerCase().substring(0, cardName.length) ==
+                    cardName.toLocaleLowerCase().substring(0, cardName.length))
+                    result = cardsList[key];
+            }
+
+            return result;
         };
 
         this.searchCardOfId = function (cardId) {

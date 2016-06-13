@@ -41,7 +41,11 @@ LogWatcher.prototype.onStreamData = function (data) {
 
     data.split(os.EOL).forEach(function (line) {
         if (line.length > 1) {
-            self.handler(JSON.parse(line));
+            var obj = JSON.parse(line);
+            if (obj["type"] == "debug") {
+                console.log("stream-debug", obj);
+            }
+            self.handler(obj);
         }
     });
 };
@@ -67,28 +71,6 @@ LogWatcher.prototype.watchFile = function (file_path) {
             self.parseLine(line);
         });
     }, 1000);
-    /*fs.watchFile(file_path, function (current, previous) {
-        if (current.mtime <= previous.mtime) { return; }
-
-        var newFileSize = fs.statSync(file_path).size;
-        var sizeDiff = newFileSize - fileSize;
-        if (sizeDiff < 0) {
-            fileSize = 0;
-            sizeDiff = newFileSize;
-        }
-        var buffer = new Buffer(sizeDiff);
-        var fileDescriptor = fs.openSync(file_path, "r");
-        fs.readSync(fileDescriptor, buffer, 0, sizeDiff, fileSize);
-        fs.closeSync(fileDescriptor);
-        fileSize = newFileSize;
-
-        buffer.toString().split("\n").forEach(function (line) {
-            line.replace("\r", "");
-            console.log("line", line);
-            self.parseLine(line);
-        });
-    });*/
-    // fs.unwatchFile(file_path);
 };
 
 LogWatcher.prototype.readFile = function (file_path) {

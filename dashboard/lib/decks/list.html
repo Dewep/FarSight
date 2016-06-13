@@ -2,7 +2,7 @@
 
 <section>
     <div ng-repeat="deck in decks">
-        <h2><a ng-click="deck.display = !deck.display" href>[{{ deck.hero }}] {{ deck.name }}</a> <span style="float: right"><a href ng-click="editDeck(deck)">edit</a> - <a href ng-click="removeDeck(deck)">❌</a></span></h2>
+        <h2><a ng-click="deck.display = !deck.display" href>[{{ deck.hero }}] {{ deck.name }}</a> <span style="float: right"><a href ng-click="editDeck(deck)">Clone</a> - <a href ng-click="removeDeck(deck)">❌</a></span></h2>
         <div ng-show="deck.display">
             <article ng-repeat="(card_id, num) in deck.cards_object">
                 <span class="mana">{{ card_id | hs_data: "cost" }}</span>

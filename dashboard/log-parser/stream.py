@@ -126,7 +126,7 @@ class LogWatcherStream(LogWatcher):
 
 watcher = LogWatcherStream()
 
-for line in fileinput.input():
+for line in sys.stdin:
     try:
         watcher.read_line(line)
     except Exception as e:
