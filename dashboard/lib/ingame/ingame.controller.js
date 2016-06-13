@@ -16,6 +16,8 @@
         var timeout_update = null;
         var waiting_update = 0;
 
+        $scope.record = null;
+
         $scope.game_state = false;
 
         $scope.player_cards_hand_size = 0;
@@ -133,13 +135,54 @@
                 if (game["state"] == false && game["saved"] == false) {
                     game["saved"] = true;
                     if (cards.length > 10) {
-                        console.info("End of the game, saving enemy deck.");
-                        decks.save_enemy_deck(opponent["hero"], cards, predictions_opponent);
+                        var selected = "new";
+                        var linked_decks = [];
+                        var default_name = "Undefined";
+                        var default_advices = "";
+                        var linked_selected = null;
+                        for (var i = 0; i < 5 && i < predictions_opponent.length; i++) {
+                            linked_decks.push({
+                                "deck_id": predictions_opponent[i]["deck"]["deck_id"],
+                                "name": "[" + predictions_opponent[i]["deck"]["hero"] + "] " + predictions_opponent[i]["deck"]["name"]
+                            });
+                        }
+                        if (predictions_opponent.length) {
+                            linked_selected = linked_decks[0];
+                            if (predictions_plays[0]["rate"] > 70) {
+                                selected = "linked";
+                            }
+                            default_name = predictions_opponent[0]["deck"]["name"] + " variance";
+                            default_advices = predictions_opponent[0]["deck"]["advices"].join("\n");
+                        }
+                        $scope.record = {
+                            "selected": selected,
+                            "cards": cards,
+                            "hero": opponent["hero"],
+                            "linked": {
+                                "decks": linked_decks,
+                                "selected": linked_selected
+                            },
+                            "new": {
+                                "name": default_name,
+                                "advices": default_advices
+                            }
+                        };
+                        console.info("End of the game, saving enemy deck...");
+                        //decks.save_enemy_deck(opponent["hero"], cards, predictions_opponent);
                     } else {
                         console.info("End of the game, not saving the enemy deck (not enough cards played).");
                     }
                 }
             });
+        };
+
+        $scope.record_confirm = function record_confirm() {
+            if ($scope.record && $scope.record.selected == "linked" && $scope.record.linked.selected) {
+                decks.add_new_instance($scope.record.linked.selected.deck_id, $scope.record.cards);
+            } else if ($scope.record && $scope.record.selected == "new") {
+                decks.add_new_deck($scope.record.new.name, $scope.record.hero, $scope.record.new.advices.split("\n"), $scope.record.cards);
+            }
+            $scope.record = null;
         };
 
         watcher.Handler(function(data) {

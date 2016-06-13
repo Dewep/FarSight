@@ -1,3 +1,26 @@
+<section class="recording_deck" ng-if="record">
+    <h2>Recording the last game as</h2>
+    <ul>
+        <li ng-class="{'selected': record.selected == 'linked'}" ng-click="record.selected = 'linked'">
+            Instance of
+            <select ng-options="deck as deck.name for deck in record.linked.decks" ng-model="record.linked.selected"></select>
+        </li>
+        <li ng-class="{'selected': record.selected == 'new'}" ng-click="record.selected = 'new'">
+            New deck {{ record.hero }}
+            <div ng-if="record.selected == 'new'">
+                <input type="text" placeholder="Name of the deck" ng-model="record.new.name"/>
+                <textarea placeholder="List of advices" rows="4" ng-model="record.new.advices"></textarea>
+            </div>
+        </li>
+        <li ng-class="{'selected': !record.selected}" ng-click="record.selected = ''">
+            Ignore this game
+        </li>
+        <li class="control">
+            <a class="squared-blue-btn" href ng-click="record_confirm()">CONFIRM</a>
+        </li>
+    </ul>
+</section>
+
 <section ng-if="!game_state">
     <h2 style="text-align: center; font-size: 20px; margin-top: 50px; border: 0;">Waiting for a game</h2>
 </section>
@@ -44,7 +67,7 @@
     <h2>Prediction plays</h2>
     <div>
         <article ng-repeat="prediction in opponent_plays_prediction">
-            <span class="mana">{{ prediction.card_id | hs_data: "cost" }}</span>
+            <span class="mana">{{ prediction.card_id | hs_data: "cost" }} <img src="css/mana.png" style="width: 14px"></span>
             <span class="name" style="background-image: url('data/cards-images-bar/{{ prediction.card_id }}.png')"><span>{{ prediction.card_id | hs_data: "name" }}</span></span>
             <span class="info">{{ prediction.percent * 100 | number:0 }}%</span>
         </article>

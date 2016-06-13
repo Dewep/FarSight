@@ -1,4 +1,4 @@
-var decks = require("data/decks");
+var decks = require("lib/data/decks");
 var meta = require("lib/meta_decks.json");
 
 var reset_meta = function reset_meta() {

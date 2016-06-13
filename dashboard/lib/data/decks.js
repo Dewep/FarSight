@@ -74,6 +74,8 @@ var initDecks = function initDecks(url) {
 };
 
 var addDeck = function addDeck(url, instance, property) {
+    console.info("addDeck to Mongo", instance, property);
+    //return;
     mongoConnection(url, function (db) {
         collectionInsertMany(db, "decks_instances", [instance], function (result_instance) {
             addFormatedInstance(instance);
@@ -107,54 +109,19 @@ var add_new_deck = function add_new_deck(name, hero, advices, cards) {
     deck_next_id++;
 };
 
+var add_new_instance = function add_new_instance(deck_id, cards) {
+    addDeck(mongo_url, {
+        "deck_id": deck_id,
+        "cards": cards
+    }, null);
+};
+
 var get_decks = function get_decks() {
     return decks_properties;
 };
 
 var get_games = function get_games() {
     return decks_instances.slice();
-};
-
-var save_enemy_deck = function save_enemy_deck(hero, cards, classifications) {
-    var clone = null;
-    if (classifications.length && classifications[0]["rate"] > 60 && classifications[0]["deck"]["hero"] == hero) {
-        clone = classifications[0];
-    }
-    if (clone && clone["rate"] > 85) {
-        addDeck(mongo_url, {
-            "deck_id": classifications[0]["deck"]["deck_id"],
-            "cards": cards
-        }, null);
-    } else if (deck_next_id != -1 && clone) {
-        var index = clone["deck"]["name"].search("variation");
-        var name = "variation (" + deck_next_id + ")";
-        if (index > 1) {
-            name = clone["deck"]["name"].substring(0, index) + " " + name;
-        } else {
-            name = clone["deck"]["name"] + " " + name;
-        }
-        addDeck(mongo_url, {
-            "deck_id": deck_next_id,
-            "cards": cards
-        }, {
-            "deck_id": deck_next_id,
-            "hero": hero,
-            "name": name,
-            "advices": clone["deck"]["advices"]
-        });
-        deck_next_id++;
-    } else if (deck_next_id != -1) {
-        addDeck(mongo_url, {
-            "deck_id": deck_next_id,
-            "cards": cards
-        }, {
-            "deck_id": deck_next_id,
-            "hero": hero,
-            "name": "Undefined (" + deck_next_id + ")",
-            "advices": []
-        });
-        deck_next_id++;
-    }
 };
 
 var drop_database = function drop_database(done) {
@@ -175,5 +142,6 @@ initDecks(mongo_url);
 module.exports.get_decks = get_decks;
 module.exports.get_games = get_games;
 module.exports.add_new_deck = add_new_deck;
+module.exports.add_new_instance = add_new_instance;
 module.exports.save_enemy_deck = save_enemy_deck;
 module.exports.drop_database = drop_database;
