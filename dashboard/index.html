@@ -7,8 +7,10 @@
         <link rel="stylesheet" href="css/styles.css" />
     </head>
     <body ng-app="app">
-        <header>
+        <header ng-controller="HeaderCtrl">
             <h1><a href="#/in_game/">FarSight</a></h1>
+            <a class="squared-blue-btn" href ng-click="closeWindow()">❌</a>
+            <a class="squared-blue-btn" href ng-click="toogleAlwaysOnTop()" title="Set alwaysOnTop option"><span ng-if="alwaysOnTop">⚫</span><span ng-if="!alwaysOnTop">⚪</span></a>
             <a class="squared-blue-btn" href="#/my_decks/">My Decks</a>
         </header>
         <div id="content" ng-view></div>

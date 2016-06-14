@@ -53,7 +53,7 @@ a:hover, a:active, a:focus { text-decoration: underline; color: #AB1A25; }
 */
 body > header { background-color: #092140; box-shadow: 0 2px 2px 0px #04101d; padding: 10px; }
 body > header a, body > header a:link, body > header a:visited { text-decoration: none; color: #EFE7BE; }
-body > header > a { float: right; }
+body > header > a { float: right; line-height: 15px; height: 15px; }
 
 /*
 * Sections

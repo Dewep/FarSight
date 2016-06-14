@@ -143,12 +143,12 @@
                         for (var i = 0; i < 5 && i < predictions_opponent.length; i++) {
                             linked_decks.push({
                                 "deck_id": predictions_opponent[i]["deck"]["deck_id"],
-                                "name": "[" + predictions_opponent[i]["deck"]["hero"] + "] " + predictions_opponent[i]["deck"]["name"]
+                                "name": "[" + predictions_opponent[i]["deck"]["hero"] + "] " + predictions_opponent[i]["deck"]["name"] + " - " + Math.round(predictions_opponent[i]["rate"] * 100) + "%"
                             });
                         }
                         if (predictions_opponent.length) {
                             linked_selected = linked_decks[0];
-                            if (predictions_plays[0]["rate"] > 70) {
+                            if (predictions_opponent[0]["rate"] > 0.70) {
                                 selected = "linked";
                             }
                             default_name = predictions_opponent[0]["deck"]["name"] + " variance";
@@ -196,6 +196,18 @@
                 game["player_checked"] = false;
                 player["cards"] = {};
                 opponent["cards"] = {};
+            } else if (data["type"] == "player") {
+                var player_target = null;
+                if (data["player"]["id"] == player["id"]) {
+                    player_target = player;
+                } else if (data["player"]["id"] == opponent["id"]) {
+                    player_target = opponent;
+                }
+                if (player_target) {
+                    player_target["hero"] = data["player"]["hero"];
+                    player_target["mana"] = data["player"]["mana"];
+                    player_target["name"] = data["player"]["name"];
+                }
             } else if (data["type"] == "card") {
                 game["state"] = true;
                 var player_target = null;
