@@ -154,9 +154,18 @@
                             default_name = predictions_opponent[0]["deck"]["name"] + " variance";
                             default_advices = predictions_opponent[0]["deck"]["advices"].join("\n");
                         }
+                        var cards_grouped = {};
+                        for (var i = 0; i < cards.length; i++) {
+                            if (cards_grouped[cards[i]]) {
+                                cards_grouped[cards[i]]++;
+                            } else {
+                                cards_grouped[cards[i]] = 1;
+                            }
+                        }
                         $scope.record = {
                             "selected": selected,
                             "cards": cards,
+                            "cards_grouped": cards_grouped,
                             "hero": opponent["hero"],
                             "linked": {
                                 "decks": linked_decks,
