@@ -1,7 +1,5 @@
 (function () {
 
-    'use strict';
-
     // CONTROLLER.
     angular.module('app').controller('DecksCtrl', ['$scope', 'CardsService', 'MyDecksService', function ($scope, CardsService, MyDecksService) {
 

@@ -1,7 +1,5 @@
 (function () {
 
-    'use strict';
-
     var angular = require("angular");
     var remote = require('electron').remote;
     var win = remote.getCurrentWindow();

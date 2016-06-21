@@ -1,7 +1,5 @@
 (function () {
 
-    'use strict';
-
     var watcher = require("lib/log/watcher");
     var classifier = require("lib/ingame/classifier");
     var predictions = require("lib/ingame/predictions");

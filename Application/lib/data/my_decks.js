@@ -1,4 +1,4 @@
-var my_decks = require("lib/my_decks.json");
+var my_decks = require("data/my_decks.json");
 
 module.exports.getAll = function getAll() {
     return my_decks;

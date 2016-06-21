@@ -1,9 +1,7 @@
 (function () {
 
-    'use strict';
-
     var fs = require('fs');
-    var cards = require("./data/cards.json");
+    var cards = require("data/cards.json");
 
     angular.module('app').service('CardsService', function () {
 
