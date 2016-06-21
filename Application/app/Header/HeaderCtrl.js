@@ -1,14 +1,7 @@
 (function () {
 
-    var angular = require("angular");
     var remote = require('electron').remote;
     var win = remote.getCurrentWindow();
-
-    angular.module('app').run(['$rootScope', '$location', '$routeParams', function($rootScope, $location, $routeParams) {
-        $rootScope.$on('$routeChangeSuccess', function(e, current, pre) {
-            console.info('Route:', $location.path(), $routeParams);
-        });
-    }]);
 
     angular.module('app').controller('HeaderCtrl', ['$scope', function ($scope) {
         $scope.alwaysOnTop = win.isAlwaysOnTop();

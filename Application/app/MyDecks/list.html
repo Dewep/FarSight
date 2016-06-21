@@ -5,8 +5,8 @@
         <h2><a ng-click="deck.display = !deck.display" href>[{{ deck.hero }}] {{ deck.name }}</a> <span style="float: right"><a href ng-click="editDeck(deck)">Clone</a> - <a href ng-click="removeDeck(deck)">❌</a></span></h2>
         <div ng-show="deck.display">
             <article ng-repeat="(card_id, num) in deck.cards_object">
-                <span class="mana">{{ card_id | hs_data: "cost" }}</span>
-                <span class="name" style="background-image: url('data/cards-images-bar/{{ card_id }}.png')"><span>{{ card_id | hs_data: "name" }}</span></span>
+                <span class="mana">{{ card_id | hsData: "cost" }}</span>
+                <span class="name" style="background-image: url('data/cards-images-bar/{{ card_id }}.png')"><span>{{ card_id | hsData: "name" }}</span></span>
                 <span class="num">{{ num }}</span>
             </article>
         </div>
@@ -24,7 +24,7 @@
         </form>
 
         <form ng-submit="dialogAutocompleteSubmit()">
-            <b>Add card </b></br><input type="text" ng-model="newCard.name" name="newcardname" placeholder="Far Sight"><i style="padding-left: 5px">{{newCard.name | fitlerCardsByName}}</i></br>
+            <b>Add card </b></br><input type="text" ng-model="newCard.name" name="newcardname" placeholder="Far Sight"><i style="padding-left: 5px">{{ newCard.name | cardsByName }}</i></br>
         </form></br>
 
         <h2>Deck content</h2></br>

@@ -4,26 +4,36 @@
         <meta charset="UTF-8">
         <title>FarSight</title>
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="static/styles.css" />
+        <link rel="stylesheet" href="assets/css/styles.css" />
     </head>
     <body ng-app="app">
+
         <header ng-controller="HeaderCtrl">
             <h1><a href="#/in_game/">FarSight</a></h1>
             <a class="squared-blue-btn" href ng-click="closeWindow()">❌</a>
             <a class="squared-blue-btn" href ng-click="toogleAlwaysOnTop()" title="Set alwaysOnTop option"><span ng-if="alwaysOnTop">⚫</span><span ng-if="!alwaysOnTop">⚪</span></a>
             <a class="squared-blue-btn" href="#/my_decks/">My Decks</a>
         </header>
+
         <div id="content" ng-view></div>
+
         <script type="text/javascript">
             process.env.NODE_PATH = __dirname;
             require('module').Module._initPaths();
         </script>
-        <script type="text/javascript" src="lib/app.js"></script>
-        <script type="text/javascript" src="lib/data/hs_data.filter.js"></script>
-        <script type="text/javascript" src="lib/data/CardsService.js"></script>
-        <script type="text/javascript" src="lib/data/MyDecksService.js"></script>
-        <script type="text/javascript" src="lib/ingame/ingame.controller.js"></script>
-        <script type="text/javascript" src="lib/decks/DecksCtrl.js"></script>
-        <script type="text/javascript" src="lib/main.js"></script>
+
+        <!-- General Scripts -->
+        <script type="text/javascript" src="app/app.js"></script>
+        <!-- Header Scripts -->
+        <script type="text/javascript" src="app/Header/HeaderCtrl.js"></script>
+        <!-- InGame Scripts -->
+        <script type="text/javascript" src="app/InGame/InGameCtrl.js"></script>
+        <!-- MyDecks Scripts -->
+        <script type="text/javascript" src="app/MyDecks/MyDecksCtrl.js"></script>
+        <script type="text/javascript" src="app/MyDecks/MyDecksService.js"></script>
+        <!-- Shared Scripts -->
+        <script type="text/javascript" src="app/Shared/CardsService.js"></script>
+        <script type="text/javascript" src="app/Shared/CardsByNameFilter.js"></script>
+        <script type="text/javascript" src="app/Shared/HsDataFilter.js"></script>
     </body>
 </html>

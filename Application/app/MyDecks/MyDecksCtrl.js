@@ -1,7 +1,7 @@
 (function () {
 
     // CONTROLLER.
-    angular.module('app').controller('DecksCtrl', ['$scope', 'CardsService', 'MyDecksService', function ($scope, CardsService, MyDecksService) {
+    angular.module('app').controller('MyDecksCtrl', ['$scope', 'CardsService', 'MyDecksService', function ($scope, CardsService, MyDecksService) {
 
         $scope.totalCards = 0;
 
@@ -87,15 +87,6 @@
         function removeDeck(deck) {
             MyDecksService.remove(deck);
         }
-    }]);
-
-    // FILTER.
-    angular.module('app').filter('fitlerCardsByName', ['CardsService', function (CardsService) {
-
-        return function(cardName) {
-            var result = CardsService.searchCardOfName(cardName);
-            return result === null ? '' : result.name;
-        };
     }]);
 
 })();

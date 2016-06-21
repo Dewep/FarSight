@@ -6,7 +6,7 @@
     var my_decks = require("lib/data/my_decks");
     var decks = require("lib/data/decks");
 
-    angular.module('app').controller('IngameCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+    angular.module('app').controller('InGameCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
 
         var game = {};
         var player = {};
