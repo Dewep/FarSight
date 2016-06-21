@@ -35,3 +35,44 @@ More information on [docs/Project.md](./docs/Project.md).
 | Early deliverable                   | 2pm 27th June 2016      |
 | Submission of the corpus            | 2pm 25th August 2016    |
 | Submission of the dissertation      | 2pm 12th September 2016 |
+
+# Installation
+
+Python 3 and NodeJS are required.
+
+## Application
+
+In the *Application* directory:
+
+```
+npm install -g electron-prebuilt
+npm install
+```
+
+Run the application (*Application* directory):
+
+```
+electron .
+```
+
+## Update cards data
+
+In the *Application* directory:
+
+```
+pip3 install Pillow
+python3 fetch_data.py
+```
+
+## Decks-Scraping
+
+Python 2 is required.
+
+```
+pip2 install lxml
+pip2 install requests
+```
+
+```
+python2 scraping.py
+```
