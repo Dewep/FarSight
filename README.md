@@ -22,7 +22,7 @@ Supervisor:
 
 This is an AI project (Machine Learning system) for a card game, applied to the game HearthStone (Blizzard company). Hearthstone is a digital collectible card game (and free-to-play) that revolves around turn-based matches between two opponents. All played with cards that can summon creatures, weapons, spells, secrets, ...
 
-We are interested by both artificial intelligence and the game HearthStone, that is why we would like to make our project of studies about a machine learning system, which will have the ultimate goal of learning cards and combos by itself, and be able to advise the player on what is the best move in every situation.
+We are interested by both artificial intelligence and the game HearthStone, that is why we would like to make our project of studies about a machine learning system, which will have the ultimate goal of learning decks by itself, and be able to advise the player on what to do against the predicted deck.
 
 More information on [docs/Project.md](./docs/Project.md).
 
