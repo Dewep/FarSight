@@ -109,6 +109,8 @@ class LogWatcherStream(LogWatcher):
                 self.game = None
                 self.player1 = None
                 self.player2 = None
+                self.player1_cards_id = []
+                self.player2_cards_id = []
                 self.init = False
         pass
         #print("tag_change", entity, tag, value)
