@@ -48,6 +48,9 @@ a:hover, a:active, a:focus { text-decoration: underline; color: #AB1A25; }
 .squared-blue-btn:hover, .squared-blue-btn:active { background-color: #EFE7BE; color: #024959; }
 .invalid-btn { background-color: #2b73b0; color: red; }
 
+.my_decks_list a, .my_decks_list a:link, .my_decks_list a:visited { color: #EFE7BE; }
+.my_decks_list a:hover, .my_decks_list a:active, .my_decks_list a:focus { color: #EFE7BE; }
+
 /*
 * Header
 */
@@ -71,6 +74,7 @@ article > span.name > span { background: linear-gradient(to right, rgba(9,33,64,
 article > span.name > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 article > span.num { width: 15%; }
 article > span.info { width: 15%; font-size: 10px; font-weight: normal; }
+article.link { cursor: pointer; }
 
 /*
 * Recording
@@ -91,3 +95,9 @@ article > span.info { width: 15%; font-size: 10px; font-weight: normal; }
 .styledModal table { border-collapse: collapse; margin-bottom: 30px}
 .styledModal td { border: 1px solid #c6c7cc; padding: 0px 5px; }
 .styledModal .squared-blue-btn:hover, .styledModal .squared-blue-btn:active { background-color: #024959; color: #EFE7BE; }
+
+/*
+* Previews
+*/
+.preview { position: fixed; width: 100%; margin: 0; left: 0; padding: 0; height: calc(100% - 40px); background-color: rgba(2,73,89,0.6); top: 40px; cursor: pointer; }
+.preview .styledModal { max-height: calc(100% - 100px - 20px); margin: 50px 15px; padding: 10px; width: calc(100% - 30px - 20px); overflow: auto; border: 0; cursor: default; }

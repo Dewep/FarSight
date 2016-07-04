@@ -73,7 +73,7 @@ LogWatcher.prototype.watchFile = function (file_path) {
     }, 1000);
 };
 
-LogWatcher.prototype.readFile = function (file_path) {
+LogWatcher.prototype.readFile = function (file_path, callback_end) {
     const rl = readline.createInterface({
         input: fs.createReadStream(file_path)
     });
@@ -82,6 +82,7 @@ LogWatcher.prototype.readFile = function (file_path) {
     rl.on('line', (line) => {
         self.parseLine(line);
     });
+    rl.on('close', callback_end);
 };
 
 LogWatcher.prototype.parseLine = function (line) {
@@ -95,11 +96,13 @@ module.exports.LogWatcher = LogWatcher;
 
 module.exports.Handler = function Handler(refresh_handler) {
     var file_path = locations.powerLogFile;
-    //file_path = __dirname + "/../../../Power.log";
 
     var log_watcher = new LogWatcher(refresh_handler);
+
     log_watcher.startStream();
-    log_watcher.readFile(file_path);
-    log_watcher.watchFile(file_path);
-    //log_watcher.readFile(file_path);
+
+    log_watcher.readFile(file_path, function(arg) {
+        log_watcher.parseLine("START_WATCH_FILE");
+        log_watcher.watchFile(file_path);
+    });
 };

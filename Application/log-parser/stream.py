@@ -130,6 +130,9 @@ watcher = LogWatcherStream()
 
 for line in sys.stdin:
     try:
-        watcher.read_line(line)
+        if line.startswith("START_WATCH_FILE"):
+            print(json.dumps({"type": "start_watch_file"}))
+        else:
+            watcher.read_line(line)
     except Exception as e:
         print(str(e), file=sys.stderr)

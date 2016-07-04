@@ -14,7 +14,29 @@
         var timeout_update = null;
         var waiting_update = 0;
 
+        $scope.waiting_message = "INITIALISATION...";
+
         $scope.record = null;
+
+        $scope.deck_previewed = null;
+        $scope.preview_deck = function preview_deck(deck_id) {
+            var decks_properties = decks.get_decks();
+            $scope.deck_previewed = null;
+            if (deck_id in decks_properties) {
+                $scope.deck_previewed = decks_properties[deck_id];
+            }
+        };
+        $scope.close_deck_preview = function close_deck_preview() {
+            $scope.deck_previewed = null;
+        };
+
+        $scope.card_previewed = null;
+        $scope.preview_card = function preview_card(card_id) {
+            $scope.card_previewed = card_id;
+        };
+        $scope.close_card_preview = function close_card_preview() {
+            $scope.card_previewed = null;
+        };
 
         $scope.game_state = false;
 
@@ -36,6 +58,7 @@
             $timeout(function () {
                 waiting_update = 0;
 
+                $scope.waiting_message = "Waiting for a game";
                 $scope.game_state = game["state"];
 
                 var entity_id = 0;
@@ -106,6 +129,7 @@
                 var predictions_opponent = classifier.classify(opponent["hero"], cards);
                 for (var i = 0; i < 3 && i < predictions_opponent.length; i++) {
                     $scope.opponent_deck_prediction.push({
+                        "deck_id": predictions_opponent[i]["deck"]["deck_id"],
                         "hero": predictions_opponent[i]["deck"]["hero"],
                         "name": predictions_opponent[i]["deck"]["name"],
                         "percent": predictions_opponent[i]["rate"]
@@ -194,7 +218,7 @@
 
         watcher.Handler(function(data) {
             if (data["type"] == "game_ready") {
-                console.info("Handler:game_ready");
+                //console.info("Handler:game_ready");
                 game = data["game"];
                 player = data["player1"];
                 opponent = data["player2"];
@@ -240,10 +264,15 @@
                 console.info("Handler:game_end");
                 game["state"] = false;
                 game["saved"] = false;
+            } else if (data["type"] == "start_watch_file") {
+                console.info("Handler:start_watch_file");
+                if (game) {
+                    game["saved"] = true;
+                }
+                updateScope();
+                setInterval(updateScope, 1000);
             }
         });
-
-        setInterval(updateScope, 1000);
 
     }]);
 

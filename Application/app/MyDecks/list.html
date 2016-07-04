@@ -1,6 +1,6 @@
 <p class="centered"><a class="squared-blue-btn" ng-click="dialogInit(); createDeck = true" href>New Deck</a></p>
 
-<section>
+<section class="my_decks_list">
     <div ng-repeat="deck in decks">
         <h2><a ng-click="deck.display = !deck.display" href>[{{ deck.hero }}] {{ deck.name }}</a> <span style="float: right"><a href ng-click="editDeck(deck)">Clone</a> - <a href ng-click="removeDeck(deck)">❌</a></span></h2>
         <div ng-show="deck.display">

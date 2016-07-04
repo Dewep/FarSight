@@ -43,7 +43,8 @@ var addFormatedProperty = function addFormatedProperty(property) {
         "deck_id": property["deck_id"],
         "hero": property["hero"].toUpperCase(),
         "name": property["name"],
-        "advices": property["advices"]
+        "advices": property["advices"],
+        "cards": []
     };
 };
 
@@ -52,6 +53,41 @@ var addFormatedInstance = function addFormatedInstance(instance) {
         "deck": instance["deck_id"],
         "cards": instance["cards"]
     });
+};
+
+var updatePropertyList = function updatePropertyList(specific_deck_id) {
+    for (var deck_id in decks_properties) {
+        if (!specific_deck_id || deck_id == specific_deck_id) {
+            var cards = {};
+            var total = 0;
+
+            for (var i in decks_instances) {
+                if (decks_instances[i]["deck"] == deck_id) {
+                    for (var c in decks_instances[i]["cards"]) {
+                        var card_id = decks_instances[i]["cards"][c];
+                        if (cards[card_id]) {
+                            cards[card_id]++;
+                        } else {
+                            cards[card_id] = 1;
+                        }
+                        total++;
+                    }
+                }
+            }
+
+            decks_properties[deck_id]["cards"] = [];
+            for (var c in cards) {
+                decks_properties[deck_id]["cards"].push({
+                    "card_id": c,
+                    "rate": cards[c] / total
+                });
+            }
+
+            decks_properties[deck_id]["cards"].sort(function(a, b) {
+                return b["rate"] - a["rate"];
+            });
+        }
+    }
 };
 
 var initDecks = function initDecks(url) {
@@ -67,6 +103,7 @@ var initDecks = function initDecks(url) {
                 for (item in instances) {
                     addFormatedInstance(instances[item]);
                 }
+                updatePropertyList();
                 db.close();
             });
         });
@@ -78,15 +115,16 @@ var addDeck = function addDeck(url, instance, property) {
     //return;
     mongoConnection(url, function (db) {
         collectionInsertMany(db, "decks_instances", [instance], function (result_instance) {
-            addFormatedInstance(instance);
             if (property) {
                 collectionInsertMany(db, "decks_properties", [property], function (result_property) {
                     addFormatedProperty(property);
-                    console.info("addDeck", property, instance);
+                    addFormatedInstance(instance);
+                    updatePropertyList(instance["deck_id"]);
                     db.close();
                 });
             } else {
-                console.info("addDeck", property, instance);
+                addFormatedInstance(instance);
+                updatePropertyList(instance["deck_id"]);
                 db.close();
             }
         });
