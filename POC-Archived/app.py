@@ -43,5 +43,7 @@ class HSMLApp:
         self.gui.run()
 
 if __name__ == '__main__':
-    app = HSMLApp("C:\Program Files (x86)\Hearthstone\Hearthstone_Data\output_log.txt")
+    # Enable "Zone" log in C:\Users\...\AppData\Local\Blizzard\Hearthstone\log.config
+    # C:\Program Files (x86)\Hearthstone\Hearthstone_Data\output_log.txt
+    app = HSMLApp("output_log.txt")
     app.run()
