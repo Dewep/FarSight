@@ -2,9 +2,15 @@
 
     var angular = require("angular");
 
+    // Angular main definition
     angular.module('app', [
-        require('angular-route')
+        // Dependencies
+
+        require('angular-route') // Router library
+
     ]).config(['$routeProvider', function($routeProvider) {
+
+        // Definitions of the routes
         $routeProvider.when('/my_decks/', {
             templateUrl: 'app/MyDecks/list.html',
             controller: 'MyDecksCtrl'
@@ -14,6 +20,7 @@
         }).otherwise({
             redirectTo: '/in_game/'
         });
+
     }]);
 
 })();
