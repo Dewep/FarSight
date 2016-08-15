@@ -1,15 +1,69 @@
-from ..enums import PowerType
+from ..enums import GameTag, PowerType, Zone
+
+
+class PacketTree:
+	def __init__(self, ts):
+		self.ts = ts
+		self.packets = []
+		self.parent = None
+
+	def __iter__(self):
+		for packet in self.packets:
+			yield packet
+
+	@property
+	def start_time(self):
+		for packet in self.packets:
+			if packet.ts:
+				return packet.ts
+
+	@property
+	def end_time(self):
+		for packet in self.packets[::-1]:
+			if packet.ts:
+				return packet.ts
+
+	def guess_friendly_player(self):
+		"""
+		Attempt to guess the friendly player in the game by
+		looking for initial revealed cards in the hand.
+		Will not work very early in game initialization and
+		produce incorrect results if both hands are revealed.
+		"""
+		# Pre-13619: The first FULL_ENTITY packet which is in Zone.HAND and
+		# does *not* have an ID is owned by the friendly player's opponent.
+		packets = self.packets[1:]
+		for packet in packets:
+			if packet.power_type != PowerType.FULL_ENTITY:
+				break
+			tags = dict(packet.tags)
+			if tags[GameTag.ZONE] == Zone.HAND and not packet.cardid:
+				return tags[GameTag.CONTROLLER] % 2 + 1
+
+		# Post-13619: The FULL_ENTITY packets no longer contain initial
+		# card data, a SHOW_ENTITY always has to happen.
+		# The first SHOW_ENTITY packet *will* be the friendly player's.
+		def find_show_entity(packets):
+			for packet in packets:
+				if packet.power_type == PowerType.SHOW_ENTITY:
+					return packet.entity.tags[GameTag.CONTROLLER]
+				elif packet.power_type == PowerType.BLOCK_START:
+					ret = find_show_entity(packet.packets)
+					if ret:
+						return ret
+
+		return find_show_entity(packets)
 
 
 class Packet:
-	type = 0
+	power_type = 0
 
 	def __repr__(self):
 		return "<%s>" % (self.__class__.__name__)
 
 
 class Block(Packet):
-	type = PowerType.BLOCK_START
+	power_type = PowerType.BLOCK_START
 
 	def __init__(self, ts, entity, type, index, effectid, effectindex, target):
 		self.ts = ts
@@ -36,21 +90,21 @@ class Block(Packet):
 
 
 class MetaData(Packet):
-	type = PowerType.META_DATA
+	power_type = PowerType.META_DATA
 
-	def __init__(self, ts, entity, type, count):
+	def __init__(self, ts, meta, data, count):
 		self.ts = ts
-		self.entity = entity
-		self.type = type
+		self.meta = meta
+		self.data = data
 		self.count = count
 		self.info = []
 
 	def __repr__(self):
-		return "%s(type=%r, entity=%r)" % (self.__class__.__name__, self.type, self.entity)
+		return "%s(meta=%r, data=%r)" % (self.__class__.__name__, self.meta, self.data)
 
 
 class CreateGame(Packet):
-	type = PowerType.CREATE_GAME
+	power_type = PowerType.CREATE_GAME
 
 	class Player:
 		def __init__(self, ts, entity, playerid, hi, lo):
@@ -70,7 +124,7 @@ class CreateGame(Packet):
 
 
 class HideEntity(Packet):
-	type = PowerType.HIDE_ENTITY
+	power_type = PowerType.HIDE_ENTITY
 
 	def __init__(self, ts, entity, zone):
 		self.ts = ts
@@ -79,7 +133,7 @@ class HideEntity(Packet):
 
 
 class FullEntity(Packet):
-	type = PowerType.FULL_ENTITY
+	power_type = PowerType.FULL_ENTITY
 
 	def __init__(self, ts, entity, cardid):
 		self.ts = ts
@@ -89,7 +143,7 @@ class FullEntity(Packet):
 
 
 class ShowEntity(Packet):
-	type = PowerType.SHOW_ENTITY
+	power_type = PowerType.SHOW_ENTITY
 
 	def __init__(self, ts, entity, cardid):
 		self.ts = ts
@@ -99,7 +153,7 @@ class ShowEntity(Packet):
 
 
 class ChangeEntity(Packet):
-	type = PowerType.CHANGE_ENTITY
+	power_type = PowerType.CHANGE_ENTITY
 
 	def __init__(self, ts, entity, cardid):
 		self.ts = ts
@@ -109,7 +163,7 @@ class ChangeEntity(Packet):
 
 
 class TagChange(Packet):
-	type = PowerType.TAG_CHANGE
+	power_type = PowerType.TAG_CHANGE
 
 	def __init__(self, ts, entity, tag, value):
 		self.ts = ts

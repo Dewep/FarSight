@@ -1,4 +1,4 @@
-from ..enums import GameTag
+from ..enums import ChoiceType, GameTag
 from .parser import LogParser
 
 
@@ -6,7 +6,10 @@ class LogWatcher(LogParser):
 	def on_entity_update(self, entity):
 		pass
 
-	def on_action(self, action):
+	def on_block(self, action):
+		pass
+
+	def on_mulligan(self, player, choices):
 		pass
 
 	def on_metadata(self, metadata):
@@ -21,6 +24,15 @@ class LogWatcher(LogParser):
 	def on_game_ready(self, game, *players):
 		pass
 
+	def _register_choices(self, *args):
+		packet = super()._register_choices(*args)
+		if packet.type == ChoiceType.MULLIGAN:
+			self.on_mulligan(packet.player, packet)
+
+	def create_game(self, ts):
+		super().create_game(ts)
+		self.current_game._broadcasted = False
+
 	def close_nodes(self):
 		if self._entity_node:
 			self.on_entity_update(self._entity_node)
@@ -28,9 +40,9 @@ class LogWatcher(LogParser):
 			self.on_metadata(self._metadata_node)
 		super().close_nodes()
 
-	def action_end(self, ts):
-		action = super().action_end(ts)
-		self.on_action(action)
+	def block_end(self, ts):
+		action = super().block_end(ts)
+		self.on_block(action)
 
 	def full_entity(self, ts, id, cardid):
 		super().full_entity(ts, id, cardid)

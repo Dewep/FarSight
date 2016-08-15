@@ -1,4 +1,4 @@
-from hearthstone.enums import CardType, GameTag, Step, Zone
+from .enums import CardType, GameTag, Step, Zone
 
 
 class Entity(object):
@@ -34,29 +34,10 @@ class Entity(object):
 class Game(Entity):
 	_args = ("players", )
 
-	def __init__(self, id, ts):
+	def __init__(self, id):
 		super(Game, self).__init__(id)
 		self.players = []
 		self.entities = []
-		self.packets = []
-		self.ts = ts
-		self.mulligan = {}
-
-	def __iter__(self):
-		for packet in self.packets:
-			yield packet
-
-	@property
-	def start_time(self):
-		for packet in self.packets:
-			if packet.ts:
-				return packet.ts
-
-	@property
-	def end_time(self):
-		for packet in self.packets[::-1]:
-			if packet.ts:
-				return packet.ts
 
 	@property
 	def current_player(self):
@@ -88,9 +69,9 @@ class Game(Entity):
 		for entity in self.entities:
 			if entity.id == id:
 				return entity
-			elif entity.id > id:
-				# It's just not there...
-				return
+			# Entities are ordered by ID... usually. It is NOT safe to assume
+			# that the entity is missing if we went past the ID.
+			# Yep.
 
 
 class Player(Entity):

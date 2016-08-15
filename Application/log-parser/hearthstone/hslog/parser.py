@@ -2,10 +2,10 @@ import logging
 import re
 from datetime import datetime, timedelta
 from hearthstone import enums
+from hearthstone.entities import Entity, Card, Game, Player
 from ..enums import GameTag, PowerType
 from . import packets
 from .utils import parse_enum, parse_tag
-from .entities import Entity, Card, Game, Player
 
 
 # Timestamp parsing
@@ -17,6 +17,7 @@ except ImportError:
 	logging.warning(
 		"python-dateutil is not installed. Timestamp parsing may not work properly."
 	)
+
 	def parse_timestamp(ts):
 		# Unity logs have one character precision too much...
 		return datetime.strptime(ts[:-1], TIMESTAMP_POWERLOG_FORMAT)
@@ -28,7 +29,7 @@ ENTITY_RE = re.compile("\[.*\s*id=(\d+)\s*.*\]")
 
 # Line format
 TIMESTAMP_POWERLOG_FORMAT = r"%H:%M:%S.%f"
-TIMESTAMP_RE = re.compile(r"^D ([\d:.]+) (.+)$")
+TIMESTAMP_RE = re.compile(r"^(D|W) ([\d:.]+) (.+)$")
 POWERLOG_LINE_RE = re.compile(r"([^(]+)\(\) - (.+)$")
 OUTPUTLOG_LINE_RE = re.compile(r"\[Power\] ()([^(]+)\(\) - (.+)$")
 
@@ -91,13 +92,19 @@ class PowerHandler(object):
 		# If we're missing an ACTION_END packet after the mulligan SendChoices,
 		# we just close it out manually.
 		if tag == enums.GameTag.MULLIGAN_STATE and value == enums.Mulligan.DEALING:
-			if self.current_block:
+			assert self.current_block
+			if isinstance(self.current_block, packets.Block):
 				logging.warning("WARNING: Broken mulligan nesting. Working around...")
 				self.block_end(ts)
 
 	def find_callback(self, method):
 		if method == self.parse_method("DebugPrintPower"):
 			return self.handle_data
+
+	def parse_initial_tag(self, data):
+		sre = TAG_VALUE_RE.match(data)
+		tag, value = sre.groups()
+		return parse_tag(tag, value)
 
 	def handle_data(self, ts, data):
 		opcode = data.split()[0]
@@ -106,19 +113,20 @@ class PowerHandler(object):
 			return self.handle_power(ts, opcode, data)
 
 		if opcode == "GameEntity":
-			self.close_nodes()
+			self.flush()
 			sre = GAME_ENTITY_RE.match(data)
 			self.register_game(ts, *sre.groups())
 		elif opcode == "Player":
-			self.close_nodes()
+			self.flush()
 			sre = PLAYER_ENTITY_RE.match(data)
 			self.register_player(ts, *sre.groups())
 		elif opcode.startswith("tag="):
-			sre = TAG_VALUE_RE.match(data)
-			tag, value = sre.groups()
-			tag, value = parse_tag(tag, value)
+			tag, value = self.parse_initial_tag(data)
 			self._entity_packet.tags.append((tag, value))
 		elif opcode.startswith("Info["):
+			if not self._metadata_node:
+				logging.warning("Metadata Info outside of META_DATA: %r", data)
+				return
 			sre = METADATA_INFO_RE.match(data)
 			idx, entity = sre.groups()
 			entity = self.parse_entity(entity)
@@ -126,7 +134,7 @@ class PowerHandler(object):
 		else:
 			raise NotImplementedError(data)
 
-	def close_nodes(self):
+	def flush(self):
 		if self._entity_node:
 			for k, v in self._entity_packet.tags:
 				self._entity_node.tags[k] = v
@@ -136,7 +144,7 @@ class PowerHandler(object):
 			self._metadata_node = None
 
 	def handle_power(self, ts, opcode, data):
-		self.close_nodes()
+		self.flush()
 
 		if opcode == "CREATE_GAME":
 			regex, callback = CREATE_GAME_RE, self.create_game
@@ -179,14 +187,15 @@ class PowerHandler(object):
 
 	# Messages
 	def create_game(self, ts):
-		self.current_block = None
-		self.current_game = Game(0, ts)
-		self.games.append(self.current_game)
-		self.current_game._broadcasted = False
+		self.current_game = Game(0)
+		packet_tree = packets.PacketTree(ts)
+		packet_tree.spectator_mode = self.spectator_mode
+		packet_tree.game = self.current_game
+		self.games.append(packet_tree)
+		self.current_block = packet_tree
 		self._entity_packet = packets.CreateGame(ts, self.current_game)
-		self.current_node.packets.append(self._entity_packet)
 		self._game_packet = self._entity_packet
-		self.current_game.spectator_mode = self.spectator_mode
+		self.current_block.packets.append(self._entity_packet)
 
 	def block_start(self, ts, entity, type, index, effectid, effectindex, target):
 		entity = self.parse_entity(entity)
@@ -196,10 +205,13 @@ class PowerHandler(object):
 		target = self.parse_entity(target)
 		block = packets.Block(ts, entity, type, index, effectid, effectindex, target)
 		block.parent = self.current_block
-		self.current_node.packets.append(block)
+		self.current_block.packets.append(block)
 		self.current_block = block
 
 	def block_end(self, ts):
+		if not self.current_block.parent:
+			logging.warning("[%s] Orphaned BLOCK_END detected" % (ts))
+			return self.current_block
 		self.current_block.end()
 		block = self.current_block
 		self.current_block = self.current_block.parent
@@ -211,7 +223,7 @@ class PowerHandler(object):
 		self.current_game.register_entity(entity)
 		self._entity_node = entity
 		self._entity_packet = packets.FullEntity(ts, entity, cardid)
-		self.current_node.packets.append(self._entity_packet)
+		self.current_block.packets.append(self._entity_packet)
 
 	def full_entity_update(self, ts, entity, cardid):
 		id = self.parse_entity_id(entity)
@@ -222,7 +234,7 @@ class PowerHandler(object):
 		entity.reveal(cardid)
 		self._entity_node = entity
 		self._entity_packet = packets.ShowEntity(ts, entity, cardid)
-		self.current_node.packets.append(self._entity_packet)
+		self.current_block.packets.append(self._entity_packet)
 
 	def hide_entity(self, ts, entity, tag, value):
 		entity = self.parse_entity(entity)
@@ -230,21 +242,22 @@ class PowerHandler(object):
 		tag, value = parse_tag(tag, value)
 		assert tag == GameTag.ZONE
 		packet = packets.HideEntity(ts, entity, value)
-		self.current_node.packets.append(packet)
+		self.current_block.packets.append(packet)
 
 	def change_entity(self, ts, entity, cardid):
 		entity = self.parse_entity(entity)
 		entity.change(cardid)
 		self._entity_node = entity
 		self._entity_packet = packets.ChangeEntity(ts, entity, cardid)
-		self.current_node.packets.append(self._entity_packet)
+		self.current_block.packets.append(self._entity_packet)
 
 	def meta_data(self, ts, meta, data, info):
-		type = parse_enum(enums.MetaDataType, meta)
-		entity = self.parse_entity(data)
+		meta = parse_enum(enums.MetaDataType, meta)
+		if meta == enums.MetaDataType.JOUST:
+			data = self.parse_entity(data)
 		count = int(info)
-		self._metadata_node = packets.MetaData(ts, entity, type, count)
-		self.current_node.packets.append(self._metadata_node)
+		self._metadata_node = packets.MetaData(ts, meta, data, count)
+		self.current_block.packets.append(self._metadata_node)
 
 	def tag_change(self, ts, e, tag, value):
 		entity = self.parse_entity(e)
@@ -255,7 +268,7 @@ class PowerHandler(object):
 			entity = self.check_for_player_registration(tag, value, e)
 
 		packet = packets.TagChange(ts, entity, tag, value)
-		self.current_node.packets.append(packet)
+		self.current_block.packets.append(packet)
 
 		if not entity or not isinstance(entity, Entity):
 			if tag == enums.GameTag.ENTITY_ID:
@@ -280,7 +293,7 @@ class OptionsHandler(object):
 			id, = sre.groups()
 			id = int(id)
 			self._options_packet = packets.Options(ts, id)
-			self.current_node.packets.append(self._options_packet)
+			self.current_block.packets.append(self._options_packet)
 		elif data.startswith("option "):
 			sre = OPTIONS_OPTION_RE.match(data)
 			id, type, entity = sre.groups()
@@ -310,7 +323,7 @@ class OptionsHandler(object):
 			sre = SEND_OPTION_RE.match(data)
 			option, suboption, target, position = sre.groups()
 			packet = packets.SendOption(ts, int(option), int(suboption), int(target), int(position))
-			self.current_node.packets.append(packet)
+			self.current_block.packets.append(packet)
 			return packet
 		raise NotImplementedError("Unhandled send option: %r" % (data))
 
@@ -319,7 +332,7 @@ class ChoicesHandler:
 	def find_callback(self, method):
 		if method == self.parse_method("DebugPrintEntityChoices"):
 			return self.handle_entity_choices
-		elif method== self.parse_method("DebugPrintChoices"):
+		elif method == self.parse_method("DebugPrintChoices"):
 			return self.handle_entity_choices_old
 		elif method == self.parse_method("SendChoices"):
 			return self.handle_send_choices
@@ -360,10 +373,7 @@ class ChoicesHandler:
 		type = parse_enum(enums.ChoiceType, type)
 		min, max = int(min), int(max)
 		self._choice_packet = packets.Choices(ts, player, id, tasklist, type, min, max)
-		self.current_node.packets.append(self._choice_packet)
-		if type == enums.ChoiceType.MULLIGAN:
-			# Make mulligan packets available in Game.mulligan
-			self.current_game.mulligan[player] = self._choice_packet
+		self.current_block.packets.append(self._choice_packet)
 		return self._choice_packet
 
 	def register_choices_old_1(self, ts, id, type):
@@ -382,7 +392,9 @@ class ChoicesHandler:
 
 	def register_choices(self, ts, id, player, tasklist, type, min, max):
 		player = self.parse_entity(player)
-		tasklist = int(tasklist)
+		if tasklist is not None:
+			# Sometimes tasklist is empty
+			tasklist = int(tasklist)
 		return self._register_choices(ts, id, player, tasklist, type, min, max)
 
 	def handle_send_choices(self, ts, data):
@@ -392,7 +404,7 @@ class ChoicesHandler:
 			id = int(id)
 			type = parse_enum(enums.ChoiceType, type)
 			self._send_choice_packet = packets.SendChoices(ts, id, type)
-			self.current_node.packets.append(self._send_choice_packet)
+			self.current_block.packets.append(self._send_choice_packet)
 			return self._send_choice_packet
 		elif data.startswith("m_chosenEntities"):
 			sre = SEND_CHOICES_ENTITIES_RE.match(data)
@@ -410,7 +422,7 @@ class ChoicesHandler:
 			player = self.parse_entity(player)
 			self._chosen_packet_count = int(count)
 			self._chosen_packet = packets.ChosenEntities(ts, player, id)
-			self.current_node.packets.append(self._chosen_packet)
+			self.current_block.packets.append(self._chosen_packet)
 			return self._chosen_packet
 		elif data.startswith("Entities["):
 			sre = ENTITIES_CHOSEN_ENTITIES_RE.match(data)
@@ -463,10 +475,6 @@ class LogParser(PowerHandler, ChoicesHandler, OptionsHandler, SpectatorModeHandl
 		self._current_date = None
 		self._synced_timestamp = False
 
-	@property
-	def current_node(self):
-		return self.current_block or self.current_game
-
 	def parse_timestamp(self, ts, method):
 		ret = parse_timestamp(ts)
 
@@ -502,7 +510,7 @@ class LogParser(PowerHandler, ChoicesHandler, OptionsHandler, SpectatorModeHandl
 		return ret
 
 	def read(self, fp):
-		for line in fp.readlines():
+		for line in fp:
 			self.read_line(line)
 
 	def read_line(self, line):
@@ -510,7 +518,7 @@ class LogParser(PowerHandler, ChoicesHandler, OptionsHandler, SpectatorModeHandl
 		if not sre:
 			raise ValueError("Invalid line format: %r" % (line))
 
-		ts, line = sre.groups()
+		level, ts, line = sre.groups()
 		if line.startswith(SPECTATOR_MODE_TOKEN):
 			line = line.replace(SPECTATOR_MODE_TOKEN, "").strip()
 			return self.process_spectator_mode(line)
@@ -519,6 +527,9 @@ class LogParser(PowerHandler, ChoicesHandler, OptionsHandler, SpectatorModeHandl
 		if sre:
 			method, msg = sre.groups()
 			msg = msg.strip()
+			if not self.current_block and "CREATE_GAME" not in msg:
+				logging.warning("No game available - ignoring %r", line)
+				return
 			for handler in PowerHandler, ChoicesHandler, OptionsHandler:
 				callback = handler.find_callback(self, method)
 				if callback:
@@ -539,7 +550,7 @@ class LogParser(PowerHandler, ChoicesHandler, OptionsHandler, SpectatorModeHandl
 
 	def parse_entity(self, entity):
 		id = self.parse_entity_id(entity)
-		if not id:
+		if id is None:
 			return self.current_game.get_player(entity) or entity
 		return self.current_game.find_entity_by_id(id)
 
@@ -561,8 +572,9 @@ class LogParser(PowerHandler, ChoicesHandler, OptionsHandler, SpectatorModeHandl
 		if all(player.name for player in self.current_game.players):
 			# If both players are already registered, there is a possibility
 			# that "The Innkeeper" has been renamed.
+			# It is also possible a previously-unknown entity is now known.
 			for player in self.current_game.players:
-				if player.is_ai:
+				if player.is_ai or player.name == "UNKNOWN HUMAN PLAYER":
 					# Transform the name to the new one.
 					logging.warning("Re-registering %r as %r", player, e)
 					self.register_player_name(self.current_game, e, player.id)
@@ -648,6 +660,6 @@ class LogParser(PowerHandler, ChoicesHandler, OptionsHandler, SpectatorModeHandl
 		player = Player(id, playerid, hi, lo)
 		self.current_game.register_entity(player)
 		self._entity_node = player
-		self._entity_packet = packets.CreateGame.Player(ts, id, playerid, hi, lo)
+		self._entity_packet = packets.CreateGame.Player(ts, player, playerid, hi, lo)
 		self._game_packet.players.append(self._entity_packet)
 		self.buffer_packet_entity_update(self._entity_packet, id)

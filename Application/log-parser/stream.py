@@ -1,5 +1,5 @@
 from hearthstone.hslog import LogWatcher
-from hearthstone.hslog.entities import Entity, Card
+from hearthstone.entities import Entity, Card
 from hearthstone.enums import Zone, GameTag, PlayState
 import fileinput
 import json
