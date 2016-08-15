@@ -199,6 +199,7 @@
                             }
                         };
                         console.info("End of the game, saving enemy deck...");
+                        //do not save deck without confirmation while program is still in learning mode
                         //decks.save_enemy_deck(opponent["hero"], cards, predictions_opponent);
                     } else {
                         console.info("End of the game, not saving the enemy deck (not enough cards played).");
@@ -218,7 +219,6 @@
 
         watcher.Handler(function(data) {
             if (data["type"] == "game_ready") {
-                //console.info("Handler:game_ready");
                 game = data["game"];
                 player = data["player1"];
                 opponent = data["player2"];

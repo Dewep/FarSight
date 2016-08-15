@@ -50,6 +50,7 @@ LogWatcher.prototype.onStreamData = function (data) {
     });
 };
 
+// Watch the file every second, reading what has been appened since last reading.
 LogWatcher.prototype.watchFile = function (file_path) {
     var self = this;
     var fileSize = fs.statSync(file_path).size;

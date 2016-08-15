@@ -1,7 +1,7 @@
 var MongoClient = require('mongodb'); // MongoDB plugin
 var mongo_url = 'mongodb://ks.dewep.net:27017/FarSight'; // MongoDB URL
 
-var decks_properties = {}; // Decks defintions
+var decks_properties = {}; // Decks definitions
 var decks_instances = []; // Decks cards
 var deck_next_id = -1; // Deck ID for the next new deck
 
@@ -38,7 +38,7 @@ var mongoConnection = function mongoConnection(url, callback) {
         if (err) {
             console.warn(err);
         } else {
-            console.info("Connected succesfully to the server MongoDB.");
+            console.info("Connected succesfully to the MongoDB server.");
         }
 
         callback(db);
@@ -69,7 +69,7 @@ var addFormatedInstance = function addFormatedInstance(instance) {
 };
 
 // Update the properties of the decks
-// Optional parameter: deck_id (if you want to update this one only)
+// Optional parameter: deck_id (if you want to update a specific one)
 var updatePropertyList = function updatePropertyList(specific_deck_id) {
     for (var deck_id in decks_properties) {
         if (!specific_deck_id || deck_id == specific_deck_id) {
@@ -130,7 +130,7 @@ var initDecks = function initDecks(url) {
     });
 };
 
-// Insert a new deck in the database
+// Insert a deck in the database
 var addDeck = function addDeck(url, instance, property) {
     console.info("addDeck to Mongo", instance, property);
 
@@ -158,7 +158,7 @@ var addDeck = function addDeck(url, instance, property) {
     });
 };
 
-// Add a new deck, and insert it to the database
+// Create a new deck, and insert it to the database
 var add_new_deck = function add_new_deck(name, hero, advices, cards) {
     if (deck_next_id == -1) {
         deck_next_id = 1;

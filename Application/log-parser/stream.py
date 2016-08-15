@@ -74,7 +74,6 @@ class LogWatcherStream(LogWatcher):
         return card.card_id == None or card.type.craftable
 
     def on_action(self, action):
-        #print("action", action)
         if not self.init:
             self.init = True
             self.write(type="game_ready", game=self.format_game(self.game), player1=self.format_player(self.player1), player2=self.format_player(self.player2))
@@ -89,7 +88,6 @@ class LogWatcherStream(LogWatcher):
 
     def on_metadata(self, metadata):
         pass
-        #print("metadata", metadata)
 
     def on_tag_change(self, entity, tag, value):
         if self.game and isinstance(entity, Entity):
@@ -113,11 +111,9 @@ class LogWatcherStream(LogWatcher):
                 self.player2_cards_id = []
                 self.init = False
         pass
-        #print("tag_change", entity, tag, value)
 
     def on_zone_change(self, entity, before, after):
         pass
-        #print("zone_change", entity, before, after)
 
     def on_game_ready(self, game, *players):
         self.game = game
