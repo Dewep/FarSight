@@ -6,6 +6,7 @@ import shutil
 import os
 import json
 from PIL import Image # pip install Pillow
+from requests import get # pip install requests
 
 FORCE_UPDATE = False
 
@@ -16,8 +17,9 @@ def mkdir(path):
 def download_file(url, destination):
     if FORCE_UPDATE or not os.path.exists(destination):
         print("Download " + url + " ... ", end="", flush=True)
-        with urllib.request.urlopen(url) as response, open(destination, "wb") as out_file:
-            shutil.copyfileobj(response, out_file)
+        with open(destination, "wb") as out_file:
+            response = get(url)
+            out_file.write(response.content)
         print("[OK]")
 
 mkdir("data/")
