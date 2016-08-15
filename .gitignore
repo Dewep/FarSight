@@ -13,3 +13,4 @@ pip-delete-this-directory.txt
 /Application/data/cards-images/
 /Application/node_modules/
 /Application/log-parser/python-hearthstone/
+/Demo/
