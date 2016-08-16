@@ -1,9 +1,14 @@
+// Description: HearthStone Log file location
+// Author: Aurelien
+
 var os = require('os');
 var path = require('path');
 
+// Detect the operating system (Win or Mac - HearthStone is not available on Unix/Linux)
 if (/^win/.test(os.platform())) {
     var programFiles = 'Program Files';
 
+    // Detect architecture system
     if (/64/.test(os.arch())) {
         programFiles += ' (x86)';
     }

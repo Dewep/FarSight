@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# Description: Script to update HearthStone static data (cards properties + cards images/thumbnails)
+# Author: Aurelien
+# Python Version: 3.5
+
 import urllib.request
 import shutil
 import os
@@ -10,10 +14,12 @@ from requests import get # pip install requests
 
 FORCE_UPDATE = False
 
+# Make directory
 def mkdir(path):
     if not os.path.exists(path):
         os.makedirs(path)
 
+# Download a HTTP file
 def download_file(url, destination):
     if FORCE_UPDATE or not os.path.exists(destination):
         print("Download " + url + " ... ", end="", flush=True)
@@ -22,22 +28,28 @@ def download_file(url, destination):
             out_file.write(response.content)
         print("[OK]")
 
+# Create initial files
 mkdir("data/")
 download_file("https://api.hearthstonejson.com/v1/latest/enUS/cards.json", "data/cards_full.json")
 
+# Get cards data
 cards_full = {}
 with open("data/cards_full.json", "r", encoding="utf8") as f:
     cards_full = json.load(f)
 
+# Create thumbnails of each cards
 mkdir("data/cards-images/")
 mkdir("data/cards-images-bar/")
 for card in cards_full:
     card_id = card["id"]
+    # Download original card representation
     download_file("http://wow.zamimg.com/images/hearthstone/cards/enus/original/" + card_id + ".png", "data/cards-images/" + card_id + ".png")
+    # Crop image to create the thumbnail
     im = Image.open("data/cards-images/" + card_id + ".png")
     im = im.crop((70, 130, 70 + 130, 130 + 24))
     im.save("data/cards-images-bar/" + card_id + ".png", "PNG")
 
+# Generate a new cards object, in order to only keep usefull information
 cards = {}
 for card in cards_full:
     cards[card["id"]] = {
@@ -57,5 +69,6 @@ for card in cards_full:
         "entourage": card["entourage"] if "entourage" in card else []
     }
 
+# Save this object in a JSON file
 with open("data/cards.json", "w", encoding="utf8") as f:
     json.dump(cards, f)

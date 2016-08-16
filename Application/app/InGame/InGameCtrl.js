@@ -1,23 +1,29 @@
+// Description: Angular InGameCtrl controller (main interface of the program)
+// Author: Aurelien (AI functions), Julien (AngularJS)
+
 (function () {
 
-    var watcher = require("lib/log/watcher");
-    var decks = require("lib/data/decks");
-    var FarSightIntelligence = require("lib/ingame/ia");
+    var watcher = require("lib/log/watcher"); // Log Watcher
+    var decks = require("lib/data/decks"); // List of decks definitions
+    var FarSightIntelligence = require("lib/ingame/ai"); // Core AI
 
+    // Angular controller
     angular.module('app').controller('InGameCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
 
-        var ia = new FarSightIntelligence();
+        var ia = new FarSightIntelligence(); // AI instance
         var game = {};
         var player = {};
         var opponent = {};
         var timeout_update = null;
 
+        // Waiting message
         $scope.waiting_message = "INITIALISATION...";
 
+        // Record object (when game is over)
         $scope.record = null;
 
+        // Finds deck content to show in preview
         $scope.deck_previewed = null;
-        //Finds deck content to show in preview
         $scope.preview_deck = function preview_deck(deck_id) {
             var decks_properties = decks.get_decks();
             $scope.deck_previewed = null;
@@ -29,8 +35,8 @@
             $scope.deck_previewed = null;
         };
 
+        // Show more details of a card
         $scope.card_previewed = null;
-        //Show more details of a card
         $scope.preview_card = function preview_card(card_id) {
             $scope.card_previewed = card_id;
         };
@@ -38,45 +44,53 @@
             $scope.card_previewed = null;
         };
 
+        // State of the game (display waiting message instead of the real interface if the value is false)
         $scope.game_state = false;
 
+        // Current game informations
         $scope.player_cards_hand_size = 0;
         $scope.player_cards_deck_size = 0;
-
         $scope.opponent_cards_hand_size = 0;
         $scope.opponent_cards_deck_size = 0;
 
+        // Opponent prediction (array of object {hero, name, percent})
         $scope.opponent_deck_prediction = [];
 
+        // Advice list (array of string)
         $scope.player_advices = [];
 
+        // Opponent plays prediction (array of object {card_id, percent})
         $scope.opponent_plays_prediction = [];
 
+        // Cards still in the player deck (array of object {card_id, number})
         $scope.player_cards_deck = [];
 
+        // Update information method
         var updateScope = function updateScope() {
+            // AngularJS Timeout function in order to force AngularJS to update the scope
             $timeout(function () {
                 $scope.waiting_message = "Waiting for a game";
                 $scope.game_state = game["state"];
 
+                // Update information in the Core AI
                 ia.updateValues(game, player, opponent);
 
+                // Get information from the AI
                 $scope.player_cards_hand_size = ia.getPlayerCardsHandSize();
                 $scope.player_cards_deck_size = ia.getPlayerCardsDeckSize();
                 $scope.player_cards_deck = ia.getPlayerCardsDeck();
-
                 $scope.opponent_cards_hand_size = ia.getOpponentCardsHandSize();
                 $scope.opponent_cards_deck_size = ia.getOpponentCardsDeckSize();
-
                 $scope.opponent_deck_prediction = ia.getOpponentDeckPredictions();
                 $scope.player_advices = ia.getPlayerAdvices();
                 $scope.opponent_plays_prediction = ia.getOpponentCardsPredictions();
 
+                // If the game is over
                 if (game["state"] == false && game["saved"] == false) {
                     game["saved"] = true;
-
                     var opponent_cards_played = ia.getOpponentCardsPlayed();
 
+                    // If the opponent played at least 10 cards
                     if (opponent_cards_played.length > 10) {
                         var selected = "new";
                         var linked_decks = [];
@@ -86,6 +100,7 @@
 
                         var deck_predictions = ia.getOpponentDeckPredictions();
 
+                        // List of decks predictions
                         for (let i = 0; i < deck_predictions.length; i++) {
                             linked_decks.push({
                                 "deck_id": deck_predictions[i]["deck_id"],
@@ -93,6 +108,7 @@
                             });
                         }
 
+                        // Variance deck
                         if (deck_predictions.length) {
                             linked_selected = linked_decks[0];
                             if (deck_predictions[0]["percent"] > 0.70) {
@@ -102,6 +118,7 @@
                             default_advices = deck_predictions[0]["advices"].join("\n");
                         }
 
+                        // Regroup cards played
                         var cards_grouped = {};
                         for (var i = 0; i < opponent_cards_played.length; i++) {
                             if (cards_grouped[opponent_cards_played[i]]) {
@@ -111,6 +128,7 @@
                             }
                         }
 
+                        // Object record
                         $scope.record = {
                             "selected": selected,
                             "cards": opponent_cards_played,
@@ -136,7 +154,7 @@
             });
         };
 
-        //When program is in learning mode, used to chose if the deck used by opponent should be attached to an already existing deck or a new one.
+        // When program is in learning mode, used to chose if the deck used by opponent should be attached to an already existing deck or a new one
         $scope.record_confirm = function record_confirm() {
             if ($scope.record && $scope.record.selected == "linked" && $scope.record.linked.selected) {
                 decks.add_new_instance($scope.record.linked.selected.deck_id, $scope.record.cards);
@@ -147,9 +165,10 @@
             $scope.record = null;
         };
 
+        // Log Watcher events
         watcher.Handler(function(data) {
 
-            if (data["type"] == "game_ready") {
+            if (data["type"] == "game_ready") { // If a game is ready
 
                 game = data["game"];
                 player = data["player1"];
@@ -160,7 +179,7 @@
                 player["cards"] = {};
                 opponent["cards"] = {};
 
-            } else if (data["type"] == "player") {
+            } else if (data["type"] == "player") { // If a player has been updated
 
                 var player_target = null;
 
@@ -176,7 +195,7 @@
                     player_target["name"] = data["player"]["name"];
                 }
 
-            } else if (data["type"] == "card") {
+            } else if (data["type"] == "card") { // If a card has been updated
 
                 game["state"] = true;
 
@@ -202,13 +221,13 @@
                     }
                 }
 
-            } else if (data["type"] == "game_end") {
+            } else if (data["type"] == "game_end") { // If the game is over
 
                 console.info("Handler:game_end");
                 game["state"] = false;
                 game["saved"] = false;
 
-            } else if (data["type"] == "start_watch_file") {
+            } else if (data["type"] == "start_watch_file") { // If we start to watch file instead of just read it
 
                 console.info("Handler:start_watch_file");
 
@@ -216,6 +235,7 @@
                     game["saved"] = true;
                 }
 
+                // Execute updateScope every second
                 updateScope();
                 setInterval(updateScope, 1000);
 

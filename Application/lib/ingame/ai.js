@@ -1,8 +1,11 @@
-var classifier = require("lib/ingame/classifier");
-var predictions = require("lib/ingame/predictions");
-var my_decks = require("lib/data/my_decks");
+// Description: Core AI (containing all functions handling data used by the different features)
+// Author: Aurelien
 
-//Class containing all functions handling data used by the different features.
+var classifier = require("lib/ingame/classifier"); // Classifier (Instance-Based Learning algorithm here)
+var predictions = require("lib/ingame/predictions"); // Predictions plays
+var my_decks = require("lib/data/my_decks"); // My Decks predictions
+
+// Class containing all functions handling data used by the different features
 var FarSightIntelligence = function () {
     this.game = {};
     this.player = {};
@@ -18,6 +21,7 @@ var FarSightIntelligence = function () {
 
 var prototype = FarSightIntelligence.prototype;
 
+// Update internal values (the game states and the 2 players)
 prototype.updateValues = function (game, player, opponent) {
     this.game = game;
     this.player = player;
@@ -31,7 +35,7 @@ prototype.updateValues = function (game, player, opponent) {
     this.opponent_cards_predictions = this._getCardsPredictions(this.opponent, this.opponent_stats.cards, this.opponent_deck_predictions);
 };
 
-//Get number of cards in hand, in deck, plus their ids
+// Get number of cards in hand, in deck, plus their ids
 prototype._getPlayerStats = function (player) {
     var stats = {
         deck: 0,
@@ -49,7 +53,7 @@ prototype._getPlayerStats = function (player) {
             stats.hand++;
         }
 
-        if (card["card_id"] && card["card_id"] != "GAME_005") {
+        if (card["card_id"] && card["card_id"] != "GAME_005") { // GAME_005 is the coin, useless card in the prediction
             stats.cards.push(card["card_id"]);
 
             if (card["zone"] != "DECK") {
@@ -61,16 +65,18 @@ prototype._getPlayerStats = function (player) {
     return stats;
 };
 
-//List of the cards in player's deck, if they provided them before playing
+// List of the cards in player's deck, if they provided them before playing
 prototype._getPlayerCards = function (player, cards, cards_exclude) {
     var player_cards_deck = [];
 
     var predictions_player = my_decks.getPredictionDecks(player.hero, cards);
 
+    // If percent > 70, there is a high chance that it is the well deck
     if (predictions_player.length && predictions_player[0]["percent"] > 70) {
         var cards_deck = {};
         var cards_collection = predictions_player[0]["deck"]["cards"];
 
+        // Find cards not already played
         for (var card in cards_collection) {
             var index = cards_exclude.indexOf(cards_collection[card]);
 
@@ -83,6 +89,7 @@ prototype._getPlayerCards = function (player, cards, cards_exclude) {
             }
         }
 
+        // Add them to the array
         for (card in cards_deck) {
             player_cards_deck.push({
                 "card_id": card,
@@ -94,13 +101,14 @@ prototype._getPlayerCards = function (player, cards, cards_exclude) {
     return player_cards_deck;
 };
 
-//Get data related to deck prediction (advices, percentage of deck resemblance)
+// Get data related to deck prediction (advice, percentage of deck resemblance)
 prototype._getPredictionsDeck = function (player, cards) {
-    var predictions = [];
-    var predictions_decks = classifier.classify(player.hero, cards);
+    var predictions_results = [];
+    var predictions_decks = classifier.classify(player.hero, cards); // Classify the deck (with the Instance-Based Learning algorithm here)
 
+    // We only take the 3 best ones (they are sorted, then there are the 3 first)
     for (var i = 0; i < 3 && i < predictions_decks.length; i++) {
-        predictions.push({
+        predictions_results.push({
             "deck_id": predictions_decks[i]["deck"]["deck_id"],
             "hero": predictions_decks[i]["deck"]["hero"],
             "name": predictions_decks[i]["deck"]["name"],
@@ -109,14 +117,15 @@ prototype._getPredictionsDeck = function (player, cards) {
         });
     }
 
-    return predictions;
+    return predictions_results;
 };
 
-//Get messages to display in the advices section
+// Get messages to display in the advices section
 prototype._getPlayerAdvices = function (deck_predictions) {
     var advices = [];
 
     if (deck_predictions.length) {
+        // Get list of the advice linked to the deck
         for (var advice in deck_predictions[0]["advices"]) {
             advices.push({
                 "message": deck_predictions[0]["advices"][advice]
@@ -127,13 +136,15 @@ prototype._getPlayerAdvices = function (deck_predictions) {
     return advices;
 };
 
-//List of the cards that could get played by opponent next turn
+// List of the cards that could get played by opponent next turn
 prototype._getCardsPredictions = function (player, cards, deck_predictions) {
     var cards_predictions = [];
 
     if (deck_predictions.length) {
+        // Get predictions plays using the deck predicted, the cards already played, and the mana of the player available
         var predictions_plays = predictions.get_predictions_plays(deck_predictions[0]["deck_id"], cards, player.mana + 1);
 
+        // Get the 5 bests one (5 first bcz there are sorted)
         for (var i = 0; i < 5 && i < predictions_plays.length; i++) {
             cards_predictions.push({
                 "card_id": predictions_plays[i]["card_id"],
@@ -145,7 +156,7 @@ prototype._getCardsPredictions = function (player, cards, deck_predictions) {
     return cards_predictions;
 };
 
-/* Getters */
+// Information Getters
 prototype.getPlayerCardsHandSize = function () { return this.player_stats.hand; };
 prototype.getPlayerCardsDeckSize = function () { return this.player_stats.deck; };
 prototype.getPlayerCardsDeck = function () { return this.player_cards_deck; };
