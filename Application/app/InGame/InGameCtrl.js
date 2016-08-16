@@ -17,6 +17,7 @@
         $scope.record = null;
 
         $scope.deck_previewed = null;
+        //Finds deck content to show in preview
         $scope.preview_deck = function preview_deck(deck_id) {
             var decks_properties = decks.get_decks();
             $scope.deck_previewed = null;
@@ -29,6 +30,7 @@
         };
 
         $scope.card_previewed = null;
+        //Show more details of a card
         $scope.preview_card = function preview_card(card_id) {
             $scope.card_previewed = card_id;
         };
@@ -134,6 +136,7 @@
             });
         };
 
+        //When program is in learning mode, used to chose if the deck used by opponent should be attached to an already existing deck or a new one.
         $scope.record_confirm = function record_confirm() {
             if ($scope.record && $scope.record.selected == "linked" && $scope.record.linked.selected) {
                 decks.add_new_instance($scope.record.linked.selected.deck_id, $scope.record.cards);
