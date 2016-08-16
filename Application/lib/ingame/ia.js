@@ -2,6 +2,7 @@ var classifier = require("lib/ingame/classifier");
 var predictions = require("lib/ingame/predictions");
 var my_decks = require("lib/data/my_decks");
 
+//Class containing all functions handling data used by the different features.
 var FarSightIntelligence = function () {
     this.game = {};
     this.player = {};
@@ -30,6 +31,7 @@ prototype.updateValues = function (game, player, opponent) {
     this.opponent_cards_predictions = this._getCardsPredictions(this.opponent, this.opponent_stats.cards, this.opponent_deck_predictions);
 };
 
+//Get number of cards in hand, in deck, plus their ids
 prototype._getPlayerStats = function (player) {
     var stats = {
         deck: 0,
@@ -59,6 +61,7 @@ prototype._getPlayerStats = function (player) {
     return stats;
 };
 
+//List of the cards in player's deck, if they provided them before playing
 prototype._getPlayerCards = function (player, cards, cards_exclude) {
     var player_cards_deck = [];
 
@@ -91,6 +94,7 @@ prototype._getPlayerCards = function (player, cards, cards_exclude) {
     return player_cards_deck;
 };
 
+//Get data related to deck prediction (advices, percentage of deck resemblance)
 prototype._getPredictionsDeck = function (player, cards) {
     var predictions = [];
     var predictions_decks = classifier.classify(player.hero, cards);
@@ -108,6 +112,7 @@ prototype._getPredictionsDeck = function (player, cards) {
     return predictions;
 };
 
+//Get messages to display in the advices section
 prototype._getPlayerAdvices = function (deck_predictions) {
     var advices = [];
 
@@ -122,6 +127,7 @@ prototype._getPlayerAdvices = function (deck_predictions) {
     return advices;
 };
 
+//List of the cards that could get played by opponent next turn
 prototype._getCardsPredictions = function (player, cards, deck_predictions) {
     var cards_predictions = [];
 
