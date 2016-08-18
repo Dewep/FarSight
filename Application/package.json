@@ -1,12 +1,24 @@
 {
-  "name": "FarSight",
-  "version": "0.1.0",
-  "main": "electron.js",
-  "dependencies": {
-    "angular": "^1.5.5",
-    "angular-route": "^1.5.5",
-    "mongodb": "^2.1.21",
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1"
-  }
+    "name": "FarSight",
+    "version": "1.0.0",
+    "description": "An application of Machine Learning to the Card Game Hearthstone",
+    "main": "electron.js",
+    "scripts": {
+        "start": "electron ."
+    },
+    "repository" : {
+        "type" : "git",
+        "url" : "https://github.com/Dewep/FarSight#readme"
+    },
+    "author" : "Aurélien Maigret",
+    "contributors" : [
+        "Julien Colin",
+        "Florent Zajda"
+    ],
+    "license": "GPL-3.0",
+    "dependencies": {
+        "angular": "^1.5.5",
+        "angular-route": "^1.5.5",
+        "mongodb": "^2.1.21"
+    }
 }
