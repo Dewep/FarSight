@@ -1,6 +1,13 @@
+<!--
+Description: Angular InGameCtrl view (main interface of the program)
+Author: Aurelien (static data, GUI), Julien (AngularJS)
+-->
+
+<!-- Preview a deck -->
 <div class="preview" ng-if="deck_previewed" ng-click="close_deck_preview()">
     <section class="styledModal" ng-click="$event.stopPropagation()">
         <h2>[{{ deck_previewed.hero }}] {{ deck_previewed.name }} <span style="float: right"><a href ng-click="close_deck_preview()">❌</a></span></h2>
+
         <article ng-repeat="card in deck_previewed.cards" ng-click="preview_card(card.card_id)" class="link">
             <span class="mana">{{ card.card_id | hsData: "cost" }} <img src="assets/img/mana.png" style="width: 14px"></span>
             <span class="name" style="background-image: url('data/cards-images-bar/{{ card.card_id }}.png')"><span>{{ card.card_id | hsData: "name" }}</span></span>
@@ -9,15 +16,19 @@
     </section>
 </div>
 
+<!-- Preview a card -->
 <div class="preview" ng-if="card_previewed" ng-click="close_card_preview()">
     <section class="styledModal" ng-click="$event.stopPropagation()">
         <h2>[{{ card_previewed }}] {{ card_previewed | hsData: "name" }} <span style="float: right"><a href ng-click="close_card_preview()">❌</a></span></h2>
+
         <img ng-src="http://wow.zamimg.com/images/hearthstone/cards/enus/original/{{ card_previewed }}.png" style="max-width: 100%"/>
     </section>
 </div>
 
+<!-- Record a deck (when the game is over) -->
 <section class="recording_deck" ng-if="record">
     <h2>Recording the last game as</h2>
+
     <ul>
         <li class="control">
             <a class="squared-blue-btn" href ng-click="record.cards_list = !record.cards_list"><span ng-if="!record.cards_list">Display</span><span ng-if="record.cards_list">Hide</span> the cards played</a>
@@ -49,12 +60,15 @@
     </ul>
 </section>
 
+<!-- Waiting message (when the program is initialing or waiting a game) -->
 <section ng-if="!game_state">
     <h2 style="text-align: center; font-size: 20px; margin-top: 50px; border: 0;">{{ waiting_message }}</h2>
 </section>
 
+<!-- Current game information -->
 <section ng-if="game_state">
-    <h2>Current game informations</h2>
+    <h2>Current game information</h2>
+
     <table>
         <tbody>
             <tr>
@@ -73,8 +87,10 @@
     </table>
 </section>
 
+<!-- Opponent deck prediction -->
 <section ng-if="game_state">
-    <h2>Opponent prediction</h2>
+    <h2>Opponent deck prediction</h2>
+
     <div>
         <article ng-repeat="deck in opponent_deck_prediction" ng-click="preview_deck(deck.deck_id)" class="link">
             <span class="mana" style="font-size: 0.5em">[{{ deck.hero }}]</span>
@@ -84,15 +100,19 @@
     </div>
 </section>
 
+<!-- Advice to play againt this deck opponent -->
 <section ng-if="game_state">
-    <h2>Advices</h2>
+    <h2>Advice</h2>
+
     <ol>
         <li ng-repeat="advice in player_advices">{{ advice.message }}</li>
     </ol>
 </section>
 
+<!-- Predictions plays of the opponent -->
 <section ng-if="game_state">
     <h2>Prediction plays</h2>
+
     <div>
         <article ng-repeat="prediction in opponent_plays_prediction" ng-click="preview_card(prediction.card_id)" class="link">
             <span class="mana">{{ prediction.card_id | hsData: "cost" }} <img src="assets/img/mana.png" style="width: 14px"></span>
@@ -102,8 +122,10 @@
     </div>
 </section>
 
+<!-- List of cards still in the player deck -->
 <section ng-if="game_state">
     <h2>Your deck</h2>
+
     <div>
         <article ng-repeat="card in player_cards_deck" ng-click="preview_card(card.card_id)" class="link">
             <span class="mana">{{ card.card_id | hsData: "cost" }} <img src="assets/img/mana.png" style="width: 14px"></span>
