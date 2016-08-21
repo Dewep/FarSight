@@ -4,8 +4,6 @@
   "main": "electron.js",
   "dependencies": {
     "angular": "^1.5.5",
-    "angular-route": "^1.5.5",
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1"
+    "angular-route": "^1.5.5"
   }
 }

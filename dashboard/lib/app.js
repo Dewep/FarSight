@@ -11,7 +11,7 @@
         .config(['$routeProvider', function($routeProvider) {
             // /in_game/ URL loads ingame.html with its controller IngameCtrl
             $routeProvider.when('/in_game/', {
-                templateUrl: 'lib/ingame/ingame.html',
+                templateUrl: 'lib/ingame/ingameView.html',
                 controller: 'IngameCtrl'
             }).otherwise({  // By default goes to /in_game/
                 redirectTo: '/in_game/'
