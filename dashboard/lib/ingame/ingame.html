@@ -18,40 +18,12 @@
     </table>
     <p>
         Opponent prediction:
-        <span ng-repeat="deck in opponent_deck_prediction">
-            <b ng-if="$first">{{ deck.deck }}</b>
-            <span ng-if="!$first">{{ deck.deck }}</span>
-            {{ deck.percent * 100 | number:0 }}%<span ng-if="!$first && !$last">,</span>
-            <span ng-if="$first"><br/></span>
+        <span ng-repeat="deck in opponent_deck_prediction"> <!-- Loop through decks -->
+            <b ng-if="$first">{{ deck.deck }}</b>        <!-- If first     - BOLD -->
+            <span ng-if="!$first">{{ deck.deck }}</span> <!-- If NOT first - Normal -->
+            {{ deck.percent * 100 | number:0 }}%
+            <span ng-if="!$first && !$last">,</span>     <!-- Comma between decks -->
+            <span ng-if="$first"><br/></span>            <!-- If first - Line breaks -->
         </span>
     </p>
-</section>
-
-<section>
-    <h2>Advices</h2>
-    <ol ng-repeat="advice in player_advices">
-        <li>{{ advice.message }}</li>
-    </ol>
-</section>
-
-<section>
-    <h2>Prediction plays</h2>
-    <div ng-repeat="prediction in opponent_plays_prediction">
-        <article>
-            <span class="mana">{{ prediction.card_id | hs_data: "cost" }}</span>
-            <span class="name" style="background-image: url('data/cards-images-bar/{{ prediction.card_id }}.png')"><span>{{ prediction.card_id | hs_data: "name" }}</span></span>
-            <span class="info">{{ prediction.percent * 100 | number:0 }}%</span>
-        </article>
-    </div>
-</section>
-
-<section>
-    <h2>Your deck</h2>
-    <div ng-repeat="card in player_cards_deck">
-        <article>
-            <span class="mana">{{ card.card_id | hs_data: "cost" }}</span>
-            <span class="name" style="background-image: url('data/cards-images-bar/{{ card.card_id }}.png')"><span>{{ card.card_id | hs_data: "name" }}</span></span>
-            <span class="num">{{ card.number | number:0 }}</span>
-        </article>
-    </div>
 </section>
