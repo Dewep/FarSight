@@ -9,6 +9,7 @@
         <header>
             <h1>FarSight</h1>
         </header>
+        <!-- Angular directive used as a container to hold our HTML layout -->
         <div id="content" ng-view></div>
         <script type="text/javascript">
             // This Hack change the paths for JavaScript import from
@@ -17,7 +18,8 @@
             process.env.NODE_PATH = __dirname + "/lib";
             require('module').Module._initPaths();
         </script>
-        <script type="text/javascript" src="lib/app.js"></script>
+        <!-- Import all JavaScript files -->
+        <script type="text/javascript" src="lib/angular_main.js"></script>
         <script type="text/javascript" src="lib/ingame/IngameCtrl.js"></script>
     </body>
 </html>
