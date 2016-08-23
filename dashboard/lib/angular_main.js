@@ -2,19 +2,21 @@
 
     'use strict';
 
-    // Loads Angular lib
+    // Load libs
     var angular = require("angular");
 
-    // Creates the app module and defines the routes
-    angular
-        .module('app', [require('angular-route')])
-        .config(['$routeProvider', function($routeProvider) {
-            // /in_game/ URL loads ingame.html with its controller IngameCtrl
-            $routeProvider.when('/in_game/', {
-                templateUrl: 'lib/ingame/ingameView.html',
-                controller: 'IngameCtrl'
-            }).otherwise({  // By default goes to /in_game/
-                redirectTo: '/in_game/'
-            });
-        }]);
+    // Creates the Angular module & Load lib angular-route inside
+    var appModule = angular.module('app', [require('angular-route')]);
+
+    // routeProvider is used to configure routes in angular-route module
+    appModule.config(function($routeProvider) {
+        // /in_game/ url loads ingame.html and attach it IngameCtrl
+        $routeProvider.when('/in_game/', {
+            templateUrl: 'lib/ingame/ingameView.html',
+            controller: 'IngameCtrl'
+        }).otherwise({  // By default goes to /in_game/
+            redirectTo: '/in_game/'
+        });
+    });
+
 })();
