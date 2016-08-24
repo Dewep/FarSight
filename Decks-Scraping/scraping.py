@@ -1,3 +1,8 @@
+# Description: Scan Heartstone website which have list of meta-decks
+#              And insert those decks in our database to keep our AI
+#              up to date with the current meta.
+# Author: Julien, Florent
+
 #!/usr/bin/python
 
 from lxml import html
@@ -80,6 +85,7 @@ for className, classId in CLASSES.iteritems():
     for d in basicsDecksJson[className.upper()]:
         print "Deck :", d["url"]
 
+        # This block scan the webpage to find the deck and its informations (name, class, advices, cards)
         cardsPage = requests.get(d["url"])
         XMLTreeCardsPage = html.fromstring(cardsPage.content)
         XMLCards = XMLTreeCardsPage.xpath('//aside//tbody//a//text()')
@@ -106,5 +112,6 @@ result = {
                             'cards': x['cards']} for x in decks]
 }
 
+# Write the output in a beautiful json format
 with open('output.json', 'w') as outfile:
     json.dump(result, outfile, indent=4, sort_keys=True)

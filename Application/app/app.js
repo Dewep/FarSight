@@ -1,3 +1,6 @@
+// Description: Angular main configuration file
+// Author: Julien
+
 (function () {
 
     var angular = require("angular");
@@ -12,7 +15,7 @@
 
         // Definitions of the routes
         $routeProvider.when('/my_decks/', {
-            templateUrl: 'app/MyDecks/list.html',
+            templateUrl: 'app/MyDecks/MyDecksView.html',
             controller: 'MyDecksCtrl'
         }).when('/in_game/', {
             templateUrl: 'app/InGame/view.html',

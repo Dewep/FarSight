@@ -1,3 +1,7 @@
+// Description: Angular CardsService service
+// allow to search a card in the global list of Hearthstone cards
+// Author: Julien
+
 (function () {
 
     var fs = require('fs');
@@ -7,6 +11,7 @@
 
         var cardsList = cards;
 
+        // Get the Hearthstone card which the name match cardName
         this.searchCardOfName = function (cardName) {
             if (cardName.length === 0)
                 return null;
@@ -28,6 +33,7 @@
             return result;
         };
 
+        // Get the Hearthstone card which the id match cardId
         this.searchCardOfId = function (cardId) {
             for (var key in cardsList)
                 if (cardsList[key].collectible === true &&

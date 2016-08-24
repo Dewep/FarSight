@@ -1,0 +1,60 @@
+<!--
+Description: Angular MyDecksCtrl view
+Author: Julien
+-->
+
+<!-- New deck button -->
+<p class="centered"><a class="squared-blue-btn" ng-click="openCreateDeckPopup(); creatingDeck = true" href>New Deck</a></p>
+
+<!-- List of user decks -->
+<section class="my_decks_list">
+    <div ng-repeat="deck in decks">
+        <h2><a ng-click="deck.display = !deck.display" href>[{{ deck.hero }}] {{ deck.name }}</a> <span style="float: right"><a href ng-click="cloneDeck(deck)">Clone</a> - <a href ng-click="removeDeck(deck)">❌</a></span></h2>
+        <div ng-show="deck.display">
+            <article ng-repeat="(card_id, num) in deck.cards_object">
+                <span class="mana">{{ card_id | hsData: "cost" }} <img src="assets/img/mana.png" style="width: 14px"></span>
+                <span class="name" style="background-image: url('data/cards-images-bar/{{ card_id }}.png')"><span>{{ card_id | hsData: "name" }}</span></span>
+                <span class="num">{{ num }}</span>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Dialog used for deck creation -->
+<section ng-if="creatingDeck">
+    <dialog class="styledModal" open>
+
+        <h2>New Deck</h2>
+
+        <form name="deckProperties">
+            <b>Name     </b></br><input type="text" ng-model="dialogNewDeck.name" name="deckName" placeholder="OP Deck 2016" required></br>
+            <b>Character</b></br><input type="text" ng-model="dialogNewDeck.hero" name="hero" placeholder="Mage" required></br>
+        </form>
+
+        <!-- Field for user to add a cards in its own deck -->
+        <form ng-submit="dialogAutocompleteSubmit()">
+            <b>Add card </b></br><input type="text" ng-model="dialogNewCard.name" name="newcardname" placeholder="Far Sight"><i style="padding-left: 5px">{{ dialogNewCard.name | cardsByName }}</i></br>
+        </form></br>
+
+        <!-- List of cards in the deck -->
+        <h2>Deck content</h2></br>
+        <table>
+            <tbody>
+                  <tr ng-repeat="card in dialogNewDeck.cards">
+                    <td>{{ card.name }}</td>
+                    <td>x {{card.count}}</td>
+                    <td><a ng-click="dialogDeleteCard(card)" href>❌</a></td>
+                  </tr>
+          </tbody>
+          <tfoot ng-if="dialogNewDeck.cards.length != 0">
+            <tr>
+              <td colspan="2"><b>Total cards cards</b></td>
+              <td>{{ dialogNewDeck.totalCards }}</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <!-- Button to create the deck and close popup -->
+        <p class="centered"><a class="squared-blue-btn" ng-click="dialogCreateDeck()" href>Create deck</a></p>
+    </dialog>
+</section>

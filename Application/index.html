@@ -1,3 +1,8 @@
+<!--
+Description: Root view of the application
+Author: Julien
+-->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,9 +20,13 @@
             <a class="squared-blue-btn" href="#/my_decks/">My Decks</a>
         </header>
 
+        <!-- Angular directive used as a container to hold our HTML layout -->
         <div id="content" ng-view></div>
 
         <script type="text/javascript">
+            // This Hack change the paths for JavaScript import from
+            // var watcher = require("../lib/log/watcher");
+            // to: var watcher = require("log/watcher");
             process.env.NODE_PATH = __dirname;
             require('module').Module._initPaths();
         </script>
