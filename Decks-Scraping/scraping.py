@@ -32,32 +32,32 @@ NB_DECK_BY_CLASS = 10
 
 #Used once at beginning of project
 def massScraping():
-for className, classId in CLASSES.iteritems():
-    print 'Processing', className
-    print URL + '/decks?filter-deck-tag=' + str(DECK_AGE) + '&sort=-rating&filter-class=' + str(classId)
+    for className, classId in CLASSES.iteritems():
+        print 'Processing', className
+        print URL + '/decks?filter-deck-tag=' + str(DECK_AGE) + '&sort=-rating&filter-class=' + str(classId)
 
-    page = requests.get(URL + '/decks?filter-deck-tag=' + str(DECK_AGE) + '&sort=-rating&filter-class=' + str(classId))
-    XMLtree = html.fromstring(page.content)
-    XMLdecks = XMLtree.xpath('//span[@class="tip"]/a')
+        page = requests.get(URL + '/decks?filter-deck-tag=' + str(DECK_AGE) + '&sort=-rating&filter-class=' + str(classId))
+        XMLtree = html.fromstring(page.content)
+        XMLdecks = XMLtree.xpath('//span[@class="tip"]/a')
 
-    for XMLdeck in XMLdecks:
-        print "Deck :", URL + XMLdeck.attrib['href']
+        for XMLdeck in XMLdecks:
+            print "Deck :", URL + XMLdeck.attrib['href']
 
-        cardsPage = requests.get(URL + XMLdeck.attrib['href'])
-        XMLTreeCardsPage = html.fromstring(cardsPage.content)
-        XMLCards = XMLTreeCardsPage.xpath('//aside//tbody//a//text()')
-        XMLCards = [item.strip() for item in XMLCards]
-        XMLCardsMultipliers = XMLTreeCardsPage.xpath('//aside//tbody//td[@class="col-name"]/text()')
-        XMLCardsMultipliers = [int(x[-1]) for x in filter(bool, [x.strip() for x in XMLCardsMultipliers])]
+            cardsPage = requests.get(URL + XMLdeck.attrib['href'])
+            XMLTreeCardsPage = html.fromstring(cardsPage.content)
+            XMLCards = XMLTreeCardsPage.xpath('//aside//tbody//a//text()')
+            XMLCards = [item.strip() for item in XMLCards]
+            XMLCardsMultipliers = XMLTreeCardsPage.xpath('//aside//tbody//td[@class="col-name"]/text()')
+            XMLCardsMultipliers = [int(x[-1]) for x in filter(bool, [x.strip() for x in XMLCardsMultipliers])]
 
-        decks.append({
-            'id' : len(decks),
-            'name' : XMLdeck.text,
-            'class' : className,
-            'cards' : flat([x * [getIdOfCard(y)] for x, y in zip(XMLCardsMultipliers, XMLCards)])
-        })
-        if (len(decks) % NB_DECK_BY_CLASS == 0):
-            break
+            decks.append({
+                'id' : len(decks),
+                'name' : XMLdeck.text,
+                'class' : className,
+                'cards' : flat([x * [getIdOfCard(y)] for x, y in zip(XMLCardsMultipliers, XMLCards)])
+            })
+            if (len(decks) % NB_DECK_BY_CLASS == 0):
+                break
 
 # Misc.
 def flat(myList): # Array 2D -> 1D
