@@ -3,7 +3,7 @@
     'use strict';
 
     angular.module('app').controller('IngameCtrl', function ($scope) {
-        // $scope contains the data accesible from the view
+        // We use $scope as a Model - contains the data accesible from the view
         $scope.player_cards_hand_size = 3;
         $scope.player_cards_deck_size = 6;
         $scope.opponent_cards_hand_size = 4;
@@ -14,7 +14,7 @@
             {"deck": "Basic (Warlock)", "percent": 0.1},
             {"deck": "Reno (Warlock)", "percent": 0.05}
         ];
-
+        // Write here the $scope.functions accessible from the view
     });
 
 })();
